@@ -1,0 +1,1459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{768074BB-2010-B06F-64A2-861FE7010C3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>MagicLeap.SDK</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>UNITY_2022_3_48;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_ANDROID;TEXTCORE_1_0_OR_NEWER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;ENABLE_ETC_COMPRESSION;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;USE_INPUT_SYSTEM_POSE_CONTROL;UNITY_POST_PROCESSING_STACK_V2;USE_STICK_CONTROL_THUMBSTICKS;URP_14_0_0_OR_NEWER;UNITY_OPENXR_1_9_0_OR_NEWER;UNITY_2022_3_10_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169;USG0001</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169;USG0001</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>2022.3.48f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
+    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LightEstimation\MagicLeapLightEstimationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LegacySupport\MLInput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\Scripts\MLWebViewScreenBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\FacialExpression\MLFacialExpression.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Dimmers\MLSegmentedDimmer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlanesQueryFlags.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Graphics\GraphicsHooks.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Reprojection\MagicLeapReprojectionNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\EyeTracker\MagicLeapEyeTracker.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\MagicLeapPlanesNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\YUVUtility.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\NativeFunctionsBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Anchors\ReferenceFrame.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Scripts\MLWebRTCAudioSinkBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SystemNotifications\MagicLeapSystemNotificationsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Permissions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\AndroidCameraPlayerLoopUtility.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaDRM.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\MLHandTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LocalizationMap\MagicLeapLocalizationMapTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraMetadataTags.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LightEstimation\MagicLeapLightEstimationFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\UserCalibration\MagicLeapUserCalibrationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingMarkerDetector.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCCameraVideoSource.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCIceServer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SystemNotifications\MagicLeapSystemNotificationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\DepthCamera\MLDepthCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCamera\MLEyeCameraEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\UserCalibration\MagicLeapUserCalibrationFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\StreamConfiguration.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapOpenXRNativeDelegates.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapRenderingExtensionsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Tools\Scripts\MLHeadposeCanvasBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapControllerProfile.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\Controller.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\CircularBuffer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Bindings\MLCameraBaseNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\MagicLeapPixelSensorFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Time\MLTimeNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\MLPlanesQueryFlags.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCFrame.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCAppDefinedVideoSource.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\PowerManager\MLPowerManagerNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\MediaNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Anchors\MLAnchorsNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\Subsystem\PlaneBoundary.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlanesQuery.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MarkerTracker\MLMarkerTrackerSettings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraDevice.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\PixelSensorStreamBuffers.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaPlayerEvents.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseEvents.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\MLXrPlaneSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MLCompat\MLInput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\Subsystem\ConvexHullGenerator.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioInputClip.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraMetadata.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCVideoSinkRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapOpenXRFeatureWithInterception.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LegacySupport\MLEyeTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCamera\MLEyeCameraInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\URPExtensions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LightEstimation\MagicLeapLightEstimationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\MagicLeapPixelSensorAPI.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\XrPixelSensorCapabilityRangeHolder.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\MagicLeapPlanesFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\SettingsIntentsLauncher.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Gesture\Extensions\TouchpadGestureEvent.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapProjectValidation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LightEstimation\MagicLeapLightEstimation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\ConvertTimeSpec\MagicLeapConvertTimeSpecNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\PixelSensorFrame.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraIdList.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaMuxer\MLMediaMuxer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\Futures.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\MLGestureClassification.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Spaces\MLSpaceInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\YcbcrRendererNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCDataChannel.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\PixelSensorStreamBuffers.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\MagicLeapPixelSensor.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\Scripts\MLWebViewTabBarBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseHelpers.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlaneBoundariesList.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\MagicLeapPixelSensorNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\MediaStatus.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioOutput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LegacySupport\MLHeadTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\EyeTracker\MagicLeapEyeTrackerTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Meshing\MeshingSubsystemComponent.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCalibration\MLEyeCalibration.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SystemNotifications\MagicLeapSystemNotificationsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\MagicLeapPixelSensorTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioInputStreamingClip.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaFormat\MLMediaFormatNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLTextureUtils.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\PixelSensorFrame.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\PlaneBoundary.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\Utils.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\Spaces.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\XrProvider\MagicLeapXrProviderNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLHandTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WorldCamera\MLWorldCameraStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\MediaConstants.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\AssemblyInfo.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\GazeRecognition\MLGazeRecognitionEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\API\MLWebView.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Meshing\MagicLeapMeshingFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\Bindings\MLWebViewNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaPlayerEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\IMLMediaPlayer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\MLEyes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LocalizationMap\MagicLeapLocalizationMapFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\API\MLWebViewYcbcrRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaTTML\MLMediaTTMLNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Spaces\MLSpaceEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\OpenXRUtils.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\HeadsetFit\MLHeadsetFit.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\OnChangedCallAttribute.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Gesture\GestureSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LocalizationMaps\LocalizationMapNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCamera\MLEyeCameraStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PhysicalOcclusion\MagicLeapPhysicalOcclusionFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorAsyncOperations\PixelSensorStartOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Session\SessionSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\OpenXRUtils.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LightEstimation\MagicLeapLightEstimationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorAsyncOperations\PixelSensorStopOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\ConvexHullGenerator.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\TimeSpec.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\LocateSpaces\MagicLeapLocateSpacesNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MLCompat\MLEyeTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MarkerUnderstandingNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SystemNotifications\SystemNotificationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MLCompat\MLHeadTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LightEstimation\MagicLeapLightEstimation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\SequenceId.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraManager.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapFeature\MagicLeapFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\PlayerLoopUtil.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Scripts\MLMediaPlayerBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorAsyncOperations\PixelSensorConfigureOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\MagicLeapNativeSurfaceRenderer\MLNativeSurfaceYcbcrRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Anchors\MLAnchors.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCDataChannelNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\API\MLWebViewEvents.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WorldCamera\MLWorldCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SystemNotifications\MagicLeapSystemNotificationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\PixelSensorMetaDataTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\Subsystem\CopyPlaneResultsJob.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\UserCalibration\UserCalibrationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Dimmers\MLGlobalDimmerNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\MagicLeapNativeSurfaceRenderer\MLNativeSurfaceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Meshing\MagicLeapXrMeshingNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioSpatialSound.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MLAPIBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\CVCamera\MLCVCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Voice\MLVoiceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Bindings\MLCameraBaseNativeCallbacks.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCAppDefinedAudioSource.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MagicLeapNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorAsyncOperations\PixelSensorConfigureOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCIceCandidate.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\ReferenceSpaces.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapOpenXRFeatureWithInterception.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCVideoSinkNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MLXrAnchorSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapOpenXRFeatureBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Gesture\GestureSubsystemComponent.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\Subsystem\MLXrAnchorSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\XrProvider\MagicLeapXrProvider.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\MagicLeapPixelSensorNativeCallbacks.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioInput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorAsyncOperations\PixelSensorStartOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTC.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\Constants.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaDRMNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Bindings\MLCameraMetadataNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseYcbcrRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCFrameImagePlane.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\NativeInteropTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LightEstimation\MagicLeapLightEstimationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\YcbcrRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Meshing\MagicLeapXrMeshingNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Spaces\MLSpace.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\ConvexHullGenerator.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaPlayerTrackNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\InvalidInstanceException.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaMuxer\MLMediaMuxerNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Spaces\MLSpaceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\CVCamera\MLCVCameraNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LocalizationMaps\MagicLeapLocalizationMapFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLMeshing.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCMediaStreamTrack.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Voice\MLVoiceInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\MagicLeapPixelSensorAsyncOperations.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\Timer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Meshing\MagicLeapXrMeshingTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPolygon.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SystemNotifications\MagicLeapSystemNotificationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\YcbcrInterfaces.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapNativeFunctionsBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCMediaStream.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MLAutoAPISingleton.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCVideoSink.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MarkerTracker\MLMarkerTrackerData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraOutputTarget.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MarkerTracker\MLMarkerTrackerNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MLLazySingleton.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Meshing\PointCloud\MagicLeapOpenXRPointCloudSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Scripts\MLWebRTCVideoSinkBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorAsyncOperations\PixelSensorAsyncOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Anchors\AnchorSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\SystemInfo\MagicLeapSystemInfoNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\CaptureRequest.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\PlanesSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MLPermissionNames.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCAudioSinkNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\PowerManager\MLPowerManagerInternals.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioBuffer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLAudioOutput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\EyeTracker\MagicLeapEyeTrackerFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\EyeTracker\MagicLeapEyeTrackerNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Tools\Scripts\MLVirtualKeyboard.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\GazeRecognition\MLGazeRecognitionStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\HeadsetFit\MLHeadsetFitNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Occlusion\MLOcclusionNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACaptureRequest.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\UserCalibration\MagicLeapUserCalibrationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaParserCEA608NativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\NativeDelegates.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaFormatKey\MLMediaFormatKeyNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\AImageReader.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\API\MLWebViewEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorAsyncOperations\PixelSensorAsyncOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\AndroidCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\PixelSensorCapabilityRange.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLPluginLog.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\MagicLeapPixelSensorFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlane.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaRecorder\MLMediaRecorder.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapFeature\MagicLeapFeatureNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLThreadDispatch.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCAppDefinedSource.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\MagicLeapPlanesTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\GazeRecognition\MLGazeRecognition.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\FacialExpression\MagicLeapFacialExpressionNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Time\MLTime.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLCVCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LocalizationMap\MagicLeapLocalizationMapNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapReferenceSpacesFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorAsyncOperations\PixelSensorStopOperation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\UserCalibration\MagicLeapUserCalibrationFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PhysicalOcclusion\MagicLeapPhysicalOcclusionNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioInputNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapOpenXRFeatureBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\FacialExpressions\FacialExpressionNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\MagicLeapPlanesTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Bindings\MLCameraBaseNativeDelegates.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Tools\Scripts\MLVoiceIntentsConfiguration.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\RequestTemplate.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\PixelSensorMetaDataTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapControllerProfile.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\PixelSensorTypes\MagicLeapPixelSensorTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\Haptics.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Anchors\MLAnchorsInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLConvert.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCAudioSink.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\NativeSyncBuffer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioOutputPlugin\MLAudioOutputPluginNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioOutputPlugin\MLAudioOutputPluginBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\DepthCamera\MLDepthCameraNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaPlayer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapReferenceSpacesFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapOpenXRFeatureNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\MagicLeapPlanesFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\CameraNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\FacialExpressions\MagicLeapFacialExpressionData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLPermissions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstanding.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCConnection.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\PlaneBoundary.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\NativeRingBuffer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCAppDefinedSourceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NativeImage.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\XrPixelSensorCapabilityRangeHolder.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\Subsystem\MagicLeapSpatialAnchorsNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\ImageTracking\ImageTrackingSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\FacialExpression\MLFacialExpressionNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\DeviceCommands.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\SystemInfo.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraCaptureSession.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\PowerManager\MLPowerManagerStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapFeature\MagicLeapProjectValidation.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\SpaceInfo\MagicLeapSpaceInfoNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\MagicLeapPlanesNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\3rdparty\SimpleJson\SimpleJson.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Common\ViewConfig.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCamera\MLEyeCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapDepthRangeChangeFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\OpenXRFuture\MagicLeapOpenXRFuture.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\PlanesNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MLResult.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MarkerTracker\MLMarkerTracker.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\YCbCrRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\MediaFormat.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Tools\Scripts\MagicLeapCamera.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\CameraStatus.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCFrameNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\Deprecated\MagicLeapNativeSurfaceRenderer\MLNativeSurface.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACaptureSessionOutputContainer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\UnsafeUtilityEx.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioChannelMask.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapOpenXRInteractionFeatureBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaParserCEA708.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\NativeFixedList.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Reprojection\MagicLeapReprojectionFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MLPermissions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaFormat\MLMediaFormat.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\YCbCrRendererNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCSourceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\XRTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Bindings\MLCameraBaseNativeStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\TouchpadGesture.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Voice\MLVoice.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaTTML\MLMediaTTMLInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraMetadataInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\PowerManager\MLPowerManagerEnums.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Meshing\MagicLeapXrMeshingTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaRecorder\MLMediaRecorderNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCProxyConfig.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\CameraConstants.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaParserCEA708NativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioInputBufferClip.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\SpaceInfo\MagicLeapSpaceInfoNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\FacialExpression\MagicLeapFacialExpressionFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\TransformPlaneBoundaryJob.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\API\MLWebViewInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLPlanes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapRenderingFeatureNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\DepthCamera\MLDepthCameraData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\FacialExpressions\MagicLeapFacialExpressionFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\DeviceFeatureUsages.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstandingMarkerDetector.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\PixelSensorCapabilityRange.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCalibration\MLEyeCalibrationNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Reprojection\MagicLeapReprojectionNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBase.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Meshing\MeshingSubsystemLifecycle.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioOutputNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLAudioInput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\GazeRecognition\MLGazeRecognitionInternals.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\PlaneBoundaryCollection.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MLInput\MagicLeapInputs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\AndroidCameraManager.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\FacialExpression\MagicLeapFacialExpressionData.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Dimmers\MLGlobalDimmer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Occlusion\MLOcclusion.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraMetadata.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\MagicLeapCameras.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapRenderingFeatureNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\PixelSensor\MagicLeapPixelSensorNativeCallbacks.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\FacialExpression\MagicLeapFacialExpression.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLDevice.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCConnectionNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WebView\Scripts\MLWebViewTabBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaFormatKey\MLMediaFormatKey.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MarkerUnderstanding\MagicLeapMarkerUnderstanding.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Meshing\Extensions\MLMeshing.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraMetadataTags.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\Subsystem\MagicLeapSpatialAnchorsNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapFeature\MagicLeapViewConfigurationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Graphics\GraphicsHooksNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\Utils\MLBitMask.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\AImage.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsStorageNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaParserCEA608.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\SubsystemFeatures.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\INullablePointer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\EyeCamera\MLEyeCameraNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorTypes\MagicLeapPixelSensorNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Audio\MLAudioOutputPlugin\MLAudioPlayback.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\API\MLMediaPlayerTrack.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Meshing\PointCloud\MagicLeapOpenXRPointCloudNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACaptureSessionOutput.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\API\MLWebRTCSink.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\XrProvider\MagicLeapXrProviderSettings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LocalizationMaps\MagicLeapLocalizationMapNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCAppDefinedAudioSourceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Spaces\MLSpaceStructs.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\MediaTTML\MLMediaTTML.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Notifications\MLNotificationsNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\NativeWindowNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\CopyPlaneResultsJob.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\EyeTracker\MagicLeapEyeTrackerNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\NativeInteropTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\Subsystem\MLPlanesQueryFlags.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\UnsafeImage.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\FacialExpression\MagicLeapFacialExpressionNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Scripts\MLWebRTCLocalAppDefinedAudioSourceBehavior.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapRenderingExtensionsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlaneBoundaries.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\API\MLCameraBaseInternal.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\YCbCrHardwareBufferRenderer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\FacialExpressions\MagicLeapFacialExpressionNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Notifications\MLNotifications.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LocalizationMap\MagicLeapLocalizationMapNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\CopyPlaneResultsJob.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\JPEGUtility.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\MagicLeapPixelSensorFeatureAPI.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LocalizationMaps\MagicLeapLocalizationMapTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\WorldCamera\MLWorldCameraNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapSecondaryViewSupportFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\SpatialAnchors\MagicLeapSpatialAnchorsNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Planes\Extensions\MLPlaneBoundary.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\AHardwareBuffer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\MediaPlayer\Bindings\MLMediaPlayerNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Planes\Subsystem\MagicLeapPlanesNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\MagicLeapLibraries.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\FacialExpressions\MagicLeapFacialExpression.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\GazeRecognition\MLGazeRecognitionNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Meshing\MagicLeapMeshingFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\UserCalibration\UserCalibrationNativeFunctions.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LightEstimation\MagicLeapLightEstimationFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Planes\Subsystem\MLXrPlaneSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapFeature\MagicLeapFeature.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\Meshing\MLXrPointCloudSubsystem.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\MLHeadTracking.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\PixelSensorAsyncOperations\PixelSensorAsyncOperationResult.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\SystemInfo\MagicLeapSystemInfoNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ACameraCaptureFailure.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\LightEstimation\MagicLeapLightEstimationTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\PowerManager\MLPowerManager.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\LocateSpaces\MagicLeapLocateSpacesNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Input\Extensions\DeviceLayouts.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\MagicLeapFeature\MagicLeapFeatureNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\MagicLeapFeature\MagicLeapViewConfigurationNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Scripts\FPSDisplay.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Subsystems\Meshing\Extensions\MLMeshingNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Bindings\MLWebRTCAppDefinedVideoSourceNativeBindings.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\LightEstimation\MagicLeapLightEstimationTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Common\APIsProfilerMarkers\MLMediaPlayer.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\OpenXR\Common\ConvertTimeSpec\MagicLeapConvertTimeSpecNativeTypes.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\OpenXR\PixelSensors\MagicLeapPixelSensor.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\APIs\YUVRenderer\YCbCrInterfaces.cs" />
+    <Compile Include="Packages\com.magicleap.unitysdk\Runtime\Android\Camera\NDK\ANativeWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Packages\com.magicleap.unitysdk\Runtime\APIs\Camera\Shaders\YUV_Camera_Shader.shader" />
+    <None Include="Packages\com.magicleap.unitysdk\Runtime\APIs\DepthCamera\DepthCamera.shader" />
+    <None Include="Packages\com.magicleap.unitysdk\Runtime\Deprecated\WebRTC\Shaders\YUV_Shader.shader" />
+    <None Include="Packages\com.magicleap.unitysdk\Runtime\Tools\Prefabs\VirtualKeyboard\Materials\UnlitAdditiveTransparent.shader" />
+    <None Include="Packages\com.magicleap.unitysdk\Runtime\MagicLeap.SDK.asmdef" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ContentLoadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ProfilerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.PropertiesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UmbraModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DeviceSimulatorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.DeviceSimulatorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.DiagnosticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.DiagnosticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.EditorToolbarModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.EditorToolbarModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.GraphViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.PresetsUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.PresetsUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.QuickSearchModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.QuickSearchModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneTemplateModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.SceneViewModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneViewModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreFontEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreTextEngineModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIBuilderModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIBuilderModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsSamplesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@2.2.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.5.1\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.GradleProject">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.AppContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Buffers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Concurrent.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.NonGeneric.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Specialized.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.EventBasedAsync.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.TypeConverter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Console.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Data.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Debug.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.FileVersionInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Process.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.StackTrace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TraceSource.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Drawing.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Dynamic.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Calendars.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.DriveInfo.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Watcher.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.IsolatedStorage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.MemoryMappedFiles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Pipes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Expressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Queryable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NameResolution.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NetworkInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Ping.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Requests.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Sockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebHeaderCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ObjectModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.DispatchProxy">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.DispatchProxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.ILGeneration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.Lightweight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Reader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Writer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Handles.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Claims.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Csp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Principal.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.SecureString.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.RegularExpressions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Overlapped.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Parallel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Thread.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.ThreadPool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Timer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlSerializer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.XDocument.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\mscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Drawing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.IO.Compression.FileSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Numerics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Runtime.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ServiceModel.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Transactions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.InteractionSubsystems">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.InteractionSubsystems.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.Management">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.ARSubsystems">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.CoreUtils">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.OpenXR">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.XR.ARFoundation">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup></ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
