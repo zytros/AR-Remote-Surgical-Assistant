@@ -10,6 +10,7 @@
 using MagicLeap.Android;
 using MagicLeap.Examples;
 using System;
+using System.Net.Sockets;
 using System.Collections;
 using System.Text;
 using UnityEngine;
@@ -23,6 +24,8 @@ using UnityEngine.XR.OpenXR;
 using MagicLeap.OpenXR.Features.Meshing;
 using Random = UnityEngine.Random;
 using Utils = MagicLeap.Examples.Utils;
+using Unity.Collections;
+using System.Collections.Generic;
 
 public class MeshingExample : MonoBehaviour
 {
@@ -37,7 +40,70 @@ public class MeshingExample : MonoBehaviour
         [SerializeField] public MeshingMode renderMode;
         [SerializeField] public MeshFilter meshPrefab;
     }
-    
+
+    private class NetworkClient
+    {
+        string ipAddress = "192.168.178.52";
+        int port = 8030;
+
+        public void SendMessageToServer(string msg)
+        {
+            try
+            {
+                using (TcpClient client = new TcpClient(ipAddress, port))
+                {
+                    NetworkStream stream = client.GetStream();
+
+                    if (stream.CanWrite)
+                    {
+                        byte[] messageBytes = Encoding.UTF8.GetBytes(msg);
+
+                        // First, send the length of the message (as a 4-byte integer)
+                        int messageLength = messageBytes.Length;
+                        byte[] lengthBytes = BitConverter.GetBytes(messageLength);
+
+                        if (BitConverter.IsLittleEndian)
+                        {
+                            Array.Reverse(lengthBytes); // Ensure it's sent as big-endian
+                        }
+
+                        // Send the length of the message
+                        stream.Write(lengthBytes, 0, lengthBytes.Length);
+
+                        // Send the actual message
+                        stream.Write(messageBytes, 0, messageBytes.Length);
+                        stream.Flush();
+
+                        Debug.Log($"Sent message of length: {messageLength}");
+                    }
+
+                    // Optionally, read the response
+                    if (stream.CanRead)
+                    {
+                        byte[] responseBytes = new byte[1024]; // Buffer for reading the response
+                        int bytesRead = stream.Read(responseBytes, 0, responseBytes.Length);
+                        string response = Encoding.UTF8.GetString(responseBytes, 0, bytesRead);
+                        Debug.Log($"Received response: {response}");
+                    }
+
+                    // Explicitly close the stream and client
+                    stream.Close();
+                    client.Close();
+                }
+            }
+            catch (SocketException e)
+            {
+                Debug.Log($"SocketException: {e.Message}");
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"Exception: {e.Message}");
+            }
+        }
+    }
+
+
+
     [SerializeField] private ARMeshManager meshManager;
     [SerializeField] private ARPointCloudManager pointCloudManager;
     [SerializeField] private MeshingProjectile projectilePrefab;
@@ -61,6 +127,8 @@ public class MeshingExample : MonoBehaviour
     private MeshTexturedWireframeAdapter wireframeAdapter;
 
     private MagicLeapController Controller => MagicLeapController.Instance;
+
+    private NetworkClient networkClient = new NetworkClient();
 
     private void Awake()
     {
@@ -138,6 +206,7 @@ public class MeshingExample : MonoBehaviour
         projectile.transform.position = mainCamera.transform.position;
         projectile.transform.localScale = Vector3.one * Random.Range(MinScale, MaxScale);
         projectile.rb.AddForce(mainCamera.transform.forward * ProjectileForce);
+        ExtractPointCloud();
     }
 
     void UpdateSettings()
@@ -206,25 +275,74 @@ public class MeshingExample : MonoBehaviour
         enabled = false;
     }
 
-    private void ExtractMeshes()
-    {
-        int meshNr = 0;
-        foreach (var meshFilter in meshManager.meshes)
-        {
-            var mesh = meshFilter.sharedMesh; // Access the actual mesh data
-            SaveMeshAsObj(mesh, "ExtractedMesh_" + meshNr + ".obj");
-            meshNr++;
-        }
-    }
-
-    private void SaveMeshAsObj(Mesh mesh, string fileName)
+    
+    private void ExtractPointCloud()
     {
         var sb = new StringBuilder();
+        int numPoints = 0;
+        var trackableCollection = pointCloudManager.trackables;
+        foreach (var pointCloud in trackableCollection)
+        {
+            // Collect the points in the point cloud
+            if (!pointCloud.positions.HasValue)
+                continue;
 
-        sb.AppendLine("o " + mesh.name);
+            var points = pointCloud.positions.Value;
+            var xform = pointCloud.transform;
+            
+
+            foreach(var point in points)
+            {
+                sb.AppendLine($"point {point.x} {point.y} {point.z}");
+            }
+            var transform = pointCloud.gameObject.transform;
+            var local2WorldMat = transform.localToWorldMatrix;
+            sb.AppendLine($"transform_mat {local2WorldMat.m00} {local2WorldMat.m01} {local2WorldMat.m02} {local2WorldMat.m03}\n" +
+                                          $"{local2WorldMat.m10} {local2WorldMat.m11} {local2WorldMat.m12} {local2WorldMat.m13}\n" +
+                                          $"{local2WorldMat.m20} {local2WorldMat.m21} {local2WorldMat.m22} {local2WorldMat.m23}\n" +
+                                          $"{local2WorldMat.m30} {local2WorldMat.m31} {local2WorldMat.m32} {local2WorldMat.m33}"
+                                          );
+            numPoints += points.Length;
+            
+        }
+        
+        // Send the data to the server
+        String msg = sb.ToString();
+        networkClient.SendMessageToServer($"sending {msg.Length} bytes");
+        networkClient.SendMessageToServer(sb.ToString());
+        Debug.Log("Debug: Extracting " + numPoints + " total points");
+    }
+    private void ExtractMeshes()
+    {
+
+        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+        
+
+        int meshNr = 0;
+        var sb = new StringBuilder();
+        Debug.Log($"Debug: Extracting {meshManager.meshes.Count} meshes");
+        foreach (var meshFilter in meshManager.meshes)
+        {
+            Mesh mesh = meshFilter.sharedMesh; // Access the actual mesh data
+            stopwatch.Start();
+            SaveMeshAsObj(mesh, "ExtractedMesh_" + meshNr, sb);
+            stopwatch.Stop();
+            Debug.Log($"Debug: Function execution time: {stopwatch.ElapsedMilliseconds} milliseconds");
+            stopwatch.Reset();
+            meshNr++;
+        }
+        networkClient.SendMessageToServer(sb.ToString());
+
+        
+    }
+
+    private void SaveMeshAsObj(Mesh mesh, string fileName, StringBuilder sb)
+    {
+
+        sb.AppendLine("o " + fileName);
 
         // Write vertices
-        Debug.Log("Vertices: " + mesh.vertices.Length);
+        Debug.Log("Vertices: " + mesh.vertexCount);
         foreach (Vector3 vertex in mesh.vertices)
         {
             sb.AppendLine($"v {vertex.x} {vertex.y} {vertex.z}");
@@ -249,10 +367,8 @@ public class MeshingExample : MonoBehaviour
                           $"{mesh.triangles[i + 1] + 1}/{mesh.triangles[i + 1] + 1}/{mesh.triangles[i + 1] + 1} " +
                           $"{mesh.triangles[i + 2] + 1}/{mesh.triangles[i + 2] + 1}/{mesh.triangles[i + 2] + 1}");
         }
-
-        // Write to file
-        System.IO.File.WriteAllText(fileName, sb.ToString());
-        Debug.Log("Saved mesh to " + fileName);
+       
+        
     }
 
 
