@@ -1,2 +1,6 @@
 */Library
 *.apk
+*/build
+*/.vs
+*/Logs
+*.cache
