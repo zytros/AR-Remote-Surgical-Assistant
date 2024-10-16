@@ -218,8 +218,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 465
     y: 0
+<<<<<<< HEAD
+    width: 1005.3334
+    height: 612
+=======
     width: 1508
     height: 864
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 11}
@@ -1111,9 +1116,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+      m_SelectedIDs: e0420000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 20fbffff
+=======
       m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 5cf5fdff10f6fdff4801feff0a52feffce58feffde58feff2c5dfeff20ff0000
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1198,9 +1209,15 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+    m_SelectedIDs: 307b0000
+    m_LastClickedID: 31536
+    m_ExpandedIDs: 00000000687800003a7a000000ca9a3bffffff7f
+=======
     m_SelectedIDs: e0430000
     m_LastClickedID: 17376
     m_ExpandedIDs: 000000002c410000a041000068420000c043000000ca9a3bffffff7f
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1228,7 +1245,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 0000000068780000
+=======
     m_ExpandedIDs: 
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1259,18 +1280,27 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000048ce0000c65f0000c65d0000b258000008440000000000004074000050580000d85a0000ea600000386300003c6300008466000046660000886400008c6400008e64000094640000926400009a630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
+<<<<<<< HEAD
+      m_Name: 
+      m_OriginalName: 
+=======
       m_Name: NetworkCommunication
       m_OriginalName: NetworkCommunication
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< HEAD
+      m_UserData: 0
+=======
       m_UserData: 67238
+>>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_CreateAssetUtility:
