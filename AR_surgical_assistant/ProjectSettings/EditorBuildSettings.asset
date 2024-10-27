@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+    path: Assets/Scenes/AR_Surgeon_Interface.unity
+    guid: df477320f6643bf49abc9d87ab3f4dc4
+  m_configObjects:
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: ecbd00119f1d48d43981112c8a41c65d,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b8b1343f15e58b2408d8ee4e7809f32f,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 53cb4f2b0f8959e45a01519272823cca,
+      type: 2}
