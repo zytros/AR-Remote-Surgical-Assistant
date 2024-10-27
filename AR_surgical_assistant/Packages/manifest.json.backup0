@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "com.magicleap.mrtk3": "file:C:/Users/lucas/MagicLeap/tools/unity/mrtk3/v1.2.0/com.magicleap.mrtk3-1.2.0.tgz",
+    "com.magicleap.mrtk3": "file:C:/Users/siddh/MagicLeap/tools/unity/mrtk3/v1.3.0/com.magicleap.mrtk3-1.3.0.tgz",
     "com.magicleap.unitysdk": "2.5.0",
     "com.magicleap.xrkeyboard": "https://github.com/magicleap/MagicLeapXRKeyboard.git?path=/Packages/MagicLeapXRKeyboard",
     "com.microsoft.mrtk.graphicstools.unity": "file:MixedReality/com.microsoft.mrtk.graphicstools.unity-0.5.12.tgz",
