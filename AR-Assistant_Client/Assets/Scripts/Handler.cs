@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -10,10 +11,12 @@ public class Handler : MonoBehaviour
 
     public RawImage mainVideoStream;               
     public RawImage smallVideoStream;  
-    public Button pauseButton;             
+    public Button pauseButton;
+    public Button backButton;
 
     private WebCamTexture webCamTexture;
     private Texture2D pausedFrameTexture;
+    private List<Texture2D> backTextures = new List<Texture2D>();
     private bool isPaused = false;
 
     public Color drawColor = Color.red;
@@ -31,20 +34,32 @@ public class Handler : MonoBehaviour
             WebCamDevice device = WebCamTexture.devices[0];
             webCamTexture = new WebCamTexture(device.name);
 
-            // Set the live feed on both main and small live stream images
             mainVideoStream.texture = webCamTexture;
             smallVideoStream.texture = webCamTexture;
 
-            // Start playing the webcam video
             webCamTexture.Play();
 
-            // Attach the pause function to the button's onClick event
             pauseButton.onClick.AddListener(TogglePause);
+            backButton.onClick.AddListener(GoBack);
         }
         else
         {
             Debug.LogWarning("No webcam detected.");
         }
+    }
+    
+    void GoBack()
+    {
+        if (backTextures.Count == 0)
+        {
+            return;
+        }
+        int idx = backTextures.Count - 1;
+        Texture2D backTexture = backTextures[idx];
+        backTextures.RemoveAt(idx);
+        pausedFrameTexture.SetPixels(backTexture.GetPixels());
+        pausedFrameTexture.Apply();
+        colorBuffer = pausedFrameTexture.GetPixels();
     }
 
     void TogglePause()
@@ -96,7 +111,7 @@ public class Handler : MonoBehaviour
         }
         if (isPaused)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && RectTransformUtility.RectangleContainsScreenPoint(mainVideoStream.rectTransform, Input.mousePosition, Camera.main))
             {
                 Vector2 localPoint;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(mainVideoStream.rectTransform, Input.mousePosition, Camera.main, out localPoint);
@@ -117,15 +132,21 @@ public class Handler : MonoBehaviour
                 }
                 else
                 {
-                    // Draw the initial point if no previous point exists
-                    //Debug.Log("Yay draw point");
+                    if (backTextures.Count > 5)
+                    {
+                        backTextures.RemoveAt(0);
+                    }
+                    Texture2D old_Texture = new Texture2D(webCamTexture.width, webCamTexture.height);
+                    old_Texture.SetPixels(pausedFrameTexture.GetPixels());
+                    Debug.Log("Adding image to backImages");
+                    backTextures.Add(old_Texture);
                     DrawOnTexture(x, y);
                 }
 
                 // Update the last position
                 lastMousePos = currentMousePos;
                 pausedFrameTexture.SetPixels(colorBuffer);
-        pausedFrameTexture.Apply();
+                pausedFrameTexture.Apply();
             }
             else
             {
