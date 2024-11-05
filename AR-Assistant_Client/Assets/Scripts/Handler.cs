@@ -9,13 +9,14 @@ using UnityEngine.UI;
 public class Handler : MonoBehaviour
 {
 
-    public RawImage mainVideoStream;               
-    public RawImage smallVideoStream;  
+    private RawImage mainVideoStream;               
+    private RawImage smallVideoStream;  
     public Button pauseButton;
     public Button backButton;
 
     private WebCamTexture webCamTexture;
     private Texture2D pausedFrameTexture;
+    private Texture pausedFrame;
     private List<Texture2D> backTextures = new List<Texture2D>();
     private bool isPaused = false;
 
@@ -29,23 +30,27 @@ public class Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (WebCamTexture.devices.Length > 0)
-        {
-            WebCamDevice device = WebCamTexture.devices[0];
-            webCamTexture = new WebCamTexture(device.name);
+        //if (WebCamTexture.devices.Length > 0)
+        //{
+        //    WebCamDevice device = WebCamTexture.devices[0];
+        //    webCamTexture = new WebCamTexture(device.name);
 
-            mainVideoStream.texture = webCamTexture;
-            smallVideoStream.texture = webCamTexture;
+        //    //mainVideoStream.texture = webCamTexture;
+        //    smallVideoStream.texture = webCamTexture;
 
-            webCamTexture.Play();
+        //    webCamTexture.Play();
 
-            pauseButton.onClick.AddListener(TogglePause);
-            backButton.onClick.AddListener(GoBack);
-        }
-        else
-        {
-            Debug.LogWarning("No webcam detected.");
-        }
+        //    pauseButton.onClick.AddListener(TogglePause);
+        //    backButton.onClick.AddListener(GoBack);
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("No webcam detected.");
+        //}
+
+        smallVideoStream = MediaManager.Instance.RemoteVideoRenderer;
+        mainVideoStream = MediaManager.Instance.PausableVideoRenderer;
+        pauseButton.onClick.AddListener(TogglePause);
     }
     
     void GoBack()
@@ -62,29 +67,49 @@ public class Handler : MonoBehaviour
         colorBuffer = pausedFrameTexture.GetPixels();
     }
 
-    void TogglePause()
+    void HandleMainVideoOutput()
     {
         if (!isPaused)
         {
-            // Capture the current frame from the live feed as a paused frame
-            pausedFrameTexture = new Texture2D(webCamTexture.width, webCamTexture.height);
-            pausedFrameTexture.SetPixels(webCamTexture.GetPixels());
-            pausedFrameTexture.Apply();
-
-            // Display the paused frame on the paused frame RawImage
-            mainVideoStream.texture = pausedFrameTexture;
-            smallVideoStream.texture = webCamTexture;
-
-            // Hide the main RawImage (live feed) and show paused frame with smaller live stream
-            colorBuffer = pausedFrameTexture.GetPixels();
+            mainVideoStream.texture = smallVideoStream.texture;
         }
         else
         {
-            // Switch back to the live feed on the main RawImage
-            mainVideoStream.texture = webCamTexture;
-            smallVideoStream.texture = pausedFrameTexture;
+            //pausedFrame = smallVideoStream.texture;
+            //mainVideoStream.texture = pausedFrameTexture;
+            mainVideoStream.texture = pausedFrame;
+        }
+    }
+
+    void TogglePause()
+    {
+        //if (!isPaused)
+        //{
+        //    // Capture the current frame from the live feed as a paused frame
+        //    pausedFrameTexture = new Texture2D(webCamTexture.width, webCamTexture.height);
+        //    pausedFrameTexture.SetPixels(webCamTexture.GetPixels());
+        //    pausedFrameTexture.Apply();
+
+        //    // Display the paused frame on the paused frame RawImage
+        //    mainVideoStream.texture = pausedFrameTexture;
+        //    smallVideoStream.texture = webCamTexture;
+
+        //    // Hide the main RawImage (live feed) and show paused frame with smaller live stream
+        //    colorBuffer = pausedFrameTexture.GetPixels();
+        //}
+        //else
+        //{
+        //    // Switch back to the live feed on the main RawImage
+        //    mainVideoStream.texture = webCamTexture;
+        //    smallVideoStream.texture = pausedFrameTexture;
+        //}
+
+        if (!isPaused)
+        {
+            pausedFrame = smallVideoStream.texture;
         }
 
+        Debug.Log($"Paused: {isPaused}");
         // Toggle the paused state
         isPaused = !isPaused;
     }
@@ -101,6 +126,7 @@ public class Handler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TogglePause();
@@ -153,6 +179,8 @@ public class Handler : MonoBehaviour
                 lastMousePos = null;
             }
         }
+
+        HandleMainVideoOutput();
     }
 
     private void DrawLine(Vector2 start, Vector2 end)
