@@ -14,7 +14,7 @@ public class Handler : MonoBehaviour
     public Button pauseButton;
     public Button backButton;
 
-    private WebCamTexture webCamTexture;
+    // private WebCamTexture webCamTexture;
     private Texture2D pausedFrameTexture;
     private Texture pausedFrame;
     private List<Texture2D> backTextures = new List<Texture2D>();
@@ -51,6 +51,7 @@ public class Handler : MonoBehaviour
         smallVideoStream = MediaManager.Instance.RemoteVideoRenderer;
         mainVideoStream = MediaManager.Instance.PausableVideoRenderer;
         pauseButton.onClick.AddListener(TogglePause);
+        backButton.onClick.AddListener(GoBack);
     }
     
     void GoBack()
@@ -104,9 +105,20 @@ public class Handler : MonoBehaviour
         //    smallVideoStream.texture = pausedFrameTexture;
         //}
 
+        Debug.Log("Press Pause Button");
+        
         if (!isPaused)
         {
-            pausedFrame = smallVideoStream.texture;
+            CapturePausedFrame();
+            Debug.Log("Pausing, swapping videos");
+            mainVideoStream.texture = pausedFrameTexture;
+            smallVideoStream = MediaManager.Instance.RemoteVideoRenderer;
+            colorBuffer = pausedFrameTexture.GetPixels();
+        }
+        else
+        {
+            mainVideoStream = MediaManager.Instance.RemoteVideoRenderer;
+            smallVideoStream.texture = pausedFrameTexture;
         }
 
         Debug.Log($"Paused: {isPaused}");
@@ -114,16 +126,53 @@ public class Handler : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    void OnDestroy()
+    // void OnDestroy()
+    // {
+    //     // Release webcam when the script is destroyed
+    //     if (webCamTexture != null)
+    //     {
+    //         webCamTexture.Stop();
+    //     }
+    // }
+
+    // Update is called once per frame
+    
+    public void CapturePausedFrame()
     {
-        // Release webcam when the script is destroyed
-        if (webCamTexture != null)
+        // Check if mainVideoStream texture is available
+        if (mainVideoStream.texture != null)
         {
-            webCamTexture.Stop();
+            // Get the Texture from the main video stream RawImage
+            Texture sourceTexture = mainVideoStream.texture;
+
+            // Ensure the pausedFrameTexture matches the dimensions of the source texture
+            if (pausedFrameTexture == null || pausedFrameTexture.width != sourceTexture.width || pausedFrameTexture.height != sourceTexture.height)
+            {
+                pausedFrameTexture = new Texture2D(sourceTexture.width, sourceTexture.height, TextureFormat.RGBA32, false);
+            }
+
+            // Copy pixels from the source texture to pausedFrameTexture
+            RenderTexture currentRT = RenderTexture.active;
+            RenderTexture renderTexture = RenderTexture.GetTemporary(sourceTexture.width, sourceTexture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
+            Graphics.Blit(sourceTexture, renderTexture);
+            RenderTexture.active = renderTexture;
+
+            // Read pixels from the active RenderTexture
+            pausedFrameTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+            pausedFrameTexture.Apply();
+
+            // Clean up
+            RenderTexture.active = currentRT;
+            RenderTexture.ReleaseTemporary(renderTexture);
+
+            Debug.Log("Captured paused frame from main video stream.");
+        }
+        else
+        {
+            Debug.LogWarning("No texture found on main video stream.");
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -162,7 +211,7 @@ public class Handler : MonoBehaviour
                     {
                         backTextures.RemoveAt(0);
                     }
-                    Texture2D old_Texture = new Texture2D(webCamTexture.width, webCamTexture.height);
+                    Texture2D old_Texture = new Texture2D(pausedFrameTexture.width, pausedFrameTexture.height);
                     old_Texture.SetPixels(pausedFrameTexture.GetPixels());
                     Debug.Log("Adding image to backImages");
                     backTextures.Add(old_Texture);

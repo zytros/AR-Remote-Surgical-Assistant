@@ -1374,6 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _remoteVideoRenderer: {fileID: 1955510390}
+  _remoteSmallVideoRenderer: {fileID: 521547826}
   _receiveAudio: {fileID: 1300908518}
   _microphoneManager: {fileID: 1300908519}
   _permissionManager: {fileID: 1048909449}
@@ -2922,13 +2923,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082824272}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b172a764e7d852040970c327ec7d9e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainVideoStream: {fileID: 1955510390}
-  smallVideoStream: {fileID: 521547826}
   pauseButton: {fileID: 1522793129}
   backButton: {fileID: 1470316630}
   drawColor: {r: 1, g: 0, b: 0, a: 1}
