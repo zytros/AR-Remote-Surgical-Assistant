@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using MagicLeap;
@@ -9,8 +10,8 @@ using UnityEngine.UI;
 public class MediaManager : Singleton<MediaManager>
 {
     [Header("Remote Media")]
-    [SerializeField] private RawImage _remoteVideoRenderer;
-    [SerializeField] private RawImage _remoteSmallVideoRenderer;
+    [SerializeField] private RawImage _mainVideoStream;
+    [SerializeField] private RawImage _smallVideoStream;
     [SerializeField]
     public AudioSource  _receiveAudio;
 
@@ -36,10 +37,11 @@ public class MediaManager : Singleton<MediaManager>
 
     //private ICameraDeviceManager _targetCameraDeviceManager;
 
-    public RawImage RemoteVideoRenderer => _remoteSmallVideoRenderer;
-    public RawImage PausableVideoRenderer => _remoteVideoRenderer;
+    public RawImage RemoteVideoRenderer => _smallVideoStream;
+    public RawImage PausableVideoRenderer => _mainVideoStream;
 
-    public bool PauseRemoteVideo = false;
+    public bool isPaused = false;
+    private Texture2D _pausedFrameTexture;
 
     //public RenderTexture CameraTexture => _targetCameraDeviceManager.CameraTexture;
 
@@ -47,7 +49,10 @@ public class MediaManager : Singleton<MediaManager>
 
     public AudioSource ReceiveAudio => _receiveAudio;
 
- 
+    public RawImage GetActiveVideoRenderer()
+    {
+        return isPaused ? _smallVideoStream : _mainVideoStream;
+    }
 
     private IEnumerator Start()
     {
@@ -65,8 +70,7 @@ public class MediaManager : Singleton<MediaManager>
         _permissionManager.RequestPermission();
         yield return new WaitUntil(() => _permissionManager.PermissionsGranted);
         UIController.Instance.OnStartMediaButtonPressed += StartMedia;
-        UIController.Instance.OnPauseMediaButtonPressed += PauseMedia;
-
+        UIController.Instance.OnPauseMediaButtonPressed += TogglePause;
     }
 
     private void StartMedia()
@@ -75,10 +79,64 @@ public class MediaManager : Singleton<MediaManager>
         _microphoneManager.SetupAudio();
     }
 
-    private void PauseMedia()
+    private void TogglePause()
     {
-        PauseRemoteVideo = !PauseRemoteVideo;
+        if (!isPaused)
+        {
+            _smallVideoStream.texture = _mainVideoStream.texture;
+            Texture texture = _mainVideoStream.texture;
+
+            if (texture is Texture2D sourceTexture2D)
+            {
+                Debug.Log(texture.isReadable);
+                _pausedFrameTexture = new Texture2D(sourceTexture2D.width, sourceTexture2D.height, TextureFormat.RGBA32, false);
+                RenderTexture currentRT = RenderTexture.active;
+                RenderTexture renderTexture = RenderTexture.GetTemporary(
+                    sourceTexture2D.width,
+                    sourceTexture2D.height,
+                    0,
+                    RenderTextureFormat.Default,
+                    RenderTextureReadWrite.sRGB // Use sRGB to match Unity's default gamma workflow
+                );
+
+// Blit the source texture to the RenderTexture
+                Graphics.Blit(sourceTexture2D, renderTexture);
+                RenderTexture.active = renderTexture;
+
+// Copy the RenderTexture to the paused frame texture
+                _pausedFrameTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+                _pausedFrameTexture.Apply();
+
+// Clean up
+                RenderTexture.active = currentRT;
+                RenderTexture.ReleaseTemporary(renderTexture);
+                _mainVideoStream.texture = _pausedFrameTexture;
+            }
+            else
+            {
+                Debug.LogWarning(texture);
+            }
+        }
+        else
+        {
+            _mainVideoStream.texture = _smallVideoStream.texture;
+            _smallVideoStream.texture = _pausedFrameTexture;
+        }
+
+        isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TogglePause();
+        }
+        else if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     private void OnDisable()
@@ -113,7 +171,7 @@ public class MediaManager : Singleton<MediaManager>
 
     public bool IsMediaPaused()
     {
-        Debug.Log($"Paused: {PauseRemoteVideo}");
-        return PauseRemoteVideo;
+        Debug.Log($"Paused: {isPaused}");
+        return isPaused;
     }
 }

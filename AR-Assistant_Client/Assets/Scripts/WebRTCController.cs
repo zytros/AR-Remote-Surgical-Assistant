@@ -556,7 +556,7 @@ public class WebRTCController : Singleton<WebRTCController>
             Debug.Log("Remote video track added.");
             video.OnVideoReceived += tex =>
             {
-                MediaManager.Instance.RemoteVideoRenderer.texture = tex;
+                MediaManager.Instance.GetActiveVideoRenderer().texture = tex;
             };
         }
 
