@@ -619,11 +619,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -77, y: 39.4, z: -8.1448145}
+  m_LocalPosition: {x: 270.7797, y: 155.67099, z: -10}
   m_LocalScale: {x: 10, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2082824274}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &521547824
 GameObject:
@@ -1105,11 +1105,11 @@ Transform:
   m_GameObject: {fileID: 964078513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -88.1707, y: 22.0958, z: 1.8551855}
+  m_LocalPosition: {x: 259.609, y: 138.36679, z: 0}
   m_LocalScale: {x: 845.0679, y: 519.396, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2082824274}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &964078515
 SpriteRenderer:
@@ -1380,6 +1380,9 @@ MonoBehaviour:
   _permissionManager: {fileID: 1048909449}
   _useMLCamera: 1
   isPaused: 0
+  drawColor: {r: 1, g: 0, b: 0, a: 1}
+  brushSize: 1
+  maxDistance: 1
 --- !u!4 &1052496667
 Transform:
   m_ObjectHideFlags: 0
@@ -1518,6 +1521,7 @@ MonoBehaviour:
   _connectWebRTCButton: {fileID: 67461301}
   _disconnectWebRTCButton: {fileID: 1490008173}
   _pauseButton: {fileID: 1522793129}
+  _backButton: {fileID: 1470316630}
   _inputField: {fileID: 795497290}
   _logText: {fileID: 0}
 --- !u!1 &1172271717
@@ -2945,15 +2949,15 @@ Transform:
   m_LocalPosition: {x: 347.7797, y: 116.27099, z: -1.8551855}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 964078514}
-  - {fileID: 519420032}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 964078514}
+  - {fileID: 519420032}
   - {fileID: 2082824274}
   - {fileID: 1127553234}
   - {fileID: 68690209}

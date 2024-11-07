@@ -27,6 +27,7 @@ public class UIController : Singleton<UIController>
     /// </summary>
     public Action OnStartMediaButtonPressed;
     public Action OnPauseMediaButtonPressed;
+    public Action OnBackMediaButtonPRessed;
 
     /// <summary>
     /// Event indicating a WebRTC connection or disconnection. 
@@ -38,6 +39,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] private Button _connectWebRTCButton;
     [SerializeField] private Button _disconnectWebRTCButton;
     [SerializeField] private Button _pauseButton;
+    [SerializeField] private Button _backButton;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _logText;
 
@@ -52,6 +54,7 @@ public class UIController : Singleton<UIController>
             _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
             _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
             _pauseButton.onClick.AddListener(PauseButtonPressed);
+            _backButton.onClick.AddListener(BackMediaButtonPRessed);
 
             ChangeUI(ShowUIConfig.StartMedia);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
@@ -60,6 +63,11 @@ public class UIController : Singleton<UIController>
         {
             Debug.LogError("Check UserInputController parameters, NULLs");
         }
+    }
+
+    private void BackMediaButtonPRessed()
+    {
+        OnBackMediaButtonPRessed?.Invoke();
     }
 
     private void PauseButtonPressed()
