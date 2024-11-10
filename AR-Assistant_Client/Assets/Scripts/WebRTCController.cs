@@ -653,14 +653,14 @@ public class WebRTCController : Singleton<WebRTCController>
     {
         Debug.Log("Adding video track to media stream...");
 
-        //if (_sendStream == null)
-        //{
-        //    _sendStream = new MediaStream();
-        //}
-        //_videoStreamTrack = new VideoStreamTrack(MediaManager.Instance.CameraTexture);
-        //_sendStream.AddTrack(_videoStreamTrack);
-        //RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
-        //_rtcRtpSenders.Add(videoSender);
+        if (_sendStream == null)
+        {
+            _sendStream = new MediaStream();
+        }
+        _videoStreamTrack = new VideoStreamTrack(MediaManager.Instance.CameraTexture);
+        _sendStream.AddTrack(_videoStreamTrack);
+        RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
+        _rtcRtpSenders.Add(videoSender);
     }
 
     /// <summary>

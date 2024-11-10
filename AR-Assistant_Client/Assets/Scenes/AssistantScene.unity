@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 152, y: 288}
+  m_AnchoredPosition: {x: 489.1, y: 62.6}
   m_SizeDelta: {x: 134.8093, y: 46.646}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &67461300
@@ -661,7 +661,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 274.89432, y: 139.80779}
-  m_SizeDelta: {x: 218.8799, y: 139.7487}
+  m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521547826
 MonoBehaviour:
@@ -750,7 +750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506, y: 165}
+  m_AnchoredPosition: {x: 414.7, y: 24.7}
   m_SizeDelta: {x: 93.8909, y: 60.0619}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &526288339
@@ -928,7 +928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 305, y: 282}
+  m_AnchoredPosition: {x: 482, y: 103.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795497289
@@ -1688,7 +1688,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2092,7 +2092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 23, y: 297}
+  m_AnchoredPosition: {x: 488.1, y: 157.4}
   m_SizeDelta: {x: 119.381, y: 74.1485}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1490008172
@@ -2731,8 +2731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73.62492, y: -40.097}
-  m_SizeDelta: {x: 804.8485, y: 446.11}
+  m_AnchoredPosition: {x: -134, y: -29}
+  m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955510390
 MonoBehaviour:

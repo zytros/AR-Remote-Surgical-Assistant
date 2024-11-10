@@ -868,6 +868,9 @@
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
+    <Reference Include="glTFast.dots">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
     </Reference>
@@ -879,6 +882,9 @@
     </Reference>
     <Reference Include="com.magicleap.xrkeyboard">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\com.magicleap.xrkeyboard.dll</HintPath>
+    </Reference>
+    <Reference Include="glTFast.Editor">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents.NonCanvas">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.NonCanvas.dll</HintPath>
@@ -1008,6 +1014,9 @@
     </Reference>
     <Reference Include="Unity.WebRTC.Editor">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.WebRTC.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="glTFast">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dll</HintPath>
     </Reference>
     <Reference Include="Utilities.Editor">
       <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Utilities.Editor.dll</HintPath>

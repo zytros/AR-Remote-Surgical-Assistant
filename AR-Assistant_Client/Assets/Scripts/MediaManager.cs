@@ -51,8 +51,16 @@ public class MediaManager : Singleton<MediaManager>
 
     private Vector2? lastMousePos = null;
     private Color[] colorBuffer;
+    private RenderTexture rt2;
 
-    //public RenderTexture CameraTexture => _targetCameraDeviceManager.CameraTexture;
+
+    private RenderTexture GetCameraTexture()
+    {
+        rt2 = new RenderTexture(1920, 1080, 0, RenderTextureFormat.BGRA32);
+        return rt2;
+    }
+
+    public RenderTexture CameraTexture => GetCameraTexture();
 
     public AudioSource SourceAudio => _microphoneManager.SourceAudio;
 
@@ -134,6 +142,17 @@ public class MediaManager : Singleton<MediaManager>
             _mainVideoStream.texture = _smallVideoStream.texture;
             _smallVideoStream.texture = _pausedFrameTexture;
         }
+        // TEMPORARY:
+
+        if (_pausedFrameTexture != null)
+        {
+            rt2.width = _pausedFrameTexture.width;
+            rt2.height = _pausedFrameTexture.height;
+            RenderTexture.active = rt2;
+            Graphics.Blit(_pausedFrameTexture, rt2);
+        }
+
+        //----------------
 
         isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
