@@ -4,6 +4,7 @@ using MagicLeap;
 using System.Net;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 
 /// <summary>
@@ -38,6 +39,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] private Button _disconnectWebRTCButton;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _logText;
+    [SerializeField] private LazyFollow _lazyFollow;
 
     private void Start()
     {
@@ -90,6 +92,8 @@ public class UIController : Singleton<UIController>
         PlayerPrefs.SetString("webrtc-local-ip-config", _inputField.text);
 
         ChangeUI(ShowUIConfig.None);
+        _lazyFollow.enabled = false;
+
         OnWebRTCConnectionChangeButtonPressed?.Invoke(true, _inputField.text);
     }
 
@@ -97,6 +101,8 @@ public class UIController : Singleton<UIController>
     {
         Debug.Log("Disconnect webRTC ");
         ChangeUI(ShowUIConfig.None);
+        _lazyFollow.enabled = true;
+
         OnWebRTCConnectionChangeButtonPressed?.Invoke(false, "");
     }
 
@@ -151,6 +157,8 @@ public class UIController : Singleton<UIController>
     {
         componentToChange.gameObject.SetActive(active);
     }
+
+    
 
     private void ChangeUI(ShowUIConfig desiredUIConfig)
     {
