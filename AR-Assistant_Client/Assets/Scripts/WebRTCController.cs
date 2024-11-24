@@ -34,6 +34,10 @@ public class WebRTCController : Singleton<WebRTCController>
     private MediaStream _sendStream = null;
     private WebRTCConnectionState controllerState = WebRTCConnectionState.NotConnected;
 
+    private RTCDataChannel dataChannel;
+    private DelegateOnOpen onDataChannelOpen;
+    private DelegateOnClose onDataChannelClose;
+
     /// <summary>
     /// Enum representing the various states of the WebRTC connection.
     /// </summary>
@@ -58,6 +62,15 @@ public class WebRTCController : Singleton<WebRTCController>
         _serverCommunication.OnNewRemoteICECandidate += ConsumeRemoteIce;
 
         _rtcRtpSenders = new List<RTCRtpSender>();
+
+        onDataChannelOpen = () =>
+        {
+            Debug.Log("Data Channel Opened!");
+        };
+        onDataChannelClose = () =>
+        {
+            Debug.Log("Data Channel Closed!");
+        };
     }
 
     private void SetConnectionState(WebRTCConnectionState state)
@@ -541,6 +554,8 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceCandidate = OnIceCandidate;
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
+
+        AddDataStream();
     }
 
     /// <summary>
@@ -643,7 +658,44 @@ public class WebRTCController : Singleton<WebRTCController>
         {
             AddVideoTrackToMediaStream();
             AddAudioTrackToMediaStream();
+            // Adds currently active shared image file to sent stream
+            AddImageTrackToMediaStream();
+
+            // Adds currently active shared obj file contents to sent stream
+            //AddDataStream(); 
         }
+    }
+
+    /// <summary>
+    /// Adds a video track to the media stream to enable sharing an image for file sharing.
+    /// </summary>
+    private void AddImageTrackToMediaStream()
+    {
+        Debug.Log("Adding shared image to media stream as video stream track...");
+
+        if (_sendStream == null)
+        {
+            _sendStream = new MediaStream();
+        }
+        _videoStreamTrack = new VideoStreamTrack(MediaManager.Instance.FileShareImageTexture);
+        _sendStream.AddTrack(_videoStreamTrack);
+        RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
+        _rtcRtpSenders.Add(videoSender);
+    }
+
+    private void AddDataStream()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        dataChannel.OnOpen = onDataChannelOpen;
+    }
+
+    public void AddOBJToDataStream()
+    {
+        //RTCDataChannelInit conf = new RTCDataChannelInit();
+        //dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        Debug.Log("Sending Data Stream");
+        dataChannel.Send(FileShareManager.Instance.loadedObjString);
     }
 
     /// <summary>

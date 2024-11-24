@@ -27,7 +27,8 @@ public class UIController : Singleton<UIController>
     /// </summary>
     public Action OnStartMediaButtonPressed;
     public Action OnPauseMediaButtonPressed;
-    public Action OnBackMediaButtonPRessed;
+    public Action OnBackMediaButtonPressed;
+    public Action OnShareImageButtonPressed;
 
     /// <summary>
     /// Event indicating a WebRTC connection or disconnection. 
@@ -40,6 +41,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] private Button _disconnectWebRTCButton;
     [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _backButton;
+    [SerializeField] private Button _shareImageButton;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _logText;
 
@@ -54,7 +56,8 @@ public class UIController : Singleton<UIController>
             _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
             _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
             _pauseButton.onClick.AddListener(PauseButtonPressed);
-            _backButton.onClick.AddListener(BackMediaButtonPRessed);
+            _backButton.onClick.AddListener(BackMediaButtonPressed);
+            _shareImageButton.onClick.AddListener(ShareImageButtonPressed);
 
             ChangeUI(ShowUIConfig.StartMedia);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
@@ -65,14 +68,19 @@ public class UIController : Singleton<UIController>
         }
     }
 
-    private void BackMediaButtonPRessed()
+    private void BackMediaButtonPressed()
     {
-        OnBackMediaButtonPRessed?.Invoke();
+        OnBackMediaButtonPressed?.Invoke();
     }
 
     private void PauseButtonPressed()
     {
         OnPauseMediaButtonPressed?.Invoke();
+    }
+
+    private void ShareImageButtonPressed()
+    {
+        OnShareImageButtonPressed?.Invoke();
     }
 
     private void OnWebRTCConnectionChanged(WebRTCController.WebRTCConnectionState connectionState)

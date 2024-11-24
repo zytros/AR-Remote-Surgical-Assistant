@@ -13,6 +13,7 @@ public class MediaManager : Singleton<MediaManager>
     [Header("Remote Media")]
     [SerializeField] private RawImage _mainVideoStream;
     [SerializeField] private RawImage _smallVideoStream;
+    [SerializeField] private RawImage _imageShareStream;
     [SerializeField]
     public AudioSource  _receiveAudio;
 
@@ -52,7 +53,7 @@ public class MediaManager : Singleton<MediaManager>
     private Vector2? lastMousePos = null;
     private Color[] colorBuffer;
     private RenderTexture rt2;
-
+    private RenderTexture sharedTexture;
 
     private RenderTexture GetCameraTexture()
     {
@@ -60,7 +61,15 @@ public class MediaManager : Singleton<MediaManager>
         return rt2;
     }
 
+    private RenderTexture GetDefaultTexture()
+    {
+        sharedTexture = new RenderTexture(1920, 1080, 0, RenderTextureFormat.BGRA32);
+        return sharedTexture;
+    }
+
     public RenderTexture CameraTexture => GetCameraTexture();
+
+    public RenderTexture FileShareImageTexture => GetDefaultTexture();
 
     public AudioSource SourceAudio => _microphoneManager.SourceAudio;
 
@@ -88,7 +97,8 @@ public class MediaManager : Singleton<MediaManager>
         yield return new WaitUntil(() => _permissionManager.PermissionsGranted);
         UIController.Instance.OnStartMediaButtonPressed += StartMedia;
         UIController.Instance.OnPauseMediaButtonPressed += TogglePause;
-        UIController.Instance.OnBackMediaButtonPRessed += GoBack;
+        UIController.Instance.OnBackMediaButtonPressed += GoBack;
+        UIController.Instance.OnShareImageButtonPressed += SetSharedImageTexture;
     }
 
     private void StartMedia()
@@ -156,6 +166,25 @@ public class MediaManager : Singleton<MediaManager>
 
         isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
+    }
+
+    public void SetSharedImageTexture()
+    {
+        if (_imageShareStream.texture != null)
+        {
+            if (sharedTexture == null)
+            {
+                GetDefaultTexture();
+            }
+            sharedTexture.width = _imageShareStream.texture.width;
+            sharedTexture.height = _imageShareStream.texture.height;
+            Graphics.Blit(_imageShareStream.texture, sharedTexture);
+
+            //rt2.width = _imageShareStream.texture.width;
+            //rt2.height = _imageShareStream.texture.height;
+            //RenderTexture.active = rt2;
+            //Graphics.Blit(_imageShareStream.texture, rt2);
+        }
     }
 
     void GoBack()
