@@ -10,8 +10,9 @@ using SFB;
 using UnityEngine.Networking;
 using TMPro;
 using Dummiesman;
+using MagicLeap;
 
-public class FileShareManager : MonoBehaviour
+public class FileShareManager : Singleton<FileShareManager>
 {
     public GameObject FileDropdown;
     public RawImage LoadedImageRenderer;
@@ -20,6 +21,7 @@ public class FileShareManager : MonoBehaviour
     public Camera ModelViewerCamera;
 
     public GameObject[] ViewerTabs;
+    public string loadedObjString = "";
 
     private Dictionary<string, string> FileLookupDictionary = new Dictionary<string, string>();
 
@@ -144,6 +146,7 @@ public class FileShareManager : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
+            loadedObjString = www.downloadHandler.text;
 
             // Load 3D .obj model
             MemoryStream textStream = new MemoryStream(Encoding.UTF8.GetBytes(www.downloadHandler.text));
