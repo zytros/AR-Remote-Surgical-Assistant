@@ -1062,6 +1062,10 @@
       <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.MixedReality.OpenXR">
+      <HintPath>Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
@@ -1126,6 +1130,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.MixedReality.OpenXR.Editor">
+      <HintPath>Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
       <Private>False</Private>
@@ -1150,6 +1158,13 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="glTFast.dots">
+      <HintPath>Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast.dots">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
@@ -1165,6 +1180,13 @@
     <Reference Include="com.magicleap.xrkeyboard">
       <HintPath>Library\ScriptAssemblies\com.magicleap.xrkeyboard.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast.Editor">
+      <HintPath>Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast.Editor">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents.NonCanvas">
       <HintPath>Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.NonCanvas.dll</HintPath>
@@ -1337,6 +1359,13 @@
     <Reference Include="Unity.WebRTC.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.WebRTC.Editor.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast">
+      <HintPath>Library\ScriptAssemblies\glTFast.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="glTFast">
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dll</HintPath>
     </Reference>
     <Reference Include="Utilities.Editor">
       <HintPath>Library\ScriptAssemblies\Utilities.Editor.dll</HintPath>

@@ -10,6 +10,7 @@ public class MediaManager : Singleton<MediaManager>
 {
     [Header("Remote Media")]
     [SerializeField] private RawImage _remoteVideoRenderer;
+    [SerializeField] private RawImage _remoteImageShareRenderer;
     [SerializeField]
     public AudioSource  _receiveAudio;
 
@@ -36,6 +37,7 @@ public class MediaManager : Singleton<MediaManager>
     private ICameraDeviceManager _targetCameraDeviceManager;
 
     public RawImage RemoteVideoRenderer => _remoteVideoRenderer;
+    public RawImage RemoteSharedImageRenderer => _remoteImageShareRenderer;
 
     public RenderTexture CameraTexture => _targetCameraDeviceManager.CameraTexture;
 
