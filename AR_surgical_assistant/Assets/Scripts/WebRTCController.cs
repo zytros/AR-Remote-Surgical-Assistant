@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.WebRTC;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages WebRTC connections, including creating peer connections, 
@@ -34,6 +35,15 @@ public class WebRTCController : Singleton<WebRTCController>
     private MediaStream _sendStream = null;
     private WebRTCConnectionState controllerState = WebRTCConnectionState.NotConnected;
 
+    private List<RawImage> receiveImages;
+    private int videoIndex = 0;
+
+    [SerializeField] private OBJ3DManager _obj3DManager;
+    private RTCDataChannel remoteDataChannel;
+    private DelegateOnMessage onDataChannelMessage;
+    private DelegateOnDataChannel onDataChannel;
+    private string OBJstring;
+
     /// <summary>
     /// Enum representing the various states of the WebRTC connection.
     /// </summary>
@@ -58,6 +68,21 @@ public class WebRTCController : Singleton<WebRTCController>
         _serverCommunication.OnNewRemoteICECandidate += ConsumeRemoteIce;
 
         _rtcRtpSenders = new List<RTCRtpSender>();
+
+        receiveImages = new List<RawImage>();
+        receiveImages.Add(MediaManager.Instance.RemoteVideoRenderer);
+        receiveImages.Add(MediaManager.Instance.RemoteSharedImageRenderer);
+
+        onDataChannel = channel =>
+        {
+            remoteDataChannel = channel;
+            remoteDataChannel.OnMessage = onDataChannelMessage;
+        };
+        onDataChannelMessage = bytes => {
+            OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
+            _obj3DManager.load3DModel(OBJstring);
+            Debug.Log(OBJstring);
+        };
     }
 
     private void SetConnectionState(WebRTCConnectionState state)
@@ -541,6 +566,8 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceCandidate = OnIceCandidate;
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
+
+        connection.OnDataChannel = onDataChannel;
     }
 
     /// <summary>
@@ -556,7 +583,9 @@ public class WebRTCController : Singleton<WebRTCController>
             Debug.Log("Remote video track added.");
             video.OnVideoReceived += tex =>
             {
-                MediaManager.Instance.RemoteVideoRenderer.texture = tex;
+                receiveImages[videoIndex].texture = tex;
+                videoIndex++;
+                //MediaManager.Instance.RemoteVideoRenderer.texture = tex;
             };
         }
 
