@@ -60,18 +60,36 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\OBJImport\OBJLoaderHelper.cs" />
     <Compile Include="Assets\Scripts\MicrophoneManager.cs" />
+    <Compile Include="Assets\Scripts\OBJ3DManager.cs" />
+    <Compile Include="Assets\OBJImport\StringExtensions.cs" />
     <Compile Include="Assets\Scripts\MediaManager.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\TGALoader.cs" />
+    <Compile Include="Assets\OBJImport\CharWordReader.cs" />
     <Compile Include="Assets\Scripts\ConcurrentWebRequestManager.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\BMPLoader.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\BinaryExtensions.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\DepthImage.cs" />
     <Compile Include="Assets\Scripts\ServerCommunication.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\ColorExtensions.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\DDSLoader.cs" />
     <Compile Include="Assets\Scripts\WebCameraManager.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\ImageLoader.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\ImageLoaderHelper.cs" />
+    <Compile Include="Assets\OBJImport\Samples\ObjFromFile.cs" />
+    <Compile Include="Assets\OBJImport\Samples\ObjFromStream.cs" />
     <Compile Include="Assets\Scripts\PermissionManager.cs" />
     <Compile Include="Assets\Scripts\ICameraDeviceManager.cs" />
+    <Compile Include="Assets\OBJImport\TextureLoader\ImageUtils.cs" />
+    <Compile Include="Assets\OBJImport\OBJObjectBuilder.cs" />
     <Compile Include="Assets\Scripts\MagicLeapCameraManager.cs" />
     <Compile Include="Assets\Scripts\WebRTCController.cs" />
+    <Compile Include="Assets\OBJImport\MTLLoader.cs" />
+    <Compile Include="Assets\OBJImport\OBJLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -1110,9 +1128,6 @@
       <HintPath>Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="glTFast.dots">
-      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
@@ -1132,9 +1147,6 @@
     <Reference Include="glTFast.Editor">
       <HintPath>Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="glTFast.Editor">
-      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents.NonCanvas">
       <HintPath>Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.NonCanvas.dll</HintPath>
@@ -1311,9 +1323,6 @@
     <Reference Include="glTFast">
       <HintPath>Library\ScriptAssemblies\glTFast.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="glTFast">
-      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dll</HintPath>
     </Reference>
     <Reference Include="Utilities.Editor">
       <HintPath>Library\ScriptAssemblies\Utilities.Editor.dll</HintPath>

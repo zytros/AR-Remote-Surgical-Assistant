@@ -2,9 +2,15 @@ using System.Collections.Generic;
 using MagicLeap.Android;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.XR.MagicLeap;
+using UnityEngine.XR.OpenXR;
+using MagicLeap.OpenXR.Features.PixelSensors;
 
 public class PermissionManager : MonoBehaviour
 {
+    [SerializeField]
+    public DepthImage depthSensorManager;
+
     [SerializeField]
     private List<string> _requiredPermissions = new List<string> { Permission.Microphone, Permission.Camera };
 
@@ -14,7 +20,7 @@ public class PermissionManager : MonoBehaviour
     private void OnValidate()
     {
         // Ensure that the required permissions list contains Microphone and Camera permissions
-        var required = new List<string> { Permission.Microphone, Permission.Camera };
+        var required = new List<string> { Permission.Microphone, Permission.Camera, MagicLeap.Android.Permissions.DepthCamera };
         foreach (var permission in required)
         {
             if (!_requiredPermissions.Contains(permission))
@@ -33,7 +39,7 @@ public class PermissionManager : MonoBehaviour
 
     public void RequestPermission()
     {
-        if(!PermissionsGranted)
+        if (!PermissionsGranted)
             Permissions.RequestPermissions(_requiredPermissions.ToArray(), OnPermissionGranted, OnPermissionDenied, OnPermissionDenied);
     }
 
@@ -41,6 +47,11 @@ public class PermissionManager : MonoBehaviour
     void OnPermissionGranted(string permission)
     {
         Debug.Log($"{permission} granted.");
+        if (permission.Equals(MagicLeap.Android.Permissions.DepthCamera))
+        {
+            // Create the depth sensor after the camera permission is granted
+            StartCoroutine(depthSensorManager.CreateSensorAfterPermission());
+        }
 
     }
     void OnPermissionDenied(string permission)

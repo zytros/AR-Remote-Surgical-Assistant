@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serverCommunication: {fileID: 481910635}
-  _obj3DManager: {fileID: 1168052328}
+  _obj3DManager: {fileID: 0}
 --- !u!4 &481910637
 Transform:
   m_ObjectHideFlags: 0
@@ -971,9 +971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0dce00e86bcb4cb16b3a0818493fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthSensorManager: {fileID: 0}
   _requiredPermissions:
   - android.permission.RECORD_AUDIO
   - android.permission.CAMERA
+  - com.magicleap.permission.DEPTH_CAMERA
 --- !u!4 &847132695
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +1984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1168052329}
-  - component: {fileID: 1168052328}
+  - component: {fileID: 1168052330}
   m_Layer: 0
   m_Name: OBJ3DManager
   m_TagString: Untagged
@@ -1990,19 +1992,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1168052328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168052327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d1a8a1e768e744a83ef05339508f78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OBJModel: {fileID: 0}
 --- !u!4 &1168052329
 Transform:
   m_ObjectHideFlags: 0
@@ -2018,6 +2007,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168052330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168052327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c63d1810ae879a4ba30f3a2721baafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OBJModel: {fileID: 0}
 --- !u!1 &1175017600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,6 +4235,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470950472}
   m_CullTransparentMesh: 1
+--- !u!1 &1543285516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543285518}
+  - component: {fileID: 1543285517}
+  m_Layer: 0
+  m_Name: DepthSensorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1543285517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543285516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf09a3b73d30b7f428a3711f7606fee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1543285518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543285516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.39730668, y: 0.31309807, z: 0.8024382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808294440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,3 +4982,4 @@ SceneRoots:
   - {fileID: 481910637}
   - {fileID: 1374067600}
   - {fileID: 1168052329}
+  - {fileID: 1543285518}
