@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MagicLeap;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.MagicLeap;
 
 /// <summary>
 /// Manages media components such as camera and microphone for both device and editor platforms.
@@ -203,58 +205,92 @@ public class MediaManager : Singleton<MediaManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Keyboard.current.spaceKey.isPressed)
         {
             TogglePause();
         }
-        else if (Input.GetKey("escape"))
+        else if (Keyboard.current.escapeKey.isPressed)
         {
             Application.Quit();
         }
         if (isPaused)
         {
-            if (Input.GetMouseButton(0) && RectTransformUtility.RectangleContainsScreenPoint(_mainVideoStream.rectTransform, Input.mousePosition, Camera.main))
+            if ((Mouse.current != null && Mouse.current.leftButton.isPressed) ||
+                (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)) 
             {
-                Vector2 localPoint;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_mainVideoStream.rectTransform, Input.mousePosition, Camera.main, out localPoint);
-
-                Rect rect = _mainVideoStream.rectTransform.rect;
-                float normalizedX = (localPoint.x - rect.x) / rect.width;
-                float normalizedY = (localPoint.y - rect.y) / rect.height;
-                int x = Mathf.Clamp((int)(normalizedX * _pausedFrameTexture.width), 0, _pausedFrameTexture.width - 1);
-                int y = Mathf.Clamp((int)(normalizedY * _pausedFrameTexture.height), 0, _pausedFrameTexture.height - 1);
-
-                Vector2 currentMousePos = new Vector2(x, y);
-
-
-                if (lastMousePos.HasValue)
+                if ((Mouse.current != null && Mouse.current.leftButton.isPressed) &&
+                    RectTransformUtility.RectangleContainsScreenPoint(_mainVideoStream.rectTransform,
+                        Mouse.current.position.ReadValue(), Camera.main))
                 {
-                    // Interpolate between last and current positions to fill in gaps
-                    DrawLine(lastMousePos.Value, currentMousePos);
+                    Vector2 localPoint;
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(_mainVideoStream.rectTransform,
+                        Mouse.current.position.ReadValue(), Camera.main, out localPoint);
+    
+                    HandlePosInput(localPoint);
+    
+                }
+                else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+                {
+                    Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+                    if (RectTransformUtility.RectangleContainsScreenPoint(
+                            _mainVideoStream.rectTransform,
+                            touchPosition,
+                            Camera.main))
+                    {
+                        Vector2 localPoint;
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                            _mainVideoStream.rectTransform,
+                            touchPosition,
+                            Camera.main,
+                            out localPoint);
+                        HandlePosInput(localPoint);
+                    }
                 }
                 else
                 {
-                    if (backTextures.Count > 5)
-                    {
-                        backTextures.RemoveAt(0);
-                    }
-                    Texture2D old_Texture = new Texture2D(_pausedFrameTexture.width, _pausedFrameTexture.height);
-                    old_Texture.SetPixels(_pausedFrameTexture.GetPixels());
-                    Debug.Log("Adding image to backImages");
-                    backTextures.Add(old_Texture);
-                    DrawOnTexture(x, y);
+                    lastMousePos = null;
                 }
-
-                // Update the last position
-                lastMousePos = currentMousePos;
-                _pausedFrameTexture.SetPixels(colorBuffer);
-                _pausedFrameTexture.Apply();
             }
             else
             {
                 lastMousePos = null;
             }
         }
+    }
+    
+    private void HandlePosInput(Vector2 location)
+    {
+        Rect rect = _mainVideoStream.rectTransform.rect;
+        float normalizedX = (location.x - rect.x) / rect.width;
+        float normalizedY = (location.y - rect.y) / rect.height;
+        int x = Mathf.Clamp((int)(normalizedX * _pausedFrameTexture.width), 0, _pausedFrameTexture.width - 1);
+        int y = Mathf.Clamp((int)(normalizedY * _pausedFrameTexture.height), 0, _pausedFrameTexture.height - 1);
+
+        Vector2 currentMousePos = new Vector2(x, y);
+
+
+        if (lastMousePos.HasValue)
+        {
+            // Interpolate between last and current positions to fill in gaps
+            DrawLine(lastMousePos.Value, currentMousePos);
+        }
+        else
+        {
+            if (backTextures.Count > 5)
+            {
+                backTextures.RemoveAt(0);
+            }
+            Texture2D old_Texture = new Texture2D(_pausedFrameTexture.width, _pausedFrameTexture.height);
+            old_Texture.SetPixels(_pausedFrameTexture.GetPixels());
+            Debug.Log("Adding image to backImages");
+            backTextures.Add(old_Texture);
+            DrawOnTexture(x, y);
+        }
+
+        // Update the last position
+        lastMousePos = currentMousePos;
+        _pausedFrameTexture.SetPixels(colorBuffer);
+        _pausedFrameTexture.Apply();
     }
 
     private void DrawLine(Vector2 start, Vector2 end)

@@ -64,7 +64,30 @@ public class MicrophoneManager : MonoBehaviour
             Debug.LogFormat("Authorization for using the Microphone is denied");
             yield break;
         }
+        
+        Debug.Log($"Platform: {Application.platform}, API Level: {Application.unityVersion}");
+        
+        AudioSettings.Reset(AudioSettings.GetConfiguration());
+        
+        Permission.RequestUserPermission(Permission.Microphone);
+        
+        Debug.Log("PERMISSION");
+        Debug.Log(Permission.HasUserAuthorizedPermission(Permission.Microphone));
 
+        string[] devices = Microphone.devices;
+        
+        Debug.Log("Available Microphones:");
+        if (devices.Length == 0)
+        {
+            Debug.LogError("No microphone devices found.");
+            yield break;
+        }
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            Debug.Log($"Microphone {i}: {devices[i]}");
+        }
+        
         _microphoneName = Microphone.devices.Length > MICROPHONE_INDEX ? Microphone.devices[MICROPHONE_INDEX] : null;
 
         if (string.IsNullOrEmpty(_microphoneName))
