@@ -340,13 +340,13 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.collections@2.2.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.collections@2.2.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -724,307 +724,307 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.48f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
     </Reference>
     <Reference Include="EasyButtons">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\EasyButtons.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\EasyButtons.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.Core.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Core.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Hands">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Hands.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Hands.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.SpatialManipulation">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.SpatialManipulation.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.SpatialManipulation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARFoundation.VisualScripting.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.MixedReality.GraphicsTools">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.GraphicsTools.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.GraphicsTools.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARFoundation.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Simulation">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Simulation.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Simulation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARSubsystems">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.MixedReality.OpenXR">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Utilities">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Utilities.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Toolbox">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Toolbox.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Toolbox.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXCore">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXCore.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXCore.dll</HintPath>
     </Reference>
     <Reference Include="Toolbox.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Toolbox.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Toolbox.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.Core">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Core.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.Input.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Input.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Input.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.MixedReality.OpenXR.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.OpenXR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.SpatialManipulation.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.SpatialManipulation.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.SpatialManipulation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.InteractionSubsystems">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.InteractionSubsystems.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.InteractionSubsystems.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="glTFast.dots">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
     </Reference>
     <Reference Include="MagicLeap.MRTK3">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.MRTK3.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.MRTK3.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="com.magicleap.xrkeyboard">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\com.magicleap.xrkeyboard.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\com.magicleap.xrkeyboard.dll</HintPath>
     </Reference>
     <Reference Include="glTFast.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents.NonCanvas">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.NonCanvas.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.NonCanvas.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.ConformanceAutomation">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARSubsystems.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARSubsystems.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARSubsystems.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARAnalytics.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARAnalytics.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARAnalytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.WebRTC">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.WebRTC.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.WebRTC.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.CoreUtils">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXCore.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXCore.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXCore.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARFoundation.VisualScripting">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Simulation.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Simulation.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Simulation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MagicLeap.SDK.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.SDK.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.SDK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARFoundation">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
     </Reference>
     <Reference Include="MagicLeap.MRTK3.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.MRTK3.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.MRTK3.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.Input">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Input.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.Input.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Hands.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Hands.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.Hands.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="MixedReality.Toolkit.UXComponents.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MixedReality.Toolkit.UXComponents.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="MagicLeap.SDK">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.SDK.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\MagicLeap.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="EasyButtons.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\EasyButtons.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\EasyButtons.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.WebRTC.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.WebRTC.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.WebRTC.Editor.dll</HintPath>
     </Reference>
     <Reference Include="glTFast">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\glTFast.dll</HintPath>
     </Reference>
     <Reference Include="Utilities.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Utilities.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARFoundation.InternalUtils">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.InternalUtils.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.ARFoundation.InternalUtils.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.MixedReality.GraphicsTools.Editor">
-      <HintPath>M:\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.GraphicsTools.Editor.dll</HintPath>
+      <HintPath>C:\Users\louis\Workspace\AR-Remote-Surgical-Assistant\AR_surgical_assistant\Library\ScriptAssemblies\Microsoft.MixedReality.GraphicsTools.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

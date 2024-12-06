@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
+using FMODUnity;
 
 /// <summary>
 /// Manages the microphone for capturing audio in Unity.
@@ -65,41 +66,13 @@ public class MicrophoneManager : MonoBehaviour
             yield break;
         }
         Permission.RequestUserPermission(Permission.Microphone);
-        
-        Debug.Log($"Platform: {Application.platform}, API Level: {Application.unityVersion}");
-        
-        // FMODUnity.RuntimeManager.CoreSystem.setOutput(FMOD.OUTPUTTYPE.AUTODETECT);
-        
-        AndroidJavaClass audioManager = new AndroidJavaClass("android.media.AudioManager");
-        try
-        {
-            using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-            {
-                AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-                AndroidJavaObject audioService = activity.Call<AndroidJavaObject>("getSystemService", "audio");
 
-                Debug.Log("AudioManager retrieved successfully.");
-
-                // Example: Get audio focus state (if needed)
-                int audioMode = audioService.Call<int>("getMode");
-                Debug.Log($"Audio Mode: {audioMode}");
-                
-                int requestFocus = audioService.Call<int>("requestAudioFocus", null, 3, 2); // AUDIOFOCUS_GAIN_TRANSIENT
-                Debug.Log($"Audio Focus Request Result: {requestFocus}");
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Failed to get AudioManager: {e.Message}");
-        }
-
+        // Debug.Log($"Platform: {Application.platform}, API Level: {Application.unityVersion}");
+        //
+        // Debug.Log("Initializing FMOD logging.");
+        // FMOD.Debug.Initialize(FMOD.DEBUG_FLAGS.LOG | FMOD.DEBUG_FLAGS.TYPE_MEMORY, FMOD.DEBUG_MODE.FILE);
         
-        
-        AudioConfiguration config = AudioSettings.GetConfiguration();
-        config.sampleRate = 44100;  // Standard sample rate
-        config.dspBufferSize = 512;  // Typical buffer size for Android
-        config.speakerMode = AudioSpeakerMode.Mono;  // Mono is less demanding
-        AudioSettings.Reset(config);
+        FMODUnity.RuntimeManager.CoreSystem.setOutput(FMOD.OUTPUTTYPE.AUTODETECT);
         
         Debug.Log("PERMISSION");
         Debug.Log(Permission.HasUserAuthorizedPermission(Permission.Microphone));

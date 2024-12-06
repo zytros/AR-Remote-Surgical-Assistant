@@ -60,6 +60,8 @@ public class MediaManager : Singleton<MediaManager>
     private RenderTexture GetCameraTexture()
     {
         rt2 = new RenderTexture(1920, 1080, 0, RenderTextureFormat.BGRA32);
+        // rt2 = new RenderTexture(1920, 1080, 0, RenderTextureFormat.Default);
+
         return rt2;
     }
 
