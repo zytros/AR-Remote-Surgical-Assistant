@@ -16,7 +16,7 @@ public class MicrophoneManager : MonoBehaviour
 
     // Magic Leap 2 Microphone defaults
     private const int MIC_LENGTH = 1; // Seconds
-    private const int MIC_SAMPLING_FREQ = 96000;
+    private const int MIC_SAMPLING_FREQ = 44100;
     private const int MICROPHONE_INDEX = 0;
 
     public AudioSource SourceAudio => _sourceAudio;
@@ -64,12 +64,42 @@ public class MicrophoneManager : MonoBehaviour
             Debug.LogFormat("Authorization for using the Microphone is denied");
             yield break;
         }
+        Permission.RequestUserPermission(Permission.Microphone);
         
         Debug.Log($"Platform: {Application.platform}, API Level: {Application.unityVersion}");
         
-        AudioSettings.Reset(AudioSettings.GetConfiguration());
+        // FMODUnity.RuntimeManager.CoreSystem.setOutput(FMOD.OUTPUTTYPE.AUTODETECT);
         
-        Permission.RequestUserPermission(Permission.Microphone);
+        AndroidJavaClass audioManager = new AndroidJavaClass("android.media.AudioManager");
+        try
+        {
+            using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            {
+                AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+                AndroidJavaObject audioService = activity.Call<AndroidJavaObject>("getSystemService", "audio");
+
+                Debug.Log("AudioManager retrieved successfully.");
+
+                // Example: Get audio focus state (if needed)
+                int audioMode = audioService.Call<int>("getMode");
+                Debug.Log($"Audio Mode: {audioMode}");
+                
+                int requestFocus = audioService.Call<int>("requestAudioFocus", null, 3, 2); // AUDIOFOCUS_GAIN_TRANSIENT
+                Debug.Log($"Audio Focus Request Result: {requestFocus}");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to get AudioManager: {e.Message}");
+        }
+
+        
+        
+        AudioConfiguration config = AudioSettings.GetConfiguration();
+        config.sampleRate = 44100;  // Standard sample rate
+        config.dspBufferSize = 512;  // Typical buffer size for Android
+        config.speakerMode = AudioSpeakerMode.Mono;  // Mono is less demanding
+        AudioSettings.Reset(config);
         
         Debug.Log("PERMISSION");
         Debug.Log(Permission.HasUserAuthorizedPermission(Permission.Microphone));
