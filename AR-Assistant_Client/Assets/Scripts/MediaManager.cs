@@ -50,10 +50,12 @@ public class MediaManager : Singleton<MediaManager>
     public Color drawColor = Color.red;
     public int brushSize = 1;
     public float maxDistance = 1f;
-    private List<int> annotationsX = new List<int>();
-    private List<int> annotationsY = new List<int>();
-    private List<List<int>> backAnnotationsX = new List<List<int>>();
-    private List<List<int>> backAnnotationsY = new List<List<int>>();
+    private List<Tuple<int, int>> annotations = new List<Tuple<int, int>>();
+    // private List<int> annotationsX = new List<int>();
+    // private List<int> annotationsY = new List<int>();
+    private List<List<Tuple<int, int>>> backAnnotations = new List<List<Tuple<int, int>>>();
+    // private List<List<int>> backAnnotationsX = new List<List<int>>();
+    // private List<List<int>> backAnnotationsY = new List<List<int>>();
     private Texture2D originalTexture;
 
     private Vector2? lastMousePos = null;
@@ -117,10 +119,12 @@ public class MediaManager : Singleton<MediaManager>
 
     private void TogglePause()
     {
-        backAnnotationsX = new List<List<int>>();
-        backAnnotationsY = new List<List<int>>();
-        annotationsX = new List<int>();
-        annotationsY = new List<int>();
+        // backAnnotationsX = new List<List<int>>();
+        // backAnnotationsY = new List<List<int>>();
+        // annotationsX = new List<int>();
+        // annotationsY = new List<int>();
+        backAnnotations = new List<List<Tuple<int, int>>>();
+        annotations = new List<Tuple<int, int>>();
         if (!isPaused)
         {
             _smallVideoStream.texture = _mainVideoStream.texture;
@@ -211,23 +215,26 @@ public class MediaManager : Singleton<MediaManager>
 
     void GoBack()
     {
-        if (backAnnotationsY.Count == 0 || !isPaused)
+        if (backAnnotations.Count == 0 || !isPaused)
         {
             return;
         }
-        int idx = backAnnotationsX.Count - 1;
+        int idx = backAnnotations.Count - 1;
         // Texture2D backTexture = backTextures[idx];
-        List<int> backX = backAnnotationsX[idx];
-        List<int> backY = backAnnotationsY[idx];
+        // List<int> backX = backAnnotationsX[idx];
+        // List<int> backY = backAnnotationsY[idx];
+        List<Tuple<int, int>> backAnnotation = backAnnotations[idx];
         // backTextures.RemoveAt(idx);
-        backAnnotationsX.RemoveAt(idx);
-        backAnnotationsY.RemoveAt(idx);
+        // backAnnotationsX.RemoveAt(idx);
+        // backAnnotationsY.RemoveAt(idx);
+        backAnnotations.RemoveAt(idx);
         // _pausedFrameTexture.SetPixels(backTexture.GetPixels());
         // _pausedFrameTexture.Apply();
         // colorBuffer = _pausedFrameTexture.GetPixels();
         colorBuffer = originalTexture.GetPixels();
-        annotationsX = backX;
-        annotationsY = backY;
+        // annotationsX = backX;
+        // annotationsY = backY;
+        annotations = backAnnotation;
         ApplyAnnotation();
     }
 
@@ -304,16 +311,18 @@ public class MediaManager : Singleton<MediaManager>
         }
         else
         {
-            if (backAnnotationsX.Count > 5)
+            if (backAnnotations.Count > 5)
             {
-                backAnnotationsX.RemoveAt(0);
-                backAnnotationsY.RemoveAt(0);
+                // backAnnotationsX.RemoveAt(0);
+                // backAnnotationsY.RemoveAt(0);
+                backAnnotations.RemoveAt(0);
             }
             Texture2D oldTexture = new Texture2D(_pausedFrameTexture.width, _pausedFrameTexture.height);
             oldTexture.SetPixels(_pausedFrameTexture.GetPixels());
             Debug.Log("Adding image to backImages");
-            backAnnotationsX.Add(new List<int>(annotationsX));
-            backAnnotationsY.Add(new List<int>(annotationsY));
+            // backAnnotationsX.Add(new List<int>(annotationsX));
+            // backAnnotationsY.Add(new List<int>(annotationsY));
+            backAnnotations.Add(new List<Tuple<int, int>>(annotations));
             DrawOnTexture(x, y);
         }
 
@@ -326,10 +335,12 @@ public class MediaManager : Singleton<MediaManager>
 
     private void ApplyAnnotation()
     {
-        for (int point = 0; point < annotationsX.Count; point++)
+        for (int point = 0; point < annotations.Count; point++)
         {
-            int x = annotationsX[point];
-            int y = annotationsY[point];
+            // int x = annotationsX[point];
+            // int y = annotationsY[point];
+            int x = annotations[point].Item1;
+            int y = annotations[point].Item2;
 
             for (int i = -brushSize; i <= brushSize; i++)
             {
@@ -387,8 +398,9 @@ public class MediaManager : Singleton<MediaManager>
         int clampedX = Mathf.Clamp(x, 0, _pausedFrameTexture.width - 1);
         int clampedY = Mathf.Clamp(y, 0, _pausedFrameTexture.height - 1);
 
-        annotationsX.Add(clampedX);
-        annotationsY.Add(clampedY);
+        // annotationsX.Add(clampedX);
+        // annotationsY.Add(clampedY);
+        annotations.Add(new Tuple<int, int>(clampedX, clampedY));
 
     }
 
