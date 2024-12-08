@@ -187,10 +187,12 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
             if (!m_WasDetected && detected)
             {
+                Debug.Log("Gesture Initially Detected");
                 m_HoldStartTime = Time.timeSinceLevelLoad;
             }
             else if (m_WasDetected && !detected)
             {
+                Debug.Log("Gesture Detection Ended");
                 m_PerformedTriggered = false;
                 m_GestureEnded?.Invoke();
                 m_Background.color = m_BackgroundDefaultColor;
@@ -203,6 +205,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 var holdTimer = Time.timeSinceLevelLoad - m_HoldStartTime;
                 if (holdTimer > m_MinimumHoldTime)
                 {
+                    Debug.Log("Gesture Performed");
                     m_GesturePerformed?.Invoke();
                     m_PerformedTriggered = true;
                     m_Background.color = m_BackgroundHiglightColor;

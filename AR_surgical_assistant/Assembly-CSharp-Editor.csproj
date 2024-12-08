@@ -1392,6 +1392,10 @@
       <Project>{0E8338D3-9573-AEA0-F0B9-E25A05EBF910}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.XR.Hands.Samples.Gestures.csproj">
+      <Project>{0465748C-3F00-7E76-D3E2-E519AF6372D0}</Project>
+      <Name>Unity.XR.Hands.Samples.Gestures</Name>
+    </ProjectReference>
     <ProjectReference Include="MagicLeap.SetupTool.Editor.csproj">
       <Project>{03400179-B49C-7A37-A3C5-5C3565EB7FC5}</Project>
       <Name>MagicLeap.SetupTool.Editor</Name>
