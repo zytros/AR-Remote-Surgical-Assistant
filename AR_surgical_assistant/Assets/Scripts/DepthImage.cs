@@ -15,12 +15,40 @@ using UnityEngine.UI;
 using UnityEngine.XR.MagicLeap;
 using UnityEngine.XR.OpenXR;
 using System.Net.Sockets;
+using UnityEngine.XR.ARSubsystems;
 
 public class DepthImage : Singleton<DepthImage>
 {
+    [SerializeField]
+    public WebRTCController webrtccontroller;
+
     private MagicLeapPixelSensorFeature pixelSensorFeature;
     public PixelSensorId SensorId;
     uint i = 0;
+    Vector3 position;
+    Quaternion rotation;
+    public struct CameraIntrinsics
+    {
+        public Vector2 FocalLength;   // fx, fy
+        public Vector2 PrincipalPoint; // cx, cy
+        public Vector3[] DistortionCoefficients; // Radial distortion, if any
+    }
+
+    // Example of hardcoded intrinsics
+    CameraIntrinsics depthCameraIntrinsics = new CameraIntrinsics
+    {
+        FocalLength = new Vector2(543.5f, 543.5f),
+        PrincipalPoint = new Vector2(272f, 240f),
+        DistortionCoefficients = new Vector3[] { new Vector3(0f, 0f, 0f) } 
+    };
+
+    CameraIntrinsics rgbCameraIntrinsics = new CameraIntrinsics
+    {
+        FocalLength = new Vector2(800f, 800f),
+        PrincipalPoint = new Vector2(640f, 360f),
+        DistortionCoefficients = new Vector3[] { new Vector3(0f, 0f, 0f) } 
+    };
+
 
     void Awake()
     {
@@ -39,13 +67,20 @@ public class DepthImage : Singleton<DepthImage>
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        // Debug.Log("__ in Update");
+        position = Camera.main.transform.position;
+        rotation = Camera.main.transform.rotation;
+        Debug.Log($"__ position: {position}, rotation: {rotation}");
         uint ConfiguredStream = 0;
-        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out _, Allocator.Temp))
+        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out var metaData, Allocator.Temp))
         {
             Debug.Log("depth__ GetSensorData failed");
             return;
         }
+        
+
+
         ProcessFrame(in frame);
     }
     static double[] ConvertByteArrayToDoubleArray(byte[] byteArray)
@@ -66,6 +101,7 @@ public class DepthImage : Singleton<DepthImage>
 
         return doubleArray;
     }
+
     public void ProcessFrame(in PixelSensorFrame frame)
     {
         if (!frame.IsValid || frame.Planes.Length == 0)
@@ -86,6 +122,7 @@ public class DepthImage : Singleton<DepthImage>
                     // Debug.Log($"byte array size__: {byteArray.Length}");
                     double[] doubleData = ConvertByteArrayToDoubleArray(byteArray); //last 1024 bytes are zeros
                     // TODO: send data to server
+                    webrtccontroller.AddDataToDataStream(doubleData.ToString());
                     break;
             }
             
@@ -96,6 +133,22 @@ public class DepthImage : Singleton<DepthImage>
         }
     }
 
+    
+    public Vector3 projectPoint(int u, int v, double[][] depth, CameraIntrinsics RGBintrinsics, Quaternion r, Vector3 t)
+    {
+        double fx = RGBintrinsics.FocalLength.x;
+        double fy = RGBintrinsics.FocalLength.y;
+        double cx = RGBintrinsics.PrincipalPoint.x;
+        double cy = RGBintrinsics.PrincipalPoint.y;
+
+        double x = (u - cx) * depth[u][v] / fx;
+        double y = (v - cy) * depth[u][v] / fy;
+        double z = depth[u][v];
+
+        Vector3 p = new Vector3((float)x, (float)y, (float)z);
+
+        return r * p + t;
+    }
 
     public IEnumerator CreateSensorAfterPermission()
     {
@@ -163,4 +216,5 @@ public class DepthImage : Singleton<DepthImage>
         }
         
     }
+
 }

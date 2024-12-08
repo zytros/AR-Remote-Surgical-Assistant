@@ -1,11 +1,9 @@
 
-=== Tue Oct  8 16:20:23 2024
+=== Mon Dec  2 13:37:10 2024
 
 Packages were changed.
 Update Mode: updateDependencies
 
 The following packages were updated:
-  com.unity.collab-proxy from version 2.1.0 to 2.5.1
-  com.unity.ide.rider from version 3.0.28 to 3.0.31
+  com.unity.collab-proxy from version 2.4.4 to 2.5.1
   com.unity.inputsystem from version 1.8.0-pre.2 to 1.11.0
-  com.unity.render-pipelines.universal from version 14.0.9 to 14.0.11

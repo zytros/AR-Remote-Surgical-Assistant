@@ -281,6 +281,26 @@ MonoBehaviour:
   company: Magic Leap
   priority: 0
   required: 0
+--- !u!114 &-6567359515474455878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
+  m_Name: MetaQuestTouchPlusControllerProfile Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-6397383369995643720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,26 +318,6 @@ MonoBehaviour:
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.extension.performance_settings
   openxrExtensionStrings: XR_EXT_performance_settings
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-6388028391746794044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
-  m_Name: MetaQuestTouchPlusControllerProfile Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Meta Quest Touch Plus Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
-  openxrExtensionStrings: XR_META_touch_controller_plus
   company: Unity
   priority: 0
   required: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   - {fileID: -2201143382594864613}
   - {fileID: 1824119689971017320}
   - {fileID: -1937281688834606462}
-  - {fileID: -6388028391746794044}
+  - {fileID: -6567359515474455878}
   - {fileID: -9054883517533310766}
   - {fileID: 7834739173996994640}
   - {fileID: -8744152083269010706}
@@ -701,26 +701,6 @@ MonoBehaviour:
   openxrExtensionStrings: XR_EXT_hand_interaction
   company: Unity
   priority: 0
-  required: 0
---- !u!114 &-2072400114657079281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78dd111ab9872144c9ea2d30e138bec4, type: 3}
-  m_Name: MagicLeapEyeTrackerFeature Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Magic Leap 2 Eye Tracker
-  version: 1.0.0
-  featureIdInternal: com.magicleap.openxr.feature.ml2_eyetracker
-  openxrExtensionStrings: XR_ML_eye_tracker
-  company: Magic Leap
-  priority: -1
   required: 0
 --- !u!114 &-2049941843593865696
 MonoBehaviour:
@@ -1073,26 +1053,6 @@ MonoBehaviour:
   company: Magic Leap
   priority: -2
   required: 0
---- !u!114 &472487796820330163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
-  m_Name: MetaQuestTouchPlusControllerProfile Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Meta Quest Touch Plus Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
-  openxrExtensionStrings: XR_META_touch_controller_plus
-  company: Unity
-  priority: 0
-  required: 0
 --- !u!114 &1245515715261561129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0898445048444aca849c32d97d461dbf, type: 3}
   m_Name: MagicLeapPixelSensorFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Magic Leap 2 Pixel Sensor
   version: 1.0.0
   featureIdInternal: com.magicleap.openxr.feature.ml2_pixel_sensor
@@ -1285,7 +1245,7 @@ MonoBehaviour:
   - {fileID: 7280454936002488994}
   - {fileID: -5522769486837610066}
   - {fileID: -7240653935815603768}
-  - {fileID: 472487796820330163}
+  - {fileID: 4613735313976484302}
   - {fileID: 1825520698878614567}
   - {fileID: -3437559790464568511}
   - {fileID: 6520304622129234278}
@@ -1295,7 +1255,7 @@ MonoBehaviour:
   - {fileID: -865028003807559984}
   - {fileID: -6946599354003429799}
   - {fileID: -9207303851432142631}
-  - {fileID: -2072400114657079281}
+  - {fileID: 4045065300540995666}
   - {fileID: 5075050513101074765}
   - {fileID: -1584466044205909178}
   - {fileID: -356428053672180401}
@@ -1373,6 +1333,26 @@ MonoBehaviour:
   company: Magic Leap
   priority: -2
   required: 0
+--- !u!114 &4045065300540995666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78dd111ab9872144c9ea2d30e138bec4, type: 3}
+  m_Name: MagicLeapEyeTrackerFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Magic Leap 2 Eye Tracker
+  version: 1.0.0
+  featureIdInternal: com.magicleap.openxr.feature.ml2_eyetracker
+  openxrExtensionStrings: XR_ML_eye_tracker
+  company: Magic Leap
+  priority: -1
+  required: 0
 --- !u!114 &4177985735400597538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,6 +1414,26 @@ MonoBehaviour:
   openxrExtensionStrings: XR_ML_eye_tracker
   company: Magic Leap
   priority: -1
+  required: 0
+--- !u!114 &4613735313976484302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
+  m_Name: MetaQuestTouchPlusControllerProfile Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
+  company: Unity
+  priority: 0
   required: 0
 --- !u!114 &5013343755804998949
 MonoBehaviour:

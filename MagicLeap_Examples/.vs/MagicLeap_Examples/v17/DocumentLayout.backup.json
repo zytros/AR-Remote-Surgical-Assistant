@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lucas\\Documents\\AR-Remote-Surgical-Assistant\\MagicLeap_Examples\\",
+  "WorkspaceRootPath": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|c:\\users\\lucas\\documents\\ar-remote-surgical-assistant\\magicleap_examples\\assets\\scripts\\meshing\\meshingexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\meshing\\meshingexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|c:\\users\\lucas\\magicleap\\tools\\unity\\v2.5.0\\magicleap_examples\\assets\\scripts\\pixelsensor\\pixelsensorexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pixelsensor\\pixelsensorexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|c:\\users\\lucas\\magicleap\\tools\\unity\\v2.5.0\\magicleap_examples\\assets\\scripts\\pixelsensor\\pixelsensorvisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pixelsensor\\pixelsensorvisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|c:\\users\\lucas\\magicleap\\tools\\unity\\v2.5.0\\magicleap_examples\\assets\\scripts\\pixelsensor\\pixelsensorvisualizers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA259665-3D2A-5E23-7143-239E5DBCD3DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pixelsensor\\pixelsensorvisualizers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,23 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MeshingExample.cs",
-              "DocumentMoniker": "C:\\Users\\lucas\\Documents\\AR-Remote-Surgical-Assistant\\MagicLeap_Examples\\Assets\\Scripts\\Meshing\\MeshingExample.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Meshing\\MeshingExample.cs",
-              "ToolTip": "C:\\Users\\lucas\\Documents\\AR-Remote-Surgical-Assistant\\MagicLeap_Examples\\Assets\\Scripts\\Meshing\\MeshingExample.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Meshing\\MeshingExample.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAAEYAAAAAAAAAAAAkwG8AAAAJAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAABsBAAAAAAAAAAAEwDIBAAAMAAAAAAAAAA==",
->>>>>>> 76abbb9b8023fbbaf6e44a91bffc51ca27d57df0
+              "DocumentIndex": 1,
+              "Title": "PixelSensorVisualizer.cs",
+              "DocumentMoniker": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorVisualizer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PixelSensor\\PixelSensorVisualizer.cs",
+              "ToolTip": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorVisualizer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PixelSensor\\PixelSensorVisualizer.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAswIwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:30:17.042Z",
+              "WhenOpened": "2024-12-02T12:48:54.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PixelSensorVisualizers.cs",
+              "DocumentMoniker": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorVisualizers.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PixelSensor\\PixelSensorVisualizers.cs",
+              "ToolTip": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorVisualizers.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PixelSensor\\PixelSensorVisualizers.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAADcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T12:47:43.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PixelSensorExample.cs",
+              "DocumentMoniker": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorExample.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PixelSensor\\PixelSensorExample.cs",
+              "ToolTip": "C:\\Users\\lucas\\MagicLeap\\tools\\unity\\v2.5.0\\MagicLeap_Examples\\Assets\\Scripts\\PixelSensor\\PixelSensorExample.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PixelSensor\\PixelSensorExample.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAADwv3AAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T12:43:54.284Z",
               "EditorCaption": ""
             }
           ]

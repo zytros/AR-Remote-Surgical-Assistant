@@ -38,6 +38,10 @@ public class WebRTCController : Singleton<WebRTCController>
     private List<RawImage> receiveImages;
     private int videoIndex = 0;
 
+    private RTCDataChannel dataChannel;
+    private DelegateOnOpen onDataChannelOpen;
+    private DelegateOnClose onDataChannelClose;
+
     [SerializeField] private OBJ3DManager _obj3DManager;
     private RTCDataChannel remoteDataChannel;
     private DelegateOnMessage onDataChannelMessage;
@@ -72,6 +76,15 @@ public class WebRTCController : Singleton<WebRTCController>
         receiveImages = new List<RawImage>();
         receiveImages.Add(MediaManager.Instance.RemoteSharedImageRenderer);
         receiveImages.Add(MediaManager.Instance.RemoteVideoRenderer);
+
+        onDataChannelOpen = () =>
+        {
+            Debug.Log("Data Channel Opened!");
+        };
+        onDataChannelClose = () =>
+        {
+            Debug.Log("Data Channel Closed!");
+        };
 
         onDataChannel = channel =>
         {
@@ -571,6 +584,7 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
+        AddDataStream();
         connection.OnDataChannel = onDataChannel;
     }
 
@@ -694,6 +708,21 @@ public class WebRTCController : Singleton<WebRTCController>
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
         _rtcRtpSenders.Add(videoSender);
+    }
+
+    private void AddDataStream()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        dataChannel.OnOpen = onDataChannelOpen;
+    }
+
+    public void AddDataToDataStream(string data)
+    {
+        //RTCDataChannelInit conf = new RTCDataChannelInit();
+        //dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        Debug.Log("Sending Data Stream");
+        dataChannel.Send(data);
     }
 
     /// <summary>
