@@ -152,7 +152,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
         void Awake()
         {
-            m_BackgroundDefaultColor = m_Background.color;
+            //m_BackgroundDefaultColor = m_Background.color;
         }
 
         void Start()
@@ -208,7 +208,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                     Debug.Log("Gesture Performed");
                     m_GesturePerformed?.Invoke();
                     m_PerformedTriggered = true;
-                    m_Background.color = m_BackgroundHiglightColor;
+                    //m_Background.color = m_BackgroundHiglightColor;
                     m_Highlight.enabled = true;
 
                     foreach (var gesture in m_StaticGestures)

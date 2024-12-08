@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b9cf54c47f40ee9c3eb30ea8eb89b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Handedness: 2
+  m_Handedness: 1
   m_UpdateType: 1
   m_PoseUpdated:
     m_PersistentCalls:
