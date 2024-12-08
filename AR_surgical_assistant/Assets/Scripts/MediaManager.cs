@@ -70,6 +70,7 @@ public class MediaManager : Singleton<MediaManager>
     {
         _targetCameraDeviceManager.StartMedia();
         _microphoneManager.SetupAudio();
+        Debug.Log("Media Started");
     }
 
     private void OnDisable()

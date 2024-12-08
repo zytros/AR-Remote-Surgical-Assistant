@@ -10,7 +10,7 @@ using MixedReality.Toolkit.SpatialManipulation;
 public class OBJ3DManager : MonoBehaviour
 {
     private string _currentOBJString = "";
-
+    public Mesh manipMesh;
     public GameObject OBJModel;
     
     public void load3DModel(string objString)
@@ -25,15 +25,25 @@ public class OBJ3DManager : MonoBehaviour
         }
 
         GameObject loadModel = new OBJLoader().Load(textStream);
+
+        
+        
         OBJModel = loadModel.transform.Find("default").gameObject;
 
         //OBJModel = new OBJLoader().Load(textStream);
-        OBJModel.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        OBJModel.transform.localPosition = new Vector3(0, 0, 5);
+        loadModel.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        loadModel.transform.localPosition = new Vector3(0, 0, 2);
+        
 
         Material newMat = Resources.Load("DefaultMeshMaterial", typeof(Material)) as Material;
         OBJModel.GetComponent<MeshRenderer>().material = newMat;
 
-        OBJModel.AddComponent<ObjectManipulator>();
+        var meshfilter = loadModel.AddComponent<MeshFilter>();
+        meshfilter.mesh = OBJModel.GetComponent<MeshFilter>().mesh;
+        OBJModel.GetComponent<MeshRenderer>().enabled = false;
+        loadModel.AddComponent<MeshRenderer>();
+        loadModel.AddComponent<MeshCollider>();
+        loadModel.AddComponent<ObjectManipulator>();
+
     }
 }

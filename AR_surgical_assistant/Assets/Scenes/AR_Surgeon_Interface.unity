@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serverCommunication: {fileID: 481910635}
-  _obj3DManager: {fileID: 0}
+  _obj3DManager: {fileID: 1168052330}
 --- !u!4 &481910637
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,6 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c63d1810ae879a4ba30f3a2721baafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manipMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   OBJModel: {fileID: 0}
 --- !u!1 &1175017600
 GameObject:
