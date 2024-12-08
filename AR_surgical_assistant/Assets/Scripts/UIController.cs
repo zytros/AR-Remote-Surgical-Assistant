@@ -23,6 +23,9 @@ public class UIController : Singleton<UIController>
         None
     }
 
+    private ShowUIConfig active_ui_config;
+    private ShowUIConfig prev_ui_config;
+
     /// <summary>
     /// Event triggered when the "Start Media" button is pressed.
     /// </summary>
@@ -52,7 +55,9 @@ public class UIController : Singleton<UIController>
             _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
             _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
 
-            ChangeUI(ShowUIConfig.StartMedia);
+            active_ui_config = ShowUIConfig.None;
+            prev_ui_config = ShowUIConfig.StartMedia;
+            ChangeUI(ShowUIConfig.None);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
         }
         else
@@ -66,16 +71,22 @@ public class UIController : Singleton<UIController>
         // If Connected we disable ConnectWebRTC button and enable DisconnectWebRTC
         if (connectionState == WebRTCController.WebRTCConnectionState.Connected)
         {
+            prev_ui_config = active_ui_config;
+            active_ui_config = ShowUIConfig.DisconnectWebRTC;
             ChangeUI(ShowUIConfig.DisconnectWebRTC);
         }
         else if (connectionState == WebRTCController.WebRTCConnectionState.Connecting)
         {
             // If disconnected we disable DisconnectWebRTC button and enable ConnectWebRTC
+            prev_ui_config = active_ui_config;
+            active_ui_config = ShowUIConfig.None;
             ChangeUI(ShowUIConfig.None);
         }
         else
         {
             // If disconnected we disable DisconnectWebRTC button and enable ConnectWebRTC
+            prev_ui_config = active_ui_config;
+            active_ui_config = ShowUIConfig.ConnectWebRTC;
             ChangeUI(ShowUIConfig.ConnectWebRTC);
         }
     }
@@ -91,6 +102,8 @@ public class UIController : Singleton<UIController>
         // Disable button
         PlayerPrefs.SetString("webrtc-local-ip-config", _inputField.text);
 
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.None;
         ChangeUI(ShowUIConfig.None);
         _lazyFollow.enabled = false;
 
@@ -100,6 +113,8 @@ public class UIController : Singleton<UIController>
     private void DisconnectWebRTCButtonPressed()
     {
         Debug.Log("Disconnect webRTC ");
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.None;
         ChangeUI(ShowUIConfig.None);
         _lazyFollow.enabled = true;
 
@@ -143,6 +158,8 @@ public class UIController : Singleton<UIController>
 
     private void StartMediaButtonPressed()
     {
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.ConnectWebRTC;
         ChangeUI(ShowUIConfig.ConnectWebRTC);
         OnStartMediaButtonPressed?.Invoke();
     }
@@ -207,11 +224,29 @@ public class UIController : Singleton<UIController>
 
     public void ChangeUIForMediaInput()
     {
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.StartMedia;
         ChangeUI(ShowUIConfig.StartMedia);
     }
 
     public void ChangeUIForWebRTCConnection()
     {
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.ConnectWebRTC;
         ChangeUI(ShowUIConfig.ConnectWebRTC);
+    }
+
+    public void ChangeUIForMenuOpen()
+    {
+        ChangeUI(prev_ui_config);
+        active_ui_config = prev_ui_config;
+        prev_ui_config = ShowUIConfig.None;
+    }
+
+    public void ChangeUIForMenuClose()
+    {
+        prev_ui_config = active_ui_config;
+        active_ui_config = ShowUIConfig.None;
+        ChangeUI(ShowUIConfig.None);
     }
 }
