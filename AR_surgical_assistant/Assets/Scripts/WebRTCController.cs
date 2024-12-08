@@ -80,12 +80,28 @@ public class WebRTCController : Singleton<WebRTCController>
         };
         onDataChannelMessage = bytes => {
             Debug.Log("recieved bytes1");
-            OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
+            String received = System.Text.Encoding.UTF8.GetString(bytes);
+            String type = received.Split('#')[0];
+            OBJstring = received.Split('#')[1];
             Debug.Log("recieved bytes2");
-            _obj3DManager.load3DModel(OBJstring);
-            Debug.Log("recieved bytes3");
+            if (type == "3DOBJ")
+            {
+                Debug.Log("recieved 3DOBJ");
+                Debug.Log(OBJstring);
+                _obj3DManager.load3DModel(OBJstring);
+            }
+            else if (type == "ANN")
+            {
+                Debug.Log("recieved ANN:");
+                Debug.Log(OBJstring);
+                // DoSmthWithANN(OBJstring);
+            }
+            else
+            {
+                Debug.Log("recieved something weird:");
+                Debug.Log(OBJstring);
 
-            Debug.Log(OBJstring);
+            }
         };
     }
 
