@@ -489,6 +489,12 @@ public class WebRTCController : Singleton<WebRTCController>
             StartCoroutine(WebRTC.Update());
 
             SetConnectionState(WebRTCConnectionState.Connected);
+
+            // RTCRtpH264CodecCapability preferredCodec = new RTCRtpH264CodecCapability();
+            //
+            // RTCRtpH264CodecCapability[] codecs = new[] {preferredCodec};
+
+
         }
     }
 
@@ -533,6 +539,20 @@ public class WebRTCController : Singleton<WebRTCController>
         {
             iceServers = iceServers
         };
+
+        // // Create a preferred codec (H.264 in this case)
+        // RTCVideoCodecInfo[] videoCodecs = new RTCVideoCodecInfo[]
+        // {
+        //     new RTCVideoCodecInfo
+        //     {
+        //         mimeType = "video/H264",
+        //         preferredPayloadType = 100  // Set the preferred payload type (optional)
+        //     }
+        // };
+        //
+        // // Add codec preferences to the configuration
+        // config.sdpSemantics = SDPSemantics.UnifiedPlan;  // Can use PlanB depending on your needs
+        // config.videoCodecInfo = videoCodecs;
         return new RTCPeerConnection(ref config);
     }
 
@@ -681,6 +701,7 @@ public class WebRTCController : Singleton<WebRTCController>
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
         _rtcRtpSenders.Add(videoSender);
+
     }
 
     private void AddDataStream()
@@ -698,6 +719,12 @@ public class WebRTCController : Singleton<WebRTCController>
         dataChannel.Send(FileShareManager.Instance.loadedObjString);
     }
 
+    public void AddAnnotationToDataStream(string annotation)
+    {
+        Debug.Log("Sending Annotation");
+        dataChannel.Send(annotation);
+    }
+
     /// <summary>
     /// Adds a video track to the media stream.
     /// </summary>
@@ -712,6 +739,24 @@ public class WebRTCController : Singleton<WebRTCController>
         _videoStreamTrack = new VideoStreamTrack(MediaManager.Instance.CameraTexture);
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
+
+
+        var capabilities = RTCRtpSender.GetCapabilities(TrackKind.Video);
+        var availableCodecs = capabilities.codecs.ToArray();
+        RTCRtpCodecCapability[] codecs = null;
+        RTCRtpCodecCapability preferredCodec = availableCodecs.FirstOrDefault(codec => codec.mimeType == "video/H264");
+
+        codecs = new[] { preferredCodec };
+
+        RTCRtpTransceiver transceiver = _peerConnection.GetTransceivers().First(t=> t.Sender == videoSender);
+
+        RTCErrorType error = transceiver.SetCodecPreferences(codecs);
+        if (error != RTCErrorType.None)
+        {
+            Debug.LogError($"Error setting codec preferences: {error}");
+        }
+
+
         _rtcRtpSenders.Add(videoSender);
     }
 

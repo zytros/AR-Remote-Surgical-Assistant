@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
+using FMODUnity;
 
 /// <summary>
 /// Manages the microphone for capturing audio in Unity.
@@ -16,7 +17,7 @@ public class MicrophoneManager : MonoBehaviour
 
     // Magic Leap 2 Microphone defaults
     private const int MIC_LENGTH = 1; // Seconds
-    private const int MIC_SAMPLING_FREQ = 96000;
+    private const int MIC_SAMPLING_FREQ = 44100;
     private const int MICROPHONE_INDEX = 0;
 
     public AudioSource SourceAudio => _sourceAudio;
@@ -64,7 +65,32 @@ public class MicrophoneManager : MonoBehaviour
             Debug.LogFormat("Authorization for using the Microphone is denied");
             yield break;
         }
+        Permission.RequestUserPermission(Permission.Microphone);
 
+        // Debug.Log($"Platform: {Application.platform}, API Level: {Application.unityVersion}");
+        //
+        // Debug.Log("Initializing FMOD logging.");
+        // FMOD.Debug.Initialize(FMOD.DEBUG_FLAGS.LOG | FMOD.DEBUG_FLAGS.TYPE_MEMORY, FMOD.DEBUG_MODE.FILE);
+        
+        FMODUnity.RuntimeManager.CoreSystem.setOutput(FMOD.OUTPUTTYPE.AUTODETECT);
+        
+        Debug.Log("PERMISSION");
+        Debug.Log(Permission.HasUserAuthorizedPermission(Permission.Microphone));
+
+        string[] devices = Microphone.devices;
+        
+        Debug.Log("Available Microphones:");
+        if (devices.Length == 0)
+        {
+            Debug.LogError("No microphone devices found.");
+            yield break;
+        }
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            Debug.Log($"Microphone {i}: {devices[i]}");
+        }
+        
         _microphoneName = Microphone.devices.Length > MICROPHONE_INDEX ? Microphone.devices[MICROPHONE_INDEX] : null;
 
         if (string.IsNullOrEmpty(_microphoneName))
