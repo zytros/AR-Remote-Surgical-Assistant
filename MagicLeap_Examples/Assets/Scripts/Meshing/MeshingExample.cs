@@ -43,7 +43,7 @@ public class MeshingExample : MonoBehaviour
 
     private class NetworkClient
     {
-        string ipAddress = "192.168.178.52";
+        string ipAddress = "10.5.34.225";
         int port = 8030;
 
         public void SendMessageToServer(string msg)

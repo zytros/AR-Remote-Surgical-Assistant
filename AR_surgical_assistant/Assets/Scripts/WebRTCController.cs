@@ -79,8 +79,12 @@ public class WebRTCController : Singleton<WebRTCController>
             remoteDataChannel.OnMessage = onDataChannelMessage;
         };
         onDataChannelMessage = bytes => {
+            Debug.Log("recieved bytes1");
             OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
+            Debug.Log("recieved bytes2");
             _obj3DManager.load3DModel(OBJstring);
+            Debug.Log("recieved bytes3");
+
             Debug.Log(OBJstring);
         };
     }
