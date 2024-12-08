@@ -50,7 +50,11 @@ public class MediaManager : Singleton<MediaManager>
     public Color drawColor = Color.red;
     public int brushSize = 1;
     public float maxDistance = 1f;
-    private List<Texture2D> backTextures = new List<Texture2D>();
+    private List<int> annotationsX = new List<int>();
+    private List<int> annotationsY = new List<int>();
+    private List<List<int>> backAnnotationsX = new List<List<int>>();
+    private List<List<int>> backAnnotationsY = new List<List<int>>();
+    private Texture2D originalTexture;
 
     private Vector2? lastMousePos = null;
     private Color[] colorBuffer;
@@ -113,7 +117,10 @@ public class MediaManager : Singleton<MediaManager>
 
     private void TogglePause()
     {
-        backTextures = new List<Texture2D>();
+        backAnnotationsX = new List<List<int>>();
+        backAnnotationsY = new List<List<int>>();
+        annotationsX = new List<int>();
+        annotationsY = new List<int>();
         if (!isPaused)
         {
             _smallVideoStream.texture = _mainVideoStream.texture;
@@ -123,6 +130,8 @@ public class MediaManager : Singleton<MediaManager>
             {
                 Debug.Log(texture.isReadable);
                 _pausedFrameTexture = new Texture2D(sourceTexture2D.width, sourceTexture2D.height, TextureFormat.RGBA32, false);
+                originalTexture = new Texture2D(sourceTexture2D.width, sourceTexture2D.height, TextureFormat.RGBA32, false);
+
                 RenderTexture currentRT = RenderTexture.active;
                 RenderTexture renderTexture = RenderTexture.GetTemporary(
                     sourceTexture2D.width,
@@ -140,11 +149,13 @@ public class MediaManager : Singleton<MediaManager>
                 _pausedFrameTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
                 _pausedFrameTexture.Apply();
 
+                originalTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+                originalTexture.Apply();
 // Clean up
                 RenderTexture.active = currentRT;
                 RenderTexture.ReleaseTemporary(renderTexture);
                 _mainVideoStream.texture = _pausedFrameTexture;
-                colorBuffer = _pausedFrameTexture.GetPixels();
+                colorBuffer = originalTexture.GetPixels();
             }
             else
             {
@@ -155,6 +166,7 @@ public class MediaManager : Singleton<MediaManager>
         {
             _mainVideoStream.texture = _smallVideoStream.texture;
             _smallVideoStream.texture = _pausedFrameTexture;
+            SendAnnotation();
         }
         // TEMPORARY:
 
@@ -170,6 +182,12 @@ public class MediaManager : Singleton<MediaManager>
 
         isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
+    }
+
+    private void SendAnnotation()
+    {
+
+        Texture2D annotatedImage = _pausedFrameTexture;
     }
 
     public void SetSharedImageTexture()
@@ -193,16 +211,24 @@ public class MediaManager : Singleton<MediaManager>
 
     void GoBack()
     {
-        if (backTextures.Count == 0 || !isPaused)
+        if (backAnnotationsY.Count == 0 || !isPaused)
         {
             return;
         }
-        int idx = backTextures.Count - 1;
-        Texture2D backTexture = backTextures[idx];
-        backTextures.RemoveAt(idx);
-        _pausedFrameTexture.SetPixels(backTexture.GetPixels());
-        _pausedFrameTexture.Apply();
-        colorBuffer = _pausedFrameTexture.GetPixels();
+        int idx = backAnnotationsX.Count - 1;
+        // Texture2D backTexture = backTextures[idx];
+        List<int> backX = backAnnotationsX[idx];
+        List<int> backY = backAnnotationsY[idx];
+        // backTextures.RemoveAt(idx);
+        backAnnotationsX.RemoveAt(idx);
+        backAnnotationsY.RemoveAt(idx);
+        // _pausedFrameTexture.SetPixels(backTexture.GetPixels());
+        // _pausedFrameTexture.Apply();
+        // colorBuffer = _pausedFrameTexture.GetPixels();
+        colorBuffer = originalTexture.GetPixels();
+        annotationsX = backX;
+        annotationsY = backY;
+        ApplyAnnotation();
     }
 
     private void Update()
@@ -278,21 +304,51 @@ public class MediaManager : Singleton<MediaManager>
         }
         else
         {
-            if (backTextures.Count > 5)
+            if (backAnnotationsX.Count > 5)
             {
-                backTextures.RemoveAt(0);
+                backAnnotationsX.RemoveAt(0);
+                backAnnotationsY.RemoveAt(0);
             }
-            Texture2D old_Texture = new Texture2D(_pausedFrameTexture.width, _pausedFrameTexture.height);
-            old_Texture.SetPixels(_pausedFrameTexture.GetPixels());
+            Texture2D oldTexture = new Texture2D(_pausedFrameTexture.width, _pausedFrameTexture.height);
+            oldTexture.SetPixels(_pausedFrameTexture.GetPixels());
             Debug.Log("Adding image to backImages");
-            backTextures.Add(old_Texture);
+            backAnnotationsX.Add(new List<int>(annotationsX));
+            backAnnotationsY.Add(new List<int>(annotationsY));
             DrawOnTexture(x, y);
         }
 
         // Update the last position
         lastMousePos = currentMousePos;
+        // _pausedFrameTexture.SetPixels(colorBuffer);
+        // _pausedFrameTexture.Apply();
+        ApplyAnnotation();
+    }
+
+    private void ApplyAnnotation()
+    {
+        for (int point = 0; point < annotationsX.Count; point++)
+        {
+            int x = annotationsX[point];
+            int y = annotationsY[point];
+
+            for (int i = -brushSize; i <= brushSize; i++)
+            {
+                for (int j = -brushSize; j <= brushSize; j++)
+                {
+                    int px = Mathf.Clamp(x + i, 0, _pausedFrameTexture.width - 1);
+                    int py = Mathf.Clamp(y + j, 0, _pausedFrameTexture.height - 1);
+
+                    int bufferIndex = px + py * _pausedFrameTexture.width;
+                    colorBuffer[bufferIndex] = drawColor;
+                }
+            }
+        }
+
+        _pausedFrameTexture.SetPixels(originalTexture.GetPixels());
+        _pausedFrameTexture.Apply();
         _pausedFrameTexture.SetPixels(colorBuffer);
         _pausedFrameTexture.Apply();
+
     }
 
     private void DrawLine(Vector2 start, Vector2 end)
@@ -310,24 +366,30 @@ public class MediaManager : Singleton<MediaManager>
         DrawOnTexture((int)end.x, (int)end.y);
 
         // Apply buffered changes to the texture all at once
-        _pausedFrameTexture.SetPixels(colorBuffer);
-        _pausedFrameTexture.Apply();
+        // _pausedFrameTexture.SetPixels(colorBuffer);
+        // _pausedFrameTexture.Apply();
     }
 
     private void DrawOnTexture(int x, int y)
     {
         // Set pixels within the brush size at the given (x, y) position in the buffer
-        for (int i = -brushSize; i <= brushSize; i++)
-        {
-            for (int j = -brushSize; j <= brushSize; j++)
-            {
-                int px = Mathf.Clamp(x + i, 0, _pausedFrameTexture.width - 1);
-                int py = Mathf.Clamp(y + j, 0, _pausedFrameTexture.height - 1);
+        // for (int i = -brushSize; i <= brushSize; i++)
+        // {
+        //     for (int j = -brushSize; j <= brushSize; j++)
+        //     {
+        //         int px = Mathf.Clamp(x + i, 0, _pausedFrameTexture.width - 1);
+        //         int py = Mathf.Clamp(y + j, 0, _pausedFrameTexture.height - 1);
+        //
+        //         int bufferIndex = px + py * _pausedFrameTexture.width;
+        //         colorBuffer[bufferIndex] = drawColor;
+        //     }
+        // }
+        int clampedX = Mathf.Clamp(x, 0, _pausedFrameTexture.width - 1);
+        int clampedY = Mathf.Clamp(y, 0, _pausedFrameTexture.height - 1);
 
-                int bufferIndex = px + py * _pausedFrameTexture.width;
-                colorBuffer[bufferIndex] = drawColor;
-            }
-        }
+        annotationsX.Add(clampedX);
+        annotationsY.Add(clampedY);
+
     }
 
     private void OnDisable()

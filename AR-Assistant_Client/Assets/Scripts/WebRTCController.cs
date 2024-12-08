@@ -719,6 +719,12 @@ public class WebRTCController : Singleton<WebRTCController>
         dataChannel.Send(FileShareManager.Instance.loadedObjString);
     }
 
+    public void AddAnnotationToDataStream(string annotation)
+    {
+        Debug.Log("Sending Annotation");
+        dataChannel.Send(annotation);
+    }
+
     /// <summary>
     /// Adds a video track to the media stream.
     /// </summary>
