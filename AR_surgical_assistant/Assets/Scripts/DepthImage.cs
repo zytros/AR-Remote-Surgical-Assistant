@@ -122,7 +122,9 @@ public class DepthImage : Singleton<DepthImage>
                     // Debug.Log($"byte array size__: {byteArray.Length}");
                     double[] doubleData = ConvertByteArrayToDoubleArray(byteArray); //last 1024 bytes are zeros
                     // TODO: send data to server
-                    webrtccontroller.AddDataToDataStream(doubleData.ToString());
+                    string payload = "DEPTH#" + doubleData.ToString();
+                    webrtccontroller.AddDataToDataStream(payload);
+                    Debug.Log("Depth image sent to server");
                     break;
             }
             
