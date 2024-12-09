@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Buffers;
@@ -18,6 +19,8 @@ using System.Net.Sockets;
 using UnityEngine.XR.ARSubsystems;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using Debug = UnityEngine.Debug;
+using Unity.Mathematics;
 
 public class DepthImage : Singleton<DepthImage>
 {
@@ -29,7 +32,8 @@ public class DepthImage : Singleton<DepthImage>
     uint i = 0;
     Vector3 position;
     Quaternion rotation;
-    
+    Stopwatch stopwatch = new Stopwatch();
+
     Matrix<double> K_depth = DenseMatrix.OfArray(new double[,] {
         {543.5,0,272},
         {0,543.5,240},
@@ -101,23 +105,7 @@ public class DepthImage : Singleton<DepthImage>
 
         return array2d;
     }
-    private string array_pretty_print(double[,] array)
-    {
-        StringBuilder sb = new StringBuilder();
-        int rows = array.GetLength(0);
-        int cols = array.GetLength(1);
 
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                sb.Append(array[i, j].ToString("F2")).Append("\t");
-            }
-            sb.AppendLine();
-        }
-
-        return sb.ToString();
-    }
     public void ProcessFrame(in PixelSensorFrame frame)
     {
         if (!frame.IsValid || frame.Planes.Length == 0)
@@ -135,14 +123,14 @@ public class DepthImage : Singleton<DepthImage>
                     // Debug.Log($"__ height: {firstPlane.Height} width: {firstPlane.Width} stride: {firstPlane.Stride} Pixel stride: {firstPlane.PixelStride} bytes per pixel:  {firstPlane.BytesPerPixel}\nframe type: {frameType}");
                     var byteArray = ArrayPool<byte>.Shared.Rent(firstPlane.ByteData.Length);
                     firstPlane.ByteData.CopyTo(byteArray);
-                    //byte[] slicedArray = byteArray.Take(byteArray.Length - 1024).ToArray();
+               
                     // Debug.Log($"byte array size__: {byteArray.Length}");
                     //double[,] doubleData = ConvertByteArrayToDoubleArray(byteArray); //last 1024 bytes are zeros
                     // TODO: send data to server
                     //var output = projectPoint(0, 0, doubleData, K_rgb, K_depth, new Quaternion(0, 0, 0, 1), new Vector3(0, 0, 0));
                     //Debug.Log($"___ output: {output}");
                     Debug.Log("__ sending message");
-                    //webrtccontroller.AddDataToDataStream("hello world");
+                    webrtccontroller.AddDataToDataStream(byteArray);
                     Debug.Log("__ sent message");
                     break;
             }
@@ -169,8 +157,8 @@ public class DepthImage : Singleton<DepthImage>
         Debug.Log("___ projpoint4");
         x_depth = x_depth / x_depth[2];
         Debug.Log("___ projpoint5");
-        u = (int)x_depth[0];
-        v = (int)x_depth[1];
+        u = math.clamp((int)x_depth[0],0,543);
+        v = math.clamp((int)x_depth[1],0,479);
         Debug.Log($"___ projpoint6 u: {u} v: {v}");
         double x = (u - cx) * depth[u,v] / fx;
         double y = (v - cy) * depth[u,v] / fy;

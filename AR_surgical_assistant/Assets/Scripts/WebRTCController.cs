@@ -600,7 +600,7 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
-        //AddDataStream();
+        AddDataStream();
         connection.OnDataChannel = onDataChannel;
     }
 
@@ -733,7 +733,7 @@ public class WebRTCController : Singleton<WebRTCController>
         dataChannel.OnOpen = onDataChannelOpen;
     }
 
-    public void AddDataToDataStream(string data)
+    public void AddDataToDataStream(byte[] data)
     {
         //RTCDataChannelInit conf = new RTCDataChannelInit();
         //dataChannel = _peerConnection.CreateDataChannel("data", conf);
