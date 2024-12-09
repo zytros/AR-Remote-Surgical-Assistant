@@ -600,7 +600,7 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
-        AddDataStream();
+        //AddDataStream();
         connection.OnDataChannel = onDataChannel;
     }
 
