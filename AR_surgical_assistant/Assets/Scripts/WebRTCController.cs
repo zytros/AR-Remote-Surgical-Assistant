@@ -38,6 +38,10 @@ public class WebRTCController : Singleton<WebRTCController>
     private List<RawImage> receiveImages;
     private int videoIndex = 0;
 
+    private RTCDataChannel dataChannel;
+    private DelegateOnOpen onDataChannelOpen;
+    private DelegateOnClose onDataChannelClose;
+
     [SerializeField] private OBJ3DManager _obj3DManager;
     private RTCDataChannel remoteDataChannel;
     private DelegateOnMessage onDataChannelMessage;
@@ -73,6 +77,15 @@ public class WebRTCController : Singleton<WebRTCController>
         receiveImages.Add(MediaManager.Instance.RemoteSharedImageRenderer);
         receiveImages.Add(MediaManager.Instance.RemoteVideoRenderer);
 
+        onDataChannelOpen = () =>
+        {
+            Debug.Log("Data Channel Opened!");
+        };
+        onDataChannelClose = () =>
+        {
+            Debug.Log("Data Channel Closed!");
+        };
+
         onDataChannel = channel =>
         {
             remoteDataChannel = channel;
@@ -80,12 +93,28 @@ public class WebRTCController : Singleton<WebRTCController>
         };
         onDataChannelMessage = bytes => {
             Debug.Log("recieved bytes1");
-            OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
+            String received = System.Text.Encoding.UTF8.GetString(bytes);
+            String type = received.Split('#')[0];
+            OBJstring = received.Split('#')[1];
             Debug.Log("recieved bytes2");
-            _obj3DManager.load3DModel(OBJstring);
-            Debug.Log("recieved bytes3");
+            if (type == "3DOBJ")
+            {
+                Debug.Log("recieved 3DOBJ");
+                Debug.Log(OBJstring);
+                _obj3DManager.load3DModel(OBJstring);
+            }
+            else if (type == "ANN")
+            {
+                Debug.Log("recieved ANN:");
+                Debug.Log(OBJstring);
+                // DoSmthWithANN(OBJstring);
+            }
+            else
+            {
+                Debug.Log("recieved something weird:");
+                Debug.Log(OBJstring);
 
-            Debug.Log(OBJstring);
+            }
         };
     }
 
@@ -571,6 +600,7 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
+        AddDataStream();
         connection.OnDataChannel = onDataChannel;
     }
 
@@ -694,6 +724,21 @@ public class WebRTCController : Singleton<WebRTCController>
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
         _rtcRtpSenders.Add(videoSender);
+    }
+
+    private void AddDataStream()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        dataChannel.OnOpen = onDataChannelOpen;
+    }
+
+    public void AddDataToDataStream(string data)
+    {
+        //RTCDataChannelInit conf = new RTCDataChannelInit();
+        //dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        Debug.Log("Sending Data Stream");
+        dataChannel.Send(data);
     }
 
     /// <summary>
