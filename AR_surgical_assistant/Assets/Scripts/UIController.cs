@@ -5,6 +5,7 @@ using System.Net;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.UI;
+using UnityEngine.InputSystem;
 
 
 /// <summary>
@@ -37,12 +38,20 @@ public class UIController : Singleton<UIController>
     /// </summary>
     public Action<bool, string> OnWebRTCConnectionChangeButtonPressed;
 
+    [SerializeField] private GameObject mainHandUIPanel;
     [SerializeField] private Button _startMediaButton;
     [SerializeField] private Button _connectWebRTCButton;
     [SerializeField] private Button _disconnectWebRTCButton;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _logText;
     [SerializeField] private LazyFollow _lazyFollow;
+
+    private bool _options_menu_open = false;
+
+    //The input action that will log it's Vector3 value every frame.
+    //[SerializeField]
+    //private InputAction positionInputAction =
+    //    new InputAction(binding: "<MagicLeapAuxiliaryHandDevice>{LeftHand}/devicePosition", expectedControlType: "Vector3");
 
     private void Start()
     {
@@ -55,15 +64,22 @@ public class UIController : Singleton<UIController>
             _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
             _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
 
-            active_ui_config = ShowUIConfig.None;
-            prev_ui_config = ShowUIConfig.StartMedia;
-            ChangeUI(ShowUIConfig.None);
+            active_ui_config = ShowUIConfig.StartMedia;
+            ChangeUI(ShowUIConfig.StartMedia);
+            mainHandUIPanel.SetActive(false);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
         }
         else
         {
             Debug.LogError("Check UserInputController parameters, NULLs");
         }
+
+        //positionInputAction.Enable();
+    }
+
+    private void Update()
+    {
+        //mainHandUIPanel.transform.position = positionInputAction.ReadValue<Vector3>();
     }
 
     private void OnWebRTCConnectionChanged(WebRTCController.WebRTCConnectionState connectionState)
@@ -238,15 +254,18 @@ public class UIController : Singleton<UIController>
 
     public void ChangeUIForMenuOpen()
     {
-        ChangeUI(prev_ui_config);
-        active_ui_config = prev_ui_config;
-        prev_ui_config = ShowUIConfig.None;
+        _options_menu_open = !_options_menu_open;
+        mainHandUIPanel.SetActive(_options_menu_open);
+        //ChangeUI(prev_ui_config);
+        //active_ui_config = prev_ui_config;
+        //prev_ui_config = ShowUIConfig.None;
     }
 
     public void ChangeUIForMenuClose()
     {
-        prev_ui_config = active_ui_config;
-        active_ui_config = ShowUIConfig.None;
-        ChangeUI(ShowUIConfig.None);
+        //mainHandUIPanel.SetActive(false);
+        //prev_ui_config = active_ui_config;
+        //active_ui_config = ShowUIConfig.None;
+        //ChangeUI(ShowUIConfig.None);
     }
 }
