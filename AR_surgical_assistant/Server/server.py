@@ -57,6 +57,17 @@ def post_answer(from_id, to_id):
     logger.info('User %s posted answer to user %s', from_id, to_id)
     created_answers[to_id] = dict(id=from_id, answer=json.loads(request.body.read().decode('utf-8')))
 
+@route('/new_route', method='POST')
+def new_route():
+    try:
+        data = json.loads(request.body.read().decode('utf-8'))  # Parse JSON payload
+        logger.info('Received data: %s', data)
+        return {"status": "success", "received": data}
+    except Exception as e:
+        logger.error('Error processing request: %s', e)
+        response.status = 500
+        return {"status": "error", "message": str(e)}
+
 @route('/post_ice/<id:int>', method='POST')
 def post_ice(id):
     logger.info('User %s posted ICE', id)

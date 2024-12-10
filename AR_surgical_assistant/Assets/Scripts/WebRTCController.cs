@@ -38,6 +38,14 @@ public class WebRTCController : Singleton<WebRTCController>
     private List<RawImage> receiveImages;
     private int videoIndex = 0;
 
+    private RTCDataChannel dataChannel;
+    private RTCDataChannel dataChannel2;
+    private RTCDataChannel dataChannel3;
+    private RTCDataChannel dataChannel4;
+
+    private DelegateOnOpen onDataChannelOpen;
+    private DelegateOnClose onDataChannelClose;
+
     [SerializeField] private OBJ3DManager _obj3DManager;
     private RTCDataChannel remoteDataChannel;
     private DelegateOnMessage onDataChannelMessage;
@@ -571,6 +579,10 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
+        AddDataStream();
+        AddDataStream2();
+        AddDataStream3();
+        AddDataStream4();
         connection.OnDataChannel = onDataChannel;
     }
 
@@ -694,6 +706,68 @@ public class WebRTCController : Singleton<WebRTCController>
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
         _rtcRtpSenders.Add(videoSender);
+    }
+
+    private void AddDataStream()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        dataChannel.OnOpen = onDataChannelOpen;
+        dataChannel.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream2()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel2 = _peerConnection.CreateDataChannel("data2", conf);
+        dataChannel2.OnOpen = onDataChannelOpen;
+        dataChannel2.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream3()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel3 = _peerConnection.CreateDataChannel("data3", conf);
+        dataChannel3.OnOpen = onDataChannelOpen;
+        dataChannel3.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream4()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel4 = _peerConnection.CreateDataChannel("data4", conf);
+        dataChannel4.OnOpen = onDataChannelOpen;
+        dataChannel4.OnClose = onDataChannelClose;
+    }
+
+    public void AddDataToDataStream(byte[] data)
+    {
+        //RTCDataChannelInit conf = new RTCDataChannelInit();
+        //dataChannel = _peerConnection.CreateDataChannel("data", conf);
+        Debug.Log("Sending Data Stream");
+        Debug.Log($"ch 1 id: {dataChannel.Id}");
+        dataChannel.Send(data);
+    }
+
+    public void AddDataToDataStream2(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 2");
+        Debug.Log($"ch 2 id: {dataChannel2.Id}");
+        dataChannel2.Send(data);
+    }
+
+    public void AddDataToDataStream3(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 3");
+        Debug.Log($"ch 3 id: {dataChannel3.Id}");
+        dataChannel3.Send(data);
+    }
+
+    public void AddDataToDataStream4(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 4");
+        Debug.Log($"ch 4 id: {dataChannel4.Id}");
+        dataChannel4.Send(data);
     }
 
     /// <summary>

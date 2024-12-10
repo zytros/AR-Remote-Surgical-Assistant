@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Buffers;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using MagicLeap;
 using MagicLeap.Android;
 using MagicLeap.OpenXR.Features.PixelSensors;
@@ -15,12 +16,36 @@ using UnityEngine.UI;
 using UnityEngine.XR.MagicLeap;
 using UnityEngine.XR.OpenXR;
 using System.Net.Sockets;
+using UnityEngine.XR.ARSubsystems;
+//using MathNet.Numerics.LinearAlgebra;
+//using MathNet.Numerics.LinearAlgebra.Double;
+using Debug = UnityEngine.Debug;
+using Unity.Mathematics;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 
 public class DepthImage : Singleton<DepthImage>
 {
+    [SerializeField]
+    public WebRTCController webrtccontroller;
     private MagicLeapPixelSensorFeature pixelSensorFeature;
     public PixelSensorId SensorId;
     uint i = 0;
+    Vector3 position;
+    Quaternion rotation;
+    Stopwatch stopwatch = new Stopwatch();
+
+    /*
+    Matrix<double> K_depth = DenseMatrix.OfArray(new double[,] {
+        {543.5,0,272},
+        {0,543.5,240},
+        {0,0,1}});
+    Matrix<double> K_rgb = DenseMatrix.OfArray(new double[,] {
+        {800,0,640},
+        {0,800,360},
+        {0,0,1}});
+    */
 
     void Awake()
     {
@@ -35,11 +60,14 @@ public class DepthImage : Singleton<DepthImage>
     void Start()
     {
         StartCoroutine(CreateSensorAfterPermission());
+        stopwatch.Start();
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        position = Camera.main.transform.position;
+        rotation = Camera.main.transform.rotation;
         uint ConfiguredStream = 0;
         if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out _, Allocator.Temp))
         {
@@ -48,8 +76,11 @@ public class DepthImage : Singleton<DepthImage>
         }
         ProcessFrame(in frame);
     }
-    static double[] ConvertByteArrayToDoubleArray(byte[] byteArray)
+    static int[,] ConvertByteArrayToDoubleArray(byte[] byteArray)
     {
+        double min_val = 0;
+        double max_val = 3;
+
         if (byteArray.Length % 4 != 0)
         {
             throw new ArgumentException("Byte array length must be a multiple of 4.");
@@ -63,8 +94,16 @@ public class DepthImage : Singleton<DepthImage>
             float floatValue = BitConverter.ToSingle(byteArray, i * 4);
             doubleArray[i] = (double)floatValue;
         }
+        int[,] array2d = new int[480, 544];
+        for (int i = 0; i < 480; i++)
+        {
+            for (int j = 0; j < 544; j++)
+            {
+                array2d[i, j] = (int) (math.clamp(doubleArray[i * 544 + j],min_val,max_val)/3)*255;
+            }
+        }
 
-        return doubleArray;
+        return array2d;
     }
     public void ProcessFrame(in PixelSensorFrame frame)
     {
@@ -83,9 +122,27 @@ public class DepthImage : Singleton<DepthImage>
                     // Debug.Log($"__ height: {firstPlane.Height} width: {firstPlane.Width} stride: {firstPlane.Stride} Pixel stride: {firstPlane.PixelStride} bytes per pixel:  {firstPlane.BytesPerPixel}\nframe type: {frameType}");
                     var byteArray = ArrayPool<byte>.Shared.Rent(firstPlane.ByteData.Length);
                     firstPlane.ByteData.CopyTo(byteArray);
-                    // Debug.Log($"byte array size__: {byteArray.Length}");
-                    double[] doubleData = ConvertByteArrayToDoubleArray(byteArray); //last 1024 bytes are zeros
-                    // TODO: send data to server
+
+                    byte[][] parts = new byte[4][]; // Array to hold the 4 parts
+                    var partSize = 262144; // byteArray.Length / 4; // Size of each part
+                    for (int i = 0; i < 4; i++)
+                    {
+                        parts[i] = new byte[partSize];
+                        Array.Copy(byteArray, i * partSize, parts[i], 0, partSize);
+                    }
+                    string abc = "abc";
+                    Encoding.UTF8.GetBytes(abc);
+                    Debug.Log($"__ sending message with len: {byteArray.Length}");
+                    if(stopwatch.ElapsedMilliseconds > 200)
+                    {
+                        webrtccontroller.AddDataToDataStream(parts[0]);
+                        webrtccontroller.AddDataToDataStream2(parts[1]);
+                        webrtccontroller.AddDataToDataStream3(parts[2]);
+                        webrtccontroller.AddDataToDataStream4(parts[3]);
+                        Debug.Log("__ sent message");
+                        stopwatch.Restart();
+                    }
+                    
                     break;
             }
             
