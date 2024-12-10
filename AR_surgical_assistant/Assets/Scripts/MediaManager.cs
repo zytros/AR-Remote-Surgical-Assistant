@@ -100,4 +100,9 @@ public class MediaManager : Singleton<MediaManager>
                && _targetCameraDeviceManager.IsConfiguredAndReady 
                && _microphoneManager.IsConfiguredAndReady;
     }
+
+    public void ToggleMuteAudio()
+    {
+        _receiveAudio.mute = !_receiveAudio.mute;
+    }
 }

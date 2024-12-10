@@ -48,6 +48,9 @@ public class UIController : Singleton<UIController>
 
     private bool _options_menu_open = false;
 
+    public Slider VolumeSlider;
+    public GameObject LeftHandController;
+
     //The input action that will log it's Vector3 value every frame.
     //[SerializeField]
     //private InputAction positionInputAction =
@@ -64,9 +67,10 @@ public class UIController : Singleton<UIController>
             _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
             _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
 
+            //prev_ui_config = ShowUIConfig.StartMedia;
             active_ui_config = ShowUIConfig.StartMedia;
             ChangeUI(ShowUIConfig.StartMedia);
-            mainHandUIPanel.SetActive(false);
+            //mainHandUIPanel.SetActive(false);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
         }
         else
@@ -79,7 +83,8 @@ public class UIController : Singleton<UIController>
 
     private void Update()
     {
-        //mainHandUIPanel.transform.position = positionInputAction.ReadValue<Vector3>();
+        //mainHandUIPanel.transform.position = LeftHandController.transform.position;
+        //Debug.Log($"Volume: {MediaManager.Instance.ReceiveAudio.volume}");
     }
 
     private void OnWebRTCConnectionChanged(WebRTCController.WebRTCConnectionState connectionState)
@@ -255,6 +260,7 @@ public class UIController : Singleton<UIController>
     public void ChangeUIForMenuOpen()
     {
         _options_menu_open = !_options_menu_open;
+        //_options_menu_open = true;
         mainHandUIPanel.SetActive(_options_menu_open);
         //ChangeUI(prev_ui_config);
         //active_ui_config = prev_ui_config;
@@ -263,9 +269,15 @@ public class UIController : Singleton<UIController>
 
     public void ChangeUIForMenuClose()
     {
-        //mainHandUIPanel.SetActive(false);
+        //_options_menu_open = false;
+        //mainHandUIPanel.SetActive(_options_menu_open);
         //prev_ui_config = active_ui_config;
         //active_ui_config = ShowUIConfig.None;
         //ChangeUI(ShowUIConfig.None);
+    }
+
+    public void ChangeVolume()
+    {
+        MediaManager.Instance.ReceiveAudio.volume = VolumeSlider.value;
     }
 }
