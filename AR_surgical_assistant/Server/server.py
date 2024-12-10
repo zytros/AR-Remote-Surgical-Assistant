@@ -48,7 +48,7 @@ def answer(id):
 
 @route('/post_offer/<id:int>', method='POST')
 def post_offer(id):
-    logger.info('User %s posted offer', id)
+    logger.info('User %s posted offer', id) 
     created_offers[id] = json.loads(request.body.read().decode('utf-8'))
 
 @route('/post_answer/<from_id:int>/<to_id:int>', method='POST')

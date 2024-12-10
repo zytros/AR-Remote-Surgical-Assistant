@@ -4265,7 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf09a3b73d30b7f428a3711f7606fee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  webrtccontroller: {fileID: 0}
+  webrtccontroller: {fileID: 481910636}
 --- !u!4 &1543285518
 Transform:
   m_ObjectHideFlags: 0

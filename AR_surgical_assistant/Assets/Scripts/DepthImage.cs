@@ -64,6 +64,9 @@ public class DepthImage : Singleton<DepthImage>
     // Update is called once per frame
     void Update()
     {
+        //string abc = "abc";
+        //webrtccontroller.AddDataToDataStream(Encoding.UTF8.GetBytes(abc));
+        //return;
         // Debug.Log("__ in Update");
         position = Camera.main.transform.position;
         rotation = Camera.main.transform.rotation;
@@ -76,8 +79,10 @@ public class DepthImage : Singleton<DepthImage>
         }
         
 
-
-        ProcessFrame(in frame);
+        if(frame.IsValid && frame.Planes.Length > 0)
+        {
+            ProcessFrame(in frame);
+        }
     }
     static double[,] ConvertByteArrayToDoubleArray(byte[] byteArray)
     {
@@ -123,14 +128,17 @@ public class DepthImage : Singleton<DepthImage>
                     // Debug.Log($"__ height: {firstPlane.Height} width: {firstPlane.Width} stride: {firstPlane.Stride} Pixel stride: {firstPlane.PixelStride} bytes per pixel:  {firstPlane.BytesPerPixel}\nframe type: {frameType}");
                     var byteArray = ArrayPool<byte>.Shared.Rent(firstPlane.ByteData.Length);
                     firstPlane.ByteData.CopyTo(byteArray);
-               
-                    // Debug.Log($"byte array size__: {byteArray.Length}");
-                    //double[,] doubleData = ConvertByteArrayToDoubleArray(byteArray); //last 1024 bytes are zeros
-                    // TODO: send data to server
-                    //var output = projectPoint(0, 0, doubleData, K_rgb, K_depth, new Quaternion(0, 0, 0, 1), new Vector3(0, 0, 0));
-                    //Debug.Log($"___ output: {output}");
-                    Debug.Log("__ sending message");
-                    webrtccontroller.AddDataToDataStream(byteArray);
+
+                    int[][] parts = new int[4][]; // Array to hold the 4 parts
+                    var partSize = 262144; // byteArray.Length / 4; // Size of each part
+                    for (int i = 0; i < 4; i++)
+                    {
+                        parts[i] = new int[partSize];
+                        Array.Copy(byteArray, i * partSize, parts[i], 0, partSize);
+                    }
+
+                    Debug.Log($"__ sending message with len: {byteArray.Length}");
+                    webrtccontroller.AddDataToDataStream(byteArray[..262144]);
                     Debug.Log("__ sent message");
                     break;
             }
