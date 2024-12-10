@@ -146,7 +146,7 @@ public class FileShareManager : Singleton<FileShareManager>
         else
         {
             Debug.Log(www.downloadHandler.text);
-            loadedObjString = www.downloadHandler.text;
+            loadedObjString = "3DOBJ#" + www.downloadHandler.text;
 
             // Load 3D .obj model
             MemoryStream textStream = new MemoryStream(Encoding.UTF8.GetBytes(www.downloadHandler.text));

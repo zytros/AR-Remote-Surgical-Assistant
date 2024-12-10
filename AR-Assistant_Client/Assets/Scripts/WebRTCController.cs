@@ -37,6 +37,9 @@ public class WebRTCController : Singleton<WebRTCController>
     private RTCDataChannel dataChannel;
     private DelegateOnOpen onDataChannelOpen;
     private DelegateOnClose onDataChannelClose;
+    private DelegateOnDataChannel onDataChannel;
+    private RTCDataChannel remoteDataChannel;
+    private DelegateOnMessage onDataChannelMessage;
 
     /// <summary>
     /// Enum representing the various states of the WebRTC connection.
@@ -71,6 +74,24 @@ public class WebRTCController : Singleton<WebRTCController>
         {
             Debug.Log("Data Channel Closed!");
         };
+
+        // onDataChannel = channel =>
+        // {
+        //     remoteDataChannel = channel;
+        //     remoteDataChannel.OnMessage = onDataChannelMessage;
+        // };
+        // onDataChannelMessage = bytes =>
+        // {
+        //     Debug.Log("received from data channel");
+        //     String received = System.Text.Encoding.UTF8.GetString(bytes);
+        //     String type = received.Split('#')[0];
+        //     String data = received.Split('#')[1];
+        //     if (type == "DEPTH")
+        //     {
+        //         Debug.Log("Received depth");
+        //
+        //     }
+        // };
     }
 
     private void SetConnectionState(WebRTCConnectionState state)
@@ -489,6 +510,12 @@ public class WebRTCController : Singleton<WebRTCController>
             StartCoroutine(WebRTC.Update());
 
             SetConnectionState(WebRTCConnectionState.Connected);
+
+            // RTCRtpH264CodecCapability preferredCodec = new RTCRtpH264CodecCapability();
+            //
+            // RTCRtpH264CodecCapability[] codecs = new[] {preferredCodec};
+
+
         }
     }
 
@@ -556,6 +583,7 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
         AddDataStream();
+        connection.OnDataChannel = onDataChannel;
     }
 
     /// <summary>
@@ -681,6 +709,7 @@ public class WebRTCController : Singleton<WebRTCController>
         _sendStream.AddTrack(_videoStreamTrack);
         RTCRtpSender videoSender = _peerConnection.AddTrack(_videoStreamTrack, _sendStream);
         _rtcRtpSenders.Add(videoSender);
+
     }
 
     private void AddDataStream()
@@ -696,6 +725,12 @@ public class WebRTCController : Singleton<WebRTCController>
         //dataChannel = _peerConnection.CreateDataChannel("data", conf);
         Debug.Log("Sending Data Stream");
         dataChannel.Send(FileShareManager.Instance.loadedObjString);
+    }
+
+    public void AddAnnotationToDataStream(string annotation)
+    {
+        Debug.Log("Sending Annotation");
+        dataChannel.Send(annotation);
     }
 
     /// <summary>

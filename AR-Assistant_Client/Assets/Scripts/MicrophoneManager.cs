@@ -16,7 +16,7 @@ public class MicrophoneManager : MonoBehaviour
 
     // Magic Leap 2 Microphone defaults
     private const int MIC_LENGTH = 1; // Seconds
-    private const int MIC_SAMPLING_FREQ = 96000;
+    private const int MIC_SAMPLING_FREQ = 44100;
     private const int MICROPHONE_INDEX = 0;
 
     public AudioSource SourceAudio => _sourceAudio;
