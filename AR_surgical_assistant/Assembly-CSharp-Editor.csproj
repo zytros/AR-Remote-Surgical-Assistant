@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\com.magicleap.setuptool\Editor\Plugins\PackageCheck\PackageCheck.dll" />
+    <None Include="Assets\NuGet\Editor\NuGetForUnity.PluginAPI.xml" />
+    <None Include="Assets\NuGet\Editor\NuGetForUnity.PluginAPI.dll" />
+    <None Include="Assets\NuGet\Editor\NugetForUnity.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -456,6 +459,14 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NuGetForUnity.PluginAPI">
+      <HintPath>Assets\NuGet\Editor\NuGetForUnity.PluginAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NugetForUnity">
+      <HintPath>Assets\NuGet\Editor\NugetForUnity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

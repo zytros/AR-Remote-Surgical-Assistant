@@ -1196,8 +1196,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678088387}
-  - component: {fileID: 678088389}
   - component: {fileID: 678088388}
+  - component: {fileID: 678088389}
   m_Layer: 0
   m_Name: HandGestureManager
   m_TagString: Untagged
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 678088385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79471f22546d91c49807d04a02d0475e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6821dc9745dcefc4db1fc134006bb9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 678088388}
@@ -4949,6 +4949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf09a3b73d30b7f428a3711f7606fee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  webrtccontroller: {fileID: 481910636}
 --- !u!4 &1543285518
 Transform:
   m_ObjectHideFlags: 0

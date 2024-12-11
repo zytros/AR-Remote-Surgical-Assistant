@@ -24,6 +24,11 @@ using Unity.Mathematics;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+public struct MetaData
+{
+    public Vector3 position;
+    public Quaternion rotation;
+};
 
 public class DepthImage : Singleton<DepthImage>
 {
@@ -35,6 +40,8 @@ public class DepthImage : Singleton<DepthImage>
     Vector3 position;
     Quaternion rotation;
     Stopwatch stopwatch = new Stopwatch();
+    Vector4 K_depth = new Vector4(543.5f, 543.5f, 272f, 240f);
+    Vector4 K_rgb = new Vector4(800f, 800f, 640f, 360f);
 
     /*
     Matrix<double> K_depth = DenseMatrix.OfArray(new double[,] {
@@ -76,11 +83,53 @@ public class DepthImage : Singleton<DepthImage>
         }
         ProcessFrame(in frame);
     }
-    static int[,] ConvertByteArrayToDoubleArray(byte[] byteArray)
-    {
-        double min_val = 0;
-        double max_val = 3;
 
+    static byte[] convertDoubleToBytes(double value)
+    {
+        byte[] bytes = BitConverter.GetBytes((float)value);
+        Debug.Log($"__ bytes: {bytes.Length}");
+        Assert.AreEqual(4, bytes.Length);
+        return bytes;
+    }
+
+    static MetaData getMetaData(byte[] byteArray)
+    {
+        MetaData metaData = new MetaData();
+        var offset = 1044480;
+        metaData.position.x = BitConverter.ToSingle(byteArray, offset + 16);
+        metaData.position.y = BitConverter.ToSingle(byteArray, offset + 20);
+        metaData.position.z = BitConverter.ToSingle(byteArray, offset + 24);
+        metaData.rotation.x = BitConverter.ToSingle(byteArray, offset + 28);
+        metaData.rotation.y = BitConverter.ToSingle(byteArray, offset + 32);
+        metaData.rotation.z = BitConverter.ToSingle(byteArray, offset + 36);
+        metaData.rotation.w = BitConverter.ToSingle(byteArray, offset + 40);
+        return metaData;
+    }
+
+    public Vector3 projectPoint(int u, int v, double[][] depth, Vector4 K_depth, Vector4 K_rgb, Vector3 pos, Quaternion rot)
+    {
+        var fx_d = K_depth.x;
+        var fy_d = K_depth.y;
+        var cx_d = K_depth.z;
+        var cy_d = K_depth.w;
+        var fx_rgb = K_rgb.x;
+        var fy_rgb = K_rgb.y;
+        var cx_rgb = K_rgb.z;
+        var cy_rgb = K_rgb.w;
+
+        int u_depth = (int) math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
+        int v_depth = (int) math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
+
+        Vector4 p = new Vector4((float)u_depth,(float) v_depth, (float)depth[v_depth][u_depth], 1);
+        var x = p.x - cx_d/fx_d * p.z;
+        var y = p.y - cy_d / fy_d * p.z;
+        var z = p.z;
+        Vector3 result = new Vector3(x,y,z);
+        return rot * result + pos;
+    }
+
+    static double[][] ConvertByteArrayToDoubleArray(byte[] byteArray)
+    {
         if (byteArray.Length % 4 != 0)
         {
             throw new ArgumentException("Byte array length must be a multiple of 4.");
@@ -94,13 +143,10 @@ public class DepthImage : Singleton<DepthImage>
             float floatValue = BitConverter.ToSingle(byteArray, i * 4);
             doubleArray[i] = (double)floatValue;
         }
-        int[,] array2d = new int[480, 544];
+        double[][] array2d = new double[480][];
         for (int i = 0; i < 480; i++)
         {
-            for (int j = 0; j < 544; j++)
-            {
-                array2d[i, j] = (int) (math.clamp(doubleArray[i * 544 + j],min_val,max_val)/3)*255;
-            }
+            array2d[i] = doubleArray[(i*544)..((i + 1) * 544)];
         }
 
         return array2d;
@@ -118,10 +164,27 @@ public class DepthImage : Singleton<DepthImage>
         {
             case PixelSensorFrameType.Depth32:
                 {
-                    // depth image has size 544x480
-                    // Debug.Log($"__ height: {firstPlane.Height} width: {firstPlane.Width} stride: {firstPlane.Stride} Pixel stride: {firstPlane.PixelStride} bytes per pixel:  {firstPlane.BytesPerPixel}\nframe type: {frameType}");
                     var byteArray = ArrayPool<byte>.Shared.Rent(firstPlane.ByteData.Length);
                     firstPlane.ByteData.CopyTo(byteArray);
+                    var offset = 1044480 + 16;
+                    
+                    byte[] pos_x = convertDoubleToBytes(position.x);
+                    byte[] pos_y = convertDoubleToBytes(position.y);
+                    byte[] pos_z = convertDoubleToBytes(position.z);
+                    byte[] rot_x = convertDoubleToBytes(rotation.x);
+                    byte[] rot_y = convertDoubleToBytes(rotation.y);
+                    byte[] rot_z = convertDoubleToBytes(rotation.z);
+                    byte[] rot_w = convertDoubleToBytes(rotation.w);
+
+                    // write position and rotation to the byte array
+                    Array.Copy(pos_x, 0, byteArray, offset, 4);
+                    Array.Copy(pos_y, 0, byteArray, offset + 4, 4);
+                    Array.Copy(pos_z, 0, byteArray, offset + 8, 4);
+                    Array.Copy(rot_x, 0, byteArray, offset + 12, 4);
+                    Array.Copy(rot_y, 0, byteArray, offset + 16, 4);
+                    Array.Copy(rot_z, 0, byteArray, offset + 20, 4);
+                    Array.Copy(rot_w, 0, byteArray, offset + 24, 4);
+
 
                     byte[][] parts = new byte[4][]; // Array to hold the 4 parts
                     var partSize = 262144; // byteArray.Length / 4; // Size of each part
@@ -132,6 +195,8 @@ public class DepthImage : Singleton<DepthImage>
                     }
                     string abc = "abc";
                     Encoding.UTF8.GetBytes(abc);
+                    Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
+                    Debug.Log($"__ 3D point: {point3d}");
                     Debug.Log($"__ sending message with len: {byteArray.Length}");
                     if(stopwatch.ElapsedMilliseconds > 200)
                     {
@@ -142,7 +207,10 @@ public class DepthImage : Singleton<DepthImage>
                         Debug.Log("__ sent message");
                         stopwatch.Restart();
                     }
-                    
+
+                    //Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
+                    Debug.Log($"__ 3D point: {point3d}");
+
                     break;
             }
             
@@ -220,4 +288,6 @@ public class DepthImage : Singleton<DepthImage>
         }
         
     }
+
+    
 }

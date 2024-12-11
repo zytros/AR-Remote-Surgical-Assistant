@@ -710,6 +710,7 @@ public class WebRTCController : Singleton<WebRTCController>
 
     private void AddDataStream()
     {
+        Debug.Log("opened channel 0");
         RTCDataChannelInit conf = new RTCDataChannelInit();
         dataChannel = _peerConnection.CreateDataChannel("data", conf);
         dataChannel.OnOpen = onDataChannelOpen;

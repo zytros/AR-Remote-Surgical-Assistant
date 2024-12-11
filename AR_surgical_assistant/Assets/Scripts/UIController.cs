@@ -70,7 +70,7 @@ public class UIController : Singleton<UIController>
             //prev_ui_config = ShowUIConfig.StartMedia;
             active_ui_config = ShowUIConfig.StartMedia;
             ChangeUI(ShowUIConfig.StartMedia);
-            //mainHandUIPanel.SetActive(false);
+            mainHandUIPanel.SetActive(false);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
         }
         else
