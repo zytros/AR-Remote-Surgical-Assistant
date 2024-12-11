@@ -49,6 +49,10 @@ public class WebRTCController : Singleton<WebRTCController>
     private DelegateOnDataChannel onDataChannel;
     private byte[] depth_data;
     private byte[] depth_data2;
+    private byte[] depth_data3;
+    private byte[] depth_data4;
+
+    public DepthImageClient DepthImageClient;
 
     /// <summary>
     /// Enum representing the various states of the WebRTC connection.
@@ -123,13 +127,15 @@ public class WebRTCController : Singleton<WebRTCController>
         };
         onDataChannelMessage3 = bytes => {
             Debug.Log("recieved bytes5");
-            depth_data = bytes;
+            depth_data3 = bytes;
             Debug.Log($"recieved bytes6 : {bytes.Length}");
         };
         onDataChannelMessage4 = bytes => {
             Debug.Log("recieved bytes7");
-            depth_data2 = bytes;
+            depth_data4 = bytes;
             Debug.Log($"recieved bytes8 : {bytes.Length}");
+            DepthImageClient.CombineDepthArrays(depth_data, depth_data2, depth_data3, depth_data4);
+            Debug.Log("Combined Arrays");
         };
     }
 

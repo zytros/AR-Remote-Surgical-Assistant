@@ -174,9 +174,16 @@ public class MediaManager : Singleton<MediaManager>
         }
 
         //----------------
+        Save_Texture2D(_pausedFrameTexture, "C:/Users/" + Environment.UserName + "/Desktop/PausedImage.png");
 
         isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
+    }
+
+    private void Save_Texture2D(in Texture2D tex, string path)
+    {
+        byte[] bytes = tex.EncodeToPNG();
+        System.IO.File.WriteAllBytes(path, bytes);
     }
 
     private void SendAnnotation()
