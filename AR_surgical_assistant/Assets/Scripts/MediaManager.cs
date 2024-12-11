@@ -66,7 +66,7 @@ public class MediaManager : Singleton<MediaManager>
 
     }
 
-    private void StartMedia()
+    public void StartMedia()
     {
         _targetCameraDeviceManager.StartMedia();
         _microphoneManager.SetupAudio();
