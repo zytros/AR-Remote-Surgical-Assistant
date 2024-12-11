@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 using UnityEngine.InputSystem;
+using MixedReality.Toolkit.UX;
 
 
 /// <summary>
@@ -40,6 +41,9 @@ public class UIController : Singleton<UIController>
 
     [SerializeField] private GameObject mainHandUIPanel;
     [SerializeField] private Button _startMediaButton;
+    [SerializeField] private PressableButton _startMediaActionButton;
+    [SerializeField] private PressableButton _connectWebRTCActionButton;
+    [SerializeField] private PressableButton _disconnectWebRTCActionButton;
     [SerializeField] private Button _connectWebRTCButton;
     [SerializeField] private Button _disconnectWebRTCButton;
     [SerializeField] private TMP_InputField _inputField;
@@ -48,7 +52,7 @@ public class UIController : Singleton<UIController>
 
     private bool _options_menu_open = false;
 
-    public Slider VolumeSlider;
+    public UnityEngine.UI.Slider VolumeSlider;
     public GameObject LeftHandController;
 
     //The input action that will log it's Vector3 value every frame.
@@ -63,14 +67,15 @@ public class UIController : Singleton<UIController>
         if (_inputField != null && _disconnectWebRTCButton != null
             && _connectWebRTCButton != null && _startMediaButton != null)
         {
-            _startMediaButton.onClick.AddListener(StartMediaButtonPressed);
-            _connectWebRTCButton.onClick.AddListener(ConnectWebRTCButtonPressed);
-            _disconnectWebRTCButton.onClick.AddListener(DisconnectWebRTCButtonPressed);
+            //_startMediaButton.onClick.AddListener(StartMediaButtonPressed);
+            _startMediaActionButton.OnClicked.AddListener(StartMediaButtonPressed);
+            _connectWebRTCActionButton.OnClicked.AddListener(ConnectWebRTCButtonPressed);
+            _disconnectWebRTCActionButton.OnClicked.AddListener(DisconnectWebRTCButtonPressed);
 
             //prev_ui_config = ShowUIConfig.StartMedia;
             active_ui_config = ShowUIConfig.StartMedia;
             ChangeUI(ShowUIConfig.StartMedia);
-            //mainHandUIPanel.SetActive(false);
+            mainHandUIPanel.SetActive(false);
             _inputField.text = PlayerPrefs.GetString("webrtc-local-ip-config", "");
         }
         else
@@ -189,6 +194,9 @@ public class UIController : Singleton<UIController>
     {
        if(_startMediaButton) 
            _startMediaButton.onClick.RemoveListener(StartMediaButtonPressed);
+
+        if (_startMediaActionButton)
+            _startMediaActionButton.OnClicked.RemoveListener(StartMediaButtonPressed);
     }
 
     private void ActivationChangeButton(Component componentToChange, bool active)
@@ -204,27 +212,27 @@ public class UIController : Singleton<UIController>
         {
             case ShowUIConfig.StartMedia:
                 ActivationChangeButton(_inputField, false);
-                ActivationChangeButton(_connectWebRTCButton, false);
-                ActivationChangeButton(_disconnectWebRTCButton, false);
-                ActivationChangeButton(_startMediaButton, true);
+                ActivationChangeButton(_connectWebRTCActionButton, false);
+                ActivationChangeButton(_disconnectWebRTCActionButton, false);
+                ActivationChangeButton(_startMediaActionButton, true);
                 break;
             case ShowUIConfig.ConnectWebRTC:
                 ActivationChangeButton(_inputField, true);
-                ActivationChangeButton(_connectWebRTCButton, true);
-                ActivationChangeButton(_disconnectWebRTCButton, false);
-                ActivationChangeButton(_startMediaButton, false);
+                ActivationChangeButton(_connectWebRTCActionButton, true);
+                ActivationChangeButton(_disconnectWebRTCActionButton, false);
+                ActivationChangeButton(_startMediaActionButton, false);
                 break;
             case ShowUIConfig.DisconnectWebRTC:
                 ActivationChangeButton(_inputField, false);
-                ActivationChangeButton(_connectWebRTCButton, false);
-                ActivationChangeButton(_disconnectWebRTCButton, true);
-                ActivationChangeButton(_startMediaButton, false);
+                ActivationChangeButton(_connectWebRTCActionButton, false);
+                ActivationChangeButton(_disconnectWebRTCActionButton, true);
+                ActivationChangeButton(_startMediaActionButton, false);
                 break;
             case ShowUIConfig.None:
                 ActivationChangeButton(_inputField, false);
-                ActivationChangeButton(_connectWebRTCButton, false);
-                ActivationChangeButton(_disconnectWebRTCButton, false);
-                ActivationChangeButton(_startMediaButton, false);
+                ActivationChangeButton(_connectWebRTCActionButton, false);
+                ActivationChangeButton(_disconnectWebRTCActionButton, false);
+                ActivationChangeButton(_startMediaActionButton, false);
                 break;
             default:
                 break;
@@ -260,7 +268,7 @@ public class UIController : Singleton<UIController>
     public void ChangeUIForMenuOpen()
     {
         _options_menu_open = !_options_menu_open;
-        mainHandUIPanel.transform.position = LeftHandController.transform.position + new Vector3(0, 0.2f, 0.5f);
+        mainHandUIPanel.transform.position = LeftHandController.transform.position + new Vector3(0, 0.2f, 0.3f);
         //_options_menu_open = true;
         mainHandUIPanel.SetActive(_options_menu_open);
         //ChangeUI(prev_ui_config);
