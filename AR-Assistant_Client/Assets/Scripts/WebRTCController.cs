@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using Unity.WebRTC;
 using UnityEngine;
 
@@ -37,9 +38,17 @@ public class WebRTCController : Singleton<WebRTCController>
     private RTCDataChannel dataChannel;
     private DelegateOnOpen onDataChannelOpen;
     private DelegateOnClose onDataChannelClose;
-    private DelegateOnDataChannel onDataChannel;
     private RTCDataChannel remoteDataChannel;
+    private RTCDataChannel remoteDataChannel2;
+    private RTCDataChannel remoteDataChannel3;
+    private RTCDataChannel remoteDataChannel4;
     private DelegateOnMessage onDataChannelMessage;
+    private DelegateOnMessage onDataChannelMessage2;
+    private DelegateOnMessage onDataChannelMessage3;
+    private DelegateOnMessage onDataChannelMessage4;
+    private DelegateOnDataChannel onDataChannel;
+    private byte[] depth_data;
+    private byte[] depth_data2;
 
     /// <summary>
     /// Enum representing the various states of the WebRTC connection.
@@ -75,23 +84,53 @@ public class WebRTCController : Singleton<WebRTCController>
             Debug.Log("Data Channel Closed!");
         };
 
-        // onDataChannel = channel =>
-        // {
-        //     remoteDataChannel = channel;
-        //     remoteDataChannel.OnMessage = onDataChannelMessage;
-        // };
-        // onDataChannelMessage = bytes =>
-        // {
-        //     Debug.Log("received from data channel");
-        //     String received = System.Text.Encoding.UTF8.GetString(bytes);
-        //     String type = received.Split('#')[0];
-        //     String data = received.Split('#')[1];
-        //     if (type == "DEPTH")
-        //     {
-        //         Debug.Log("Received depth");
-        //
-        //     }
-        // };
+        onDataChannel = channel =>
+        {
+            switch(channel.Id)
+            {
+                case 0:
+                    remoteDataChannel = channel;
+                    remoteDataChannel.OnMessage = onDataChannelMessage;
+                    break;
+                case 2:
+                    remoteDataChannel2 = channel;
+                    remoteDataChannel2.OnMessage = onDataChannelMessage2;
+                    break;
+                case 4:
+                    remoteDataChannel3 = channel;
+                    remoteDataChannel3.OnMessage = onDataChannelMessage3;
+                    break;
+                case 6:
+                    remoteDataChannel4 = channel;
+                    remoteDataChannel4.OnMessage = onDataChannelMessage4;
+                    break;
+                default:
+                    break;
+            }
+
+            //remoteDataChannel = channel;
+            //remoteDataChannel.OnMessage = onDataChannelMessage;
+        };
+        onDataChannelMessage = bytes => {
+            Debug.Log("recieved bytes1");
+            depth_data = bytes;
+            Debug.Log($"recieved bytes2 : {bytes.Length}");
+        };
+        onDataChannelMessage2 = bytes => {
+            Debug.Log("recieved bytes3");
+            depth_data2 = bytes;
+            Debug.Log($"recieved bytes4 : {bytes.Length}");
+        };
+        onDataChannelMessage3 = bytes => {
+            Debug.Log("recieved bytes5");
+            depth_data = bytes;
+            Debug.Log($"recieved bytes6 : {bytes.Length}");
+        };
+        onDataChannelMessage4 = bytes => {
+            Debug.Log("recieved bytes7");
+            depth_data2 = bytes;
+            Debug.Log($"recieved bytes8 : {bytes.Length}");
+        };
     }
 
     private void SetConnectionState(WebRTCConnectionState state)
@@ -581,6 +620,8 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceCandidate = OnIceCandidate;
         connection.OnIceConnectionChange = OnIceConnectionChange;
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
+
+        connection.OnDataChannel = onDataChannel;
 
         AddDataStream();
         connection.OnDataChannel = onDataChannel;
