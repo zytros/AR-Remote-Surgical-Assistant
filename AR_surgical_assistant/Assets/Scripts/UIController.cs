@@ -83,7 +83,7 @@ public class UIController : Singleton<UIController>
 
     private void Update()
     {
-        //mainHandUIPanel.transform.position = LeftHandController.transform.position;
+        _lazyFollow.enabled = false;
         //Debug.Log($"Volume: {MediaManager.Instance.ReceiveAudio.volume}");
     }
 
@@ -126,7 +126,7 @@ public class UIController : Singleton<UIController>
         prev_ui_config = active_ui_config;
         active_ui_config = ShowUIConfig.None;
         ChangeUI(ShowUIConfig.None);
-        _lazyFollow.enabled = false;
+        //_lazyFollow.enabled = false;
 
         OnWebRTCConnectionChangeButtonPressed?.Invoke(true, _inputField.text);
     }
@@ -137,7 +137,7 @@ public class UIController : Singleton<UIController>
         prev_ui_config = active_ui_config;
         active_ui_config = ShowUIConfig.None;
         ChangeUI(ShowUIConfig.None);
-        _lazyFollow.enabled = true;
+        //_lazyFollow.enabled = true;
 
         OnWebRTCConnectionChangeButtonPressed?.Invoke(false, "");
     }
@@ -260,6 +260,7 @@ public class UIController : Singleton<UIController>
     public void ChangeUIForMenuOpen()
     {
         _options_menu_open = !_options_menu_open;
+        mainHandUIPanel.transform.position = LeftHandController.transform.position + new Vector3(0, 0.2f, 0.5f);
         //_options_menu_open = true;
         mainHandUIPanel.SetActive(_options_menu_open);
         //ChangeUI(prev_ui_config);

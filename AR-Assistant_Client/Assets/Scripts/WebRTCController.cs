@@ -114,22 +114,22 @@ public class WebRTCController : Singleton<WebRTCController>
         onDataChannelMessage = bytes => {
             Debug.Log("recieved bytes1");
             depth_data = bytes;
-            Debug.Log($"recieved bytes2 : {bytes}");
+            Debug.Log($"recieved bytes2 : {bytes.Length}");
         };
         onDataChannelMessage2 = bytes => {
             Debug.Log("recieved bytes3");
             depth_data2 = bytes;
-            Debug.Log($"recieved bytes4 : {bytes}");
+            Debug.Log($"recieved bytes4 : {bytes.Length}");
         };
         onDataChannelMessage3 = bytes => {
             Debug.Log("recieved bytes5");
             depth_data = bytes;
-            Debug.Log($"recieved bytes6 : {bytes}");
+            Debug.Log($"recieved bytes6 : {bytes.Length}");
         };
         onDataChannelMessage4 = bytes => {
             Debug.Log("recieved bytes7");
             depth_data2 = bytes;
-            Debug.Log($"recieved bytes8 : {bytes}");
+            Debug.Log($"recieved bytes8 : {bytes.Length}");
         };
     }
 

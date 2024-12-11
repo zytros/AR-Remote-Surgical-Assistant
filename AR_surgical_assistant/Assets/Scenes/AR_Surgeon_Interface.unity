@@ -122,6 +122,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &146066003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 387654781297738497, guid: a85d32bd6490a674bab33c1711698a87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2112053530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &173865446
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +324,7 @@ MonoBehaviour:
   _logText: {fileID: 0}
   _lazyFollow: {fileID: 425772957}
   VolumeSlider: {fileID: 1794229572}
+  LeftHandController: {fileID: 146066003}
 --- !u!114 &425772957
 MonoBehaviour:
   m_ObjectHideFlags: 0
