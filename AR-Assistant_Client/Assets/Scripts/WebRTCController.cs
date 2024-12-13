@@ -116,26 +116,26 @@ public class WebRTCController : Singleton<WebRTCController>
             //remoteDataChannel.OnMessage = onDataChannelMessage;
         };
         onDataChannelMessage = bytes => {
-            Debug.Log("recieved bytes1");
+            // Debug.Log("recieved bytes1");
             depth_data = bytes;
-            Debug.Log($"recieved bytes2 : {bytes.Length}");
+            // Debug.Log($"recieved bytes2 : {bytes.Length}");
         };
         onDataChannelMessage2 = bytes => {
-            Debug.Log("recieved bytes3");
+            // Debug.Log("recieved bytes3");
             depth_data2 = bytes;
-            Debug.Log($"recieved bytes4 : {bytes.Length}");
+            // Debug.Log($"recieved bytes4 : {bytes.Length}");
         };
         onDataChannelMessage3 = bytes => {
-            Debug.Log("recieved bytes5");
+            // Debug.Log("recieved bytes5");
             depth_data3 = bytes;
-            Debug.Log($"recieved bytes6 : {bytes.Length}");
+            // Debug.Log($"recieved bytes6 : {bytes.Length}");
         };
         onDataChannelMessage4 = bytes => {
-            Debug.Log("recieved bytes7");
+            // Debug.Log("recieved bytes7");
             depth_data4 = bytes;
-            Debug.Log($"recieved bytes8 : {bytes.Length}");
+            // Debug.Log($"recieved bytes8 : {bytes.Length}");
             DepthImageClient.CombineDepthArrays(depth_data, depth_data2, depth_data3, depth_data4);
-            Debug.Log("Combined Arrays");
+            // Debug.Log("Combined Arrays");
         };
     }
 
@@ -774,7 +774,7 @@ public class WebRTCController : Singleton<WebRTCController>
         dataChannel.Send(FileShareManager.Instance.loadedObjString);
     }
 
-    public void AddAnnotationToDataStream(string annotation)
+    public void AddAnnotationToDataStream(byte[] annotation)
     {
         Debug.Log("Sending Annotation");
         dataChannel.Send(annotation);

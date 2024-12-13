@@ -34,7 +34,7 @@ public class DepthImageClient : Singleton<DepthImageClient>
     };
 
 
-    byte[] LatestDepthArray;
+    public byte[] LatestDepthArray;
 
     Vector4 K_rgb = new Vector4(543.5f, 543.5f, 272f, 240f);
     Vector4 K_depth = new Vector4(800f, 800f, 640f, 360f);
@@ -42,7 +42,7 @@ public class DepthImageClient : Singleton<DepthImageClient>
     // Start is called before the first frame update
     void Start()
     {
-        UIController.Instance.OnPauseMediaButtonPressed += Get3DPoints;
+        // UIController.Instance.OnPauseMediaButtonPressed += Get3DPoints;
     }
 
     // Update is called once per frame
@@ -84,6 +84,7 @@ public class DepthImageClient : Singleton<DepthImageClient>
         }
         // Set latest depth array length to combined length of all incoming byte arrays 
         LatestDepthArray = new byte[d1.Length + d2.Length + d3.Length + d4.Length];
+        // Debug.Log("DepthArray set");
 
         // Combine the four depth arrays together
         System.Buffer.BlockCopy(d1, 0, LatestDepthArray, 0, d1.Length);
@@ -92,9 +93,22 @@ public class DepthImageClient : Singleton<DepthImageClient>
         System.Buffer.BlockCopy(d4, 0, LatestDepthArray, d1.Length + d2.Length + d3.Length, d4.Length);
     }
 
-    public void SaveDepthArrayToFile()
+    public void SaveDepthArrayToFile(int x, int y, double[][] doubleDepthArray)
     {
-        double[][] doubleDepthArray = ConvertByteArrayToDoubleArray(LatestDepthArray);
+        // double[][] doubleDepthArray = ConvertByteArrayToDoubleArray(depthArray);
+
+        // Debug.Log(x);
+        // Debug.Log(y);
+        for (int i = -5; i < 5; i++)
+        {
+            for (int j = -5; j < 5; j++)
+            {
+                doubleDepthArray[x+i][y+j] = 0;
+            }
+        }
+
+
+        Debug.Log("C:/Users/" + Environment.UserName + "/Desktop/DepthData.txt");
 
         using (StreamWriter sr = new StreamWriter("C:/Users/" + Environment.UserName + "/Desktop/DepthData.txt"))
         {
@@ -109,15 +123,17 @@ public class DepthImageClient : Singleton<DepthImageClient>
         }
     }
 
-    public void Get3DPoints()
+    public Vector3 Get3DPoints(int x, int y, byte[] depthArray)
     {
-        Debug.Log($"-- {LatestDepthArray}");
-        double[][] doubleDepthArray = ConvertByteArrayToDoubleArray(LatestDepthArray);
+        Debug.Log($"-- {depthArray}");
+        double[][] doubleDepthArray = ConvertByteArrayToDoubleArray(depthArray);
 
-        MetaData md = getMetaData(LatestDepthArray);
-
-        Vector3 p = projectPoint(640, 360, doubleDepthArray, K_depth, K_rgb, md.position, md.rotation);
+        MetaData md = getMetaData(depthArray);
+        // int x = 640;
+        // int y = 360;
+        Vector3 p = projectPoint(y, x, doubleDepthArray, K_depth, K_rgb, md.position, md.rotation);
         Debug.Log($"-- Projected Point: {p.x}, {p.y}, {p.z}");
+        return p;
     }
 
     static MetaData getMetaData(byte[] byteArray)
@@ -134,6 +150,64 @@ public class DepthImageClient : Singleton<DepthImageClient>
         return metaData;
     }
 
+    public Vector3 convert_to_depth(int u, int v, double[][] depth)
+    {
+
+        //int u_depth = (int)math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
+        // int u_depth = (int)math.round(50 + Convert.ToDouble(u) / 1440 * 441);
+        int u_depth = (int)math.round(107 + Convert.ToDouble(u) / 1440 * 441); //higher is higher
+
+        //int v_depth = (int)math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
+        // int v_depth = (int)math.round(65 + Convert.ToDouble(v) / 1080 * 336);
+        int v_depth = (int)math.round(47 + Convert.ToDouble(v) / 1080 * 336); //higher -> right
+
+
+        Debug.Log($"-- u: {u_depth} & v: {v_depth}");
+        // SaveDepthArrayToFile(u_depth, v_depth, depth);
+        return new Vector2(u_depth, v_depth);
+    }
+
+    public Vector3 transform_2d_point(int u, int v, byte[] deptharray)
+    {
+        double[][] depth = ConvertByteArrayToDoubleArray(deptharray);
+        var vec = convert_to_depth(u, v, depth);
+        double d = depth[(int)vec.y][(int)vec.x];
+        int u_depth =(int) vec.x;
+        int v_depth =(int) vec.y;
+        double fov_horizontal = 1.22173;
+        double fov_vertical = 1.309;
+        double new_x = TransformOneDim(fov_horizontal, 544, u_depth, d);
+        double new_y = TransformOneDim(fov_vertical, 480, v_depth, d);
+
+        Vector3 ret = new Vector3((float)new_x,(float)new_y, (float) d);
+
+        MetaData meta = getMetaData(deptharray);
+
+        return meta.rotation * ret + meta.position;
+    }
+    public double TransformOneDim(double fov, double totcoord, double coord, double depth)
+    {
+        if (totcoord / 2f == coord)
+        {
+            return totcoord / 2f;
+        }
+        bool right = coord > totcoord / 2f;
+        bool left = !right;
+        double t = -1;
+        double x = -1;
+        if (right)
+        {
+            t = (coord - (totcoord / 2f)) / (totcoord / 2f);
+            x = depth * math.sin(math.atan(t*math.tan(fov / 2f)));
+        }
+        else
+        {
+            t = 1f - (coord / (totcoord / 2f));
+            x = -depth * math.sin(math.atan(t * math.tan(fov / 2f)));
+        }
+        return x;
+    }
+
     public Vector3 projectPoint(int u, int v, double[][] depth, Vector4 K_depth, Vector4 K_rgb, Vector3 pos, Quaternion rot)
     {
         var fx_d = K_depth.x;
@@ -146,11 +220,17 @@ public class DepthImageClient : Singleton<DepthImageClient>
         var cy_rgb = K_rgb.w;
 
         //int u_depth = (int)math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
-        int u_depth = (int)math.round(50 + u / 1920 * 441);
+        // int u_depth = (int)math.round(50 + Convert.ToDouble(u) / 1440 * 441);
+        int u_depth = (int)math.round(110 + Convert.ToDouble(u) / 1440 * 441);    //higher is higher
+
         //int v_depth = (int)math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
-        int v_depth = (int)math.round(65 + v / 1080 * 336);
+        // int v_depth = (int)math.round(65 + Convert.ToDouble(v) / 1080 * 336);
+        int v_depth = (int)math.round(46.5 + Convert.ToDouble(v) / 1080 * 336); //higher -> right
+
 
         Debug.Log($"-- u: {u_depth} & v: {v_depth}");
+        SaveDepthArrayToFile(u_depth, v_depth, depth);
+
 
         Vector4 p = new Vector4((float)u_depth, (float)v_depth, (float)depth[v_depth][u_depth], 1);
         var x = p.x - cx_d / fx_d * p.z;

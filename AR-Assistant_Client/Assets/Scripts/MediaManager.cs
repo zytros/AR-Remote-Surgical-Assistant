@@ -60,6 +60,8 @@ public class MediaManager : Singleton<MediaManager>
     private RenderTexture rt2;
     private RenderTexture sharedTexture;
 
+    private byte[] depthArray;
+
     private RenderTexture GetCameraTexture()
     {
         rt2 = new RenderTexture(1920, 1080, 0, RenderTextureFormat.BGRA32);
@@ -115,9 +117,10 @@ public class MediaManager : Singleton<MediaManager>
     private void TogglePause()
     {
         backAnnotations = new List<List<Tuple<int, int>>>();
-        annotations = new List<Tuple<int, int>>();
+        // annotations = new List<Tuple<int, int>>();
         if (!isPaused)
         {
+            depthArray = DepthImageClient.Instance.LatestDepthArray;
             _smallVideoStream.texture = _mainVideoStream.texture;
             Texture texture = _mainVideoStream.texture;
 
@@ -163,6 +166,9 @@ public class MediaManager : Singleton<MediaManager>
             _smallVideoStream.texture = _pausedFrameTexture;
             SendAnnotation();
         }
+
+        annotations = new List<Tuple<int, int>>();
+
         // TEMPORARY:
 
         if (_pausedFrameTexture != null)
@@ -188,10 +194,38 @@ public class MediaManager : Singleton<MediaManager>
 
     private void SendAnnotation()
     {
+        Debug.Log(annotations.Count);
+        List<Vector3> points3D = new List<Vector3>();
+        for (int i = 0; i < annotations.Count; i++)
+        {
+            Debug.Log("Loop");
+            Vector3 point3D = DepthImageClient.Instance.transform_2d_point(annotations[i].Item1, annotations[i].Item2, depthArray);
+            Debug.Log($"-- x: {point3D.x}, y: {point3D.y}, z: {point3D.z}");
+            // points3D.Append(point3D);
+            points3D.Add(point3D);
+            // Vector3 point3D = DepthImageClient.Instance.Get3DPoints(annotations[i].Item1, annotations[i].Item2, depthArray);
+
+        }
+
         // Do reproduction stuff
-        String annotationString = string.Join(", ", annotations.Select(t => $"({t.Item1}, {t.Item2})"));
-        annotationString = "ANN#" + annotationString;
+        // String annotationString = string.Join(", ", points3D.Select(t => $"({t.x}, {t.y}, {t.z})"));
+        byte[] annotationString = new byte[12];
+        Array.Copy(convertDoubleToBytes(points3D[0].x), 0, annotationString, 0,4);
+        Array.Copy(convertDoubleToBytes(points3D[0].y), 0, annotationString, 4,4);
+        Array.Copy(convertDoubleToBytes(points3D[0].z), 0, annotationString, 8,4);
+
+
+        // annotationString = "ANN#" + annotationString;
+
         WebRTCController.Instance.AddAnnotationToDataStream(annotationString);
+    }
+
+    static byte[] convertDoubleToBytes(double value)
+    {
+        byte[] bytes = BitConverter.GetBytes((float)value);
+        Debug.Log($"__ bytes: {bytes.Length}");
+        // Assert.AreEqual(4, bytes.Length);
+        return bytes;
     }
 
     public void SetSharedImageTexture()
@@ -362,6 +396,7 @@ public class MediaManager : Singleton<MediaManager>
     {
         int clampedX = Mathf.Clamp(x, 0, _pausedFrameTexture.width - 1);
         int clampedY = Mathf.Clamp(y, 0, _pausedFrameTexture.height - 1);
+        Debug.Log($"width: {_pausedFrameTexture.width}, height: {_pausedFrameTexture.height}");
         annotations.Add(new Tuple<int, int>(clampedX, clampedY));
 
     }

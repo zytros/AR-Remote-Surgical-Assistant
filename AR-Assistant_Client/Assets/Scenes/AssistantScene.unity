@@ -1290,7 +1290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499417587}
-  - component: {fileID: 499417586}
+  - component: {fileID: 499417588}
   m_Layer: 0
   m_Name: DepthImageClient
   m_TagString: Untagged
@@ -1298,18 +1298,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &499417586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499417585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71eafc22eecf14d43badfaa1b328015a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &499417587
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,6 +1313,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499417588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499417585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf32b4a44a2fee4ba5c18147ee4d16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LatestDepthArray: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1352,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5415,7 +5416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serverCommunication: {fileID: 1822547909}
-  DepthImageClient: {fileID: 499417586}
+  DepthImageClient: {fileID: 499417588}
 --- !u!4 &1822547911
 Transform:
   m_ObjectHideFlags: 0
