@@ -77,10 +77,12 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
     <Compile Include="Assets\OBJImport\TextureLoader\ColorExtensions.cs" />
+    <Compile Include="Assets\Scripts\PlaceFromCamera.cs" />
     <Compile Include="Assets\OBJImport\TextureLoader\DDSLoader.cs" />
     <Compile Include="Assets\Scripts\WebCameraManager.cs" />
     <Compile Include="Assets\OBJImport\TextureLoader\ImageLoader.cs" />
     <Compile Include="Assets\OBJImport\TextureLoader\ImageLoaderHelper.cs" />
+    <Compile Include="Assets\Scripts\AnnotationHandler.cs" />
     <Compile Include="Assets\OBJImport\Samples\ObjFromFile.cs" />
     <Compile Include="Assets\OBJImport\Samples\ObjFromStream.cs" />
     <Compile Include="Assets\Scripts\PermissionManager.cs" />
@@ -98,9 +100,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\Packages\MathNet.Numerics.5.0.0\lib\netstandard2.0\MathNet.Numerics.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Packages\MathNet.Numerics.5.0.0\lib\netstandard2.0\MathNet.Numerics.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -441,10 +441,6 @@
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@2.2.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MathNet.Numerics">
-      <HintPath>Assets\Packages\MathNet.Numerics.5.0.0\lib\netstandard2.0\MathNet.Numerics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">

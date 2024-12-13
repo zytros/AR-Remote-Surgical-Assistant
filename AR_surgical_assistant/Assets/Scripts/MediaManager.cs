@@ -105,4 +105,9 @@ public class MediaManager : Singleton<MediaManager>
     {
         _receiveAudio.mute = !_receiveAudio.mute;
     }
+
+    public void ChangeIncomingAudioVolume(float volume)
+    {
+        _receiveAudio.volume = volume;
+    }
 }

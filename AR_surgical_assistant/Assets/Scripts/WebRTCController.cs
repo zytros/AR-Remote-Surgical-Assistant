@@ -47,6 +47,7 @@ public class WebRTCController : Singleton<WebRTCController>
     private DelegateOnClose onDataChannelClose;
 
     [SerializeField] private OBJ3DManager _obj3DManager;
+    [SerializeField] private AnnotationHandler _annotationHandler;
     private RTCDataChannel remoteDataChannel;
     private DelegateOnMessage onDataChannelMessage;
     private DelegateOnDataChannel onDataChannel;
@@ -87,13 +88,22 @@ public class WebRTCController : Singleton<WebRTCController>
             remoteDataChannel.OnMessage = onDataChannelMessage;
         };
         onDataChannelMessage = bytes => {
-            Debug.Log("recieved bytes1");
-            OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
-            Debug.Log("recieved bytes2");
-            _obj3DManager.load3DModel(OBJstring);
-            Debug.Log("recieved bytes3");
+            Debug.Log("-- recieved bytes1");
+            float x = BitConverter.ToSingle(bytes, 0);
+            float y = BitConverter.ToSingle(bytes, 4);
+            float z = BitConverter.ToSingle(bytes, 8);
+            Debug.Log("-- Converted to float");
+            Vector3[] annotation_points = new[] { new Vector3(0f, 0f, 0f), new Vector3(x, y, z) };
+            Debug.Log("-- Before Spawning Annotations");
+            _annotationHandler.SpawnAnnotation(annotation_points);
+            Debug.Log("-- Spawned Annotations");
 
-            Debug.Log(OBJstring);
+            //OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
+            //Debug.Log("recieved bytes2");
+            //_obj3DManager.load3DModel(OBJstring);
+            //Debug.Log("recieved bytes3");
+
+            //Debug.Log(OBJstring);
         };
     }
 
@@ -600,6 +610,7 @@ public class WebRTCController : Singleton<WebRTCController>
             video.OnVideoReceived += tex =>
             {
                 receiveImages[videoIndex].texture = tex;
+                receiveImages[videoIndex].enabled = true;
                 videoIndex++;
                 //MediaManager.Instance.RemoteVideoRenderer.texture = tex;
             };

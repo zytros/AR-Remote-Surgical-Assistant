@@ -76,12 +76,15 @@ public class DepthImage : Singleton<DepthImage>
         position = Camera.main.transform.position;
         rotation = Camera.main.transform.rotation;
         uint ConfiguredStream = 0;
-        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out _, Allocator.Temp))
+        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out var md, Allocator.Temp))
         {
             Debug.Log("depth__ GetSensorData failed");
             return;
         }
+        Debug.Log("__ Processing Depth Frame");
+        Debug.Log($"__ Metadata: {md.Length}");
         ProcessFrame(in frame);
+        Debug.Log("__ Processing Depth Frame done");
     }
 
     static byte[] convertDoubleToBytes(double value)
@@ -195,8 +198,8 @@ public class DepthImage : Singleton<DepthImage>
                     }
                     string abc = "abc";
                     Encoding.UTF8.GetBytes(abc);
-                    Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
-                    Debug.Log($"__ 3D point: {point3d}");
+                    //Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
+                    //Debug.Log($"__ 3D point: {point3d}");
                     Debug.Log($"__ sending message with len: {byteArray.Length}");
                     if(stopwatch.ElapsedMilliseconds > 200)
                     {
@@ -209,7 +212,7 @@ public class DepthImage : Singleton<DepthImage>
                     }
 
                     //Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
-                    Debug.Log($"__ 3D point: {point3d}");
+                    //Debug.Log($"__ 3D point: {point3d}");
 
                     break;
             }
