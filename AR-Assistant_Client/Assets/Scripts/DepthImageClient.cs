@@ -27,12 +27,22 @@ using System.IO;
 
 public class DepthImageClient : Singleton<DepthImageClient>
 {
+    public struct MetaData
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+    };
+
+
     byte[] LatestDepthArray;
+
+    Vector4 K_rgb = new Vector4(543.5f, 543.5f, 272f, 240f);
+    Vector4 K_depth = new Vector4(800f, 800f, 640f, 360f);
 
     // Start is called before the first frame update
     void Start()
     {
-        UIController.Instance.OnPauseMediaButtonPressed += SaveDepthArrayToFile;
+        UIController.Instance.OnPauseMediaButtonPressed += Get3DPoints;
     }
 
     // Update is called once per frame
@@ -97,5 +107,58 @@ public class DepthImageClient : Singleton<DepthImageClient>
                 sr.Write('\n');
             }
         }
+    }
+
+    public void Get3DPoints()
+    {
+        Debug.Log($"-- {LatestDepthArray}");
+        double[][] doubleDepthArray = ConvertByteArrayToDoubleArray(LatestDepthArray);
+
+        MetaData md = getMetaData(LatestDepthArray);
+
+        Vector3 p = projectPoint(640, 360, doubleDepthArray, K_depth, K_rgb, md.position, md.rotation);
+        Debug.Log($"-- Projected Point: {p.x}, {p.y}, {p.z}");
+    }
+
+    static MetaData getMetaData(byte[] byteArray)
+    {
+        MetaData metaData = new MetaData();
+        var offset = 1044480;
+        metaData.position.x = BitConverter.ToSingle(byteArray, offset + 16);
+        metaData.position.y = BitConverter.ToSingle(byteArray, offset + 20);
+        metaData.position.z = BitConverter.ToSingle(byteArray, offset + 24);
+        metaData.rotation.x = BitConverter.ToSingle(byteArray, offset + 28);
+        metaData.rotation.y = BitConverter.ToSingle(byteArray, offset + 32);
+        metaData.rotation.z = BitConverter.ToSingle(byteArray, offset + 36);
+        metaData.rotation.w = BitConverter.ToSingle(byteArray, offset + 40);
+        return metaData;
+    }
+
+    public Vector3 projectPoint(int u, int v, double[][] depth, Vector4 K_depth, Vector4 K_rgb, Vector3 pos, Quaternion rot)
+    {
+        var fx_d = K_depth.x;
+        var fy_d = K_depth.y;
+        var cx_d = K_depth.z;
+        var cy_d = K_depth.w;
+        var fx_rgb = K_rgb.x;
+        var fy_rgb = K_rgb.y;
+        var cx_rgb = K_rgb.z;
+        var cy_rgb = K_rgb.w;
+
+        //int u_depth = (int)math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
+        int u_depth = (int)math.round(50 + u / 1920 * 441);
+        //int v_depth = (int)math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
+        int v_depth = (int)math.round(65 + v / 1080 * 336);
+
+        Debug.Log($"-- u: {u_depth} & v: {v_depth}");
+
+        Vector4 p = new Vector4((float)u_depth, (float)v_depth, (float)depth[v_depth][u_depth], 1);
+        var x = p.x - cx_d / fx_d * p.z;
+        var y = p.y - cy_d / fy_d * p.z;
+        var z = p.z;
+        Vector3 result = new Vector3(x, y, z);
+        Debug.Log($"-- Rotation: {rot.x}, {rot.y}, {rot.z}, {rot.w}");
+        Debug.Log($"-- Position: {pos.x}, {pos.y}, {pos.z}");
+        return rot * result + pos;
     }
 }
