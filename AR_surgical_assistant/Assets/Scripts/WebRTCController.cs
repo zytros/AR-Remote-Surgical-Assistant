@@ -39,6 +39,10 @@ public class WebRTCController : Singleton<WebRTCController>
     private int videoIndex = 0;
 
     private RTCDataChannel dataChannel;
+    private RTCDataChannel dataChannel2;
+    private RTCDataChannel dataChannel3;
+    private RTCDataChannel dataChannel4;
+
     private DelegateOnOpen onDataChannelOpen;
     private DelegateOnClose onDataChannelClose;
 
@@ -77,15 +81,6 @@ public class WebRTCController : Singleton<WebRTCController>
         receiveImages.Add(MediaManager.Instance.RemoteSharedImageRenderer);
         receiveImages.Add(MediaManager.Instance.RemoteVideoRenderer);
 
-        onDataChannelOpen = () =>
-        {
-            Debug.Log("Data Channel Opened!");
-        };
-        onDataChannelClose = () =>
-        {
-            Debug.Log("Data Channel Closed!");
-        };
-
         onDataChannel = channel =>
         {
             remoteDataChannel = channel;
@@ -93,28 +88,12 @@ public class WebRTCController : Singleton<WebRTCController>
         };
         onDataChannelMessage = bytes => {
             Debug.Log("recieved bytes1");
-            String received = System.Text.Encoding.UTF8.GetString(bytes);
-            String type = received.Split('#')[0];
-            OBJstring = received.Split('#')[1];
+            OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
             Debug.Log("recieved bytes2");
-            if (type == "3DOBJ")
-            {
-                Debug.Log("recieved 3DOBJ");
-                Debug.Log(OBJstring);
-                _obj3DManager.load3DModel(OBJstring);
-            }
-            else if (type == "ANN")
-            {
-                Debug.Log("recieved ANN:");
-                Debug.Log(OBJstring);
-                // DoSmthWithANN(OBJstring);
-            }
-            else
-            {
-                Debug.Log("recieved something weird:");
-                Debug.Log(OBJstring);
+            _obj3DManager.load3DModel(OBJstring);
+            Debug.Log("recieved bytes3");
 
-            }
+            Debug.Log(OBJstring);
         };
     }
 
@@ -601,6 +580,9 @@ public class WebRTCController : Singleton<WebRTCController>
         connection.OnIceGatheringStateChange = OnIceGatheringStateChange;
 
         AddDataStream();
+        AddDataStream2();
+        AddDataStream3();
+        AddDataStream4();
         connection.OnDataChannel = onDataChannel;
     }
 
@@ -728,9 +710,35 @@ public class WebRTCController : Singleton<WebRTCController>
 
     private void AddDataStream()
     {
+        Debug.Log("opened channel 0");
         RTCDataChannelInit conf = new RTCDataChannelInit();
         dataChannel = _peerConnection.CreateDataChannel("data", conf);
         dataChannel.OnOpen = onDataChannelOpen;
+        dataChannel.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream2()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel2 = _peerConnection.CreateDataChannel("data2", conf);
+        dataChannel2.OnOpen = onDataChannelOpen;
+        dataChannel2.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream3()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel3 = _peerConnection.CreateDataChannel("data3", conf);
+        dataChannel3.OnOpen = onDataChannelOpen;
+        dataChannel3.OnClose = onDataChannelClose;
+    }
+
+    private void AddDataStream4()
+    {
+        RTCDataChannelInit conf = new RTCDataChannelInit();
+        dataChannel4 = _peerConnection.CreateDataChannel("data4", conf);
+        dataChannel4.OnOpen = onDataChannelOpen;
+        dataChannel4.OnClose = onDataChannelClose;
     }
 
     public void AddDataToDataStream(byte[] data)
@@ -738,7 +746,29 @@ public class WebRTCController : Singleton<WebRTCController>
         //RTCDataChannelInit conf = new RTCDataChannelInit();
         //dataChannel = _peerConnection.CreateDataChannel("data", conf);
         Debug.Log("Sending Data Stream");
+        Debug.Log($"ch 1 id: {dataChannel.Id}");
         dataChannel.Send(data);
+    }
+
+    public void AddDataToDataStream2(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 2");
+        Debug.Log($"ch 2 id: {dataChannel2.Id}");
+        dataChannel2.Send(data);
+    }
+
+    public void AddDataToDataStream3(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 3");
+        Debug.Log($"ch 3 id: {dataChannel3.Id}");
+        dataChannel3.Send(data);
+    }
+
+    public void AddDataToDataStream4(byte[] data)
+    {
+        Debug.Log("Sending Data Stream 4");
+        Debug.Log($"ch 4 id: {dataChannel4.Id}");
+        dataChannel4.Send(data);
     }
 
     /// <summary>

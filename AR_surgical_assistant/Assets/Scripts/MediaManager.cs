@@ -66,7 +66,7 @@ public class MediaManager : Singleton<MediaManager>
 
     }
 
-    private void StartMedia()
+    public void StartMedia()
     {
         _targetCameraDeviceManager.StartMedia();
         _microphoneManager.SetupAudio();
@@ -99,5 +99,10 @@ public class MediaManager : Singleton<MediaManager>
         return _targetCameraDeviceManager != null 
                && _targetCameraDeviceManager.IsConfiguredAndReady 
                && _microphoneManager.IsConfiguredAndReady;
+    }
+
+    public void ToggleMuteAudio()
+    {
+        _receiveAudio.mute = !_receiveAudio.mute;
     }
 }

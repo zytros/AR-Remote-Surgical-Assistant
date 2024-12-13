@@ -1,10 +1,10 @@
 using System;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Buffers;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using MagicLeap;
 using MagicLeap.Android;
 using MagicLeap.OpenXR.Features.PixelSensors;
@@ -17,23 +17,33 @@ using UnityEngine.XR.MagicLeap;
 using UnityEngine.XR.OpenXR;
 using System.Net.Sockets;
 using UnityEngine.XR.ARSubsystems;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
+//using MathNet.Numerics.LinearAlgebra;
+//using MathNet.Numerics.LinearAlgebra.Double;
 using Debug = UnityEngine.Debug;
 using Unity.Mathematics;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+public struct MetaData
+{
+    public Vector3 position;
+    public Quaternion rotation;
+};
 
 public class DepthImage : Singleton<DepthImage>
 {
     [SerializeField]
     public WebRTCController webrtccontroller;
-
     private MagicLeapPixelSensorFeature pixelSensorFeature;
     public PixelSensorId SensorId;
     uint i = 0;
     Vector3 position;
     Quaternion rotation;
     Stopwatch stopwatch = new Stopwatch();
+    Vector4 K_depth = new Vector4(543.5f, 543.5f, 272f, 240f);
+    Vector4 K_rgb = new Vector4(800f, 800f, 640f, 360f);
 
+    /*
     Matrix<double> K_depth = DenseMatrix.OfArray(new double[,] {
         {543.5,0,272},
         {0,543.5,240},
@@ -42,7 +52,7 @@ public class DepthImage : Singleton<DepthImage>
         {800,0,640},
         {0,800,360},
         {0,0,1}});
-
+    */
 
     void Awake()
     {
@@ -57,34 +67,68 @@ public class DepthImage : Singleton<DepthImage>
     void Start()
     {
         StartCoroutine(CreateSensorAfterPermission());
-
-        
+        stopwatch.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //string abc = "abc";
-        //webrtccontroller.AddDataToDataStream(Encoding.UTF8.GetBytes(abc));
-        //return;
-        // Debug.Log("__ in Update");
         position = Camera.main.transform.position;
         rotation = Camera.main.transform.rotation;
-        Debug.Log($"__ position: {position}, rotation: {rotation}");
         uint ConfiguredStream = 0;
-        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out var metaData, Allocator.Temp))
+        if (!pixelSensorFeature.GetSensorData(SensorId, ConfiguredStream, out var frame, out _, Allocator.Temp))
         {
             Debug.Log("depth__ GetSensorData failed");
             return;
         }
-        
-
-        if(frame.IsValid && frame.Planes.Length > 0)
-        {
-            ProcessFrame(in frame);
-        }
+        ProcessFrame(in frame);
     }
-    static double[,] ConvertByteArrayToDoubleArray(byte[] byteArray)
+
+    static byte[] convertDoubleToBytes(double value)
+    {
+        byte[] bytes = BitConverter.GetBytes((float)value);
+        Debug.Log($"__ bytes: {bytes.Length}");
+        Assert.AreEqual(4, bytes.Length);
+        return bytes;
+    }
+
+    static MetaData getMetaData(byte[] byteArray)
+    {
+        MetaData metaData = new MetaData();
+        var offset = 1044480;
+        metaData.position.x = BitConverter.ToSingle(byteArray, offset + 16);
+        metaData.position.y = BitConverter.ToSingle(byteArray, offset + 20);
+        metaData.position.z = BitConverter.ToSingle(byteArray, offset + 24);
+        metaData.rotation.x = BitConverter.ToSingle(byteArray, offset + 28);
+        metaData.rotation.y = BitConverter.ToSingle(byteArray, offset + 32);
+        metaData.rotation.z = BitConverter.ToSingle(byteArray, offset + 36);
+        metaData.rotation.w = BitConverter.ToSingle(byteArray, offset + 40);
+        return metaData;
+    }
+
+    public Vector3 projectPoint(int u, int v, double[][] depth, Vector4 K_depth, Vector4 K_rgb, Vector3 pos, Quaternion rot)
+    {
+        var fx_d = K_depth.x;
+        var fy_d = K_depth.y;
+        var cx_d = K_depth.z;
+        var cy_d = K_depth.w;
+        var fx_rgb = K_rgb.x;
+        var fy_rgb = K_rgb.y;
+        var cx_rgb = K_rgb.z;
+        var cy_rgb = K_rgb.w;
+
+        int u_depth = (int) math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
+        int v_depth = (int) math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
+
+        Vector4 p = new Vector4((float)u_depth,(float) v_depth, (float)depth[v_depth][u_depth], 1);
+        var x = p.x - cx_d/fx_d * p.z;
+        var y = p.y - cy_d / fy_d * p.z;
+        var z = p.z;
+        Vector3 result = new Vector3(x,y,z);
+        return rot * result + pos;
+    }
+
+    static double[][] ConvertByteArrayToDoubleArray(byte[] byteArray)
     {
         if (byteArray.Length % 4 != 0)
         {
@@ -99,18 +143,14 @@ public class DepthImage : Singleton<DepthImage>
             float floatValue = BitConverter.ToSingle(byteArray, i * 4);
             doubleArray[i] = (double)floatValue;
         }
-        double[,] array2d = new double[480, 544];
+        double[][] array2d = new double[480][];
         for (int i = 0; i < 480; i++)
         {
-            for (int j = 0; j < 544; j++)
-            {
-                array2d[i, j] = doubleArray[i * 544 + j];
-            }
+            array2d[i] = doubleArray[(i*544)..((i + 1) * 544)];
         }
 
         return array2d;
     }
-
     public void ProcessFrame(in PixelSensorFrame frame)
     {
         if (!frame.IsValid || frame.Planes.Length == 0)
@@ -124,22 +164,53 @@ public class DepthImage : Singleton<DepthImage>
         {
             case PixelSensorFrameType.Depth32:
                 {
-                    // depth image has size 544x480
-                    // Debug.Log($"__ height: {firstPlane.Height} width: {firstPlane.Width} stride: {firstPlane.Stride} Pixel stride: {firstPlane.PixelStride} bytes per pixel:  {firstPlane.BytesPerPixel}\nframe type: {frameType}");
                     var byteArray = ArrayPool<byte>.Shared.Rent(firstPlane.ByteData.Length);
                     firstPlane.ByteData.CopyTo(byteArray);
+                    var offset = 1044480 + 16;
+                    
+                    byte[] pos_x = convertDoubleToBytes(position.x);
+                    byte[] pos_y = convertDoubleToBytes(position.y);
+                    byte[] pos_z = convertDoubleToBytes(position.z);
+                    byte[] rot_x = convertDoubleToBytes(rotation.x);
+                    byte[] rot_y = convertDoubleToBytes(rotation.y);
+                    byte[] rot_z = convertDoubleToBytes(rotation.z);
+                    byte[] rot_w = convertDoubleToBytes(rotation.w);
 
-                    int[][] parts = new int[4][]; // Array to hold the 4 parts
+                    // write position and rotation to the byte array
+                    Array.Copy(pos_x, 0, byteArray, offset, 4);
+                    Array.Copy(pos_y, 0, byteArray, offset + 4, 4);
+                    Array.Copy(pos_z, 0, byteArray, offset + 8, 4);
+                    Array.Copy(rot_x, 0, byteArray, offset + 12, 4);
+                    Array.Copy(rot_y, 0, byteArray, offset + 16, 4);
+                    Array.Copy(rot_z, 0, byteArray, offset + 20, 4);
+                    Array.Copy(rot_w, 0, byteArray, offset + 24, 4);
+
+
+                    byte[][] parts = new byte[4][]; // Array to hold the 4 parts
                     var partSize = 262144; // byteArray.Length / 4; // Size of each part
                     for (int i = 0; i < 4; i++)
                     {
-                        parts[i] = new int[partSize];
+                        parts[i] = new byte[partSize];
                         Array.Copy(byteArray, i * partSize, parts[i], 0, partSize);
                     }
-
+                    string abc = "abc";
+                    Encoding.UTF8.GetBytes(abc);
+                    Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
+                    Debug.Log($"__ 3D point: {point3d}");
                     Debug.Log($"__ sending message with len: {byteArray.Length}");
-                    webrtccontroller.AddDataToDataStream(byteArray[..262144]);
-                    Debug.Log("__ sent message");
+                    if(stopwatch.ElapsedMilliseconds > 200)
+                    {
+                        webrtccontroller.AddDataToDataStream(parts[0]);
+                        webrtccontroller.AddDataToDataStream2(parts[1]);
+                        webrtccontroller.AddDataToDataStream3(parts[2]);
+                        webrtccontroller.AddDataToDataStream4(parts[3]);
+                        Debug.Log("__ sent message");
+                        stopwatch.Restart();
+                    }
+
+                    //Vector3 point3d = projectPoint(100, 100, ConvertByteArrayToDoubleArray(byteArray), K_depth, K_rgb, position, rotation);
+                    Debug.Log($"__ 3D point: {point3d}");
+
                     break;
             }
             
@@ -150,34 +221,6 @@ public class DepthImage : Singleton<DepthImage>
         }
     }
 
-    
-    public Vector3 projectPoint(int u, int v, double[,] depth, Matrix<double> K_rgb, Matrix<double> K_depth, Quaternion r, Vector3 t)
-    {
-        Debug.Log("___ projpoint1");
-        double fx = K_depth[0,0];
-        double fy = K_depth[1, 1];
-        double cx = K_depth[0, 2];
-        double cy = K_depth[1, 2];
-        Debug.Log("___ projpoint2");
-        Vector<double> x_rgb = Vector<double>.Build.DenseOfArray(new double[] {u,v,1.0});
-        Debug.Log("___ projpoint3");
-        Vector<double> x_depth = K_depth * K_rgb.Inverse() * x_rgb;
-        Debug.Log("___ projpoint4");
-        x_depth = x_depth / x_depth[2];
-        Debug.Log("___ projpoint5");
-        u = math.clamp((int)x_depth[0],0,543);
-        v = math.clamp((int)x_depth[1],0,479);
-        Debug.Log($"___ projpoint6 u: {u} v: {v}");
-        double x = (u - cx) * depth[u,v] / fx;
-        double y = (v - cy) * depth[u,v] / fy;
-        Debug.Log("___ projpoint6.5");
-        double z = depth[u,v];
-        Debug.Log("___ projpoint7");
-
-        Vector3 p = new Vector3((float)x, (float)y, (float)z);
-        Debug.Log("___ projpoint8");
-        return r * p + t;
-    }
 
     public IEnumerator CreateSensorAfterPermission()
     {
@@ -246,4 +289,5 @@ public class DepthImage : Singleton<DepthImage>
         
     }
 
+    
 }

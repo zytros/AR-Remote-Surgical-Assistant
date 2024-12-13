@@ -174,9 +174,16 @@ public class MediaManager : Singleton<MediaManager>
         }
 
         //----------------
+        Save_Texture2D(_pausedFrameTexture, "C:/Users/" + Environment.UserName + "/Desktop/PausedImage.png");
 
         isPaused = !isPaused;
         //Debug.Log($"Paused: {PauseRemoteVideo}");
+    }
+
+    private void Save_Texture2D(in Texture2D tex, string path)
+    {
+        byte[] bytes = tex.EncodeToPNG();
+        System.IO.File.WriteAllBytes(path, bytes);
     }
 
     private void SendAnnotation()
@@ -233,7 +240,7 @@ public class MediaManager : Singleton<MediaManager>
         if (isPaused)
         {
             if ((Mouse.current != null && Mouse.current.leftButton.isPressed) ||
-                (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)) 
+                (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed))
             {
                 if ((Mouse.current != null && Mouse.current.leftButton.isPressed) &&
                     RectTransformUtility.RectangleContainsScreenPoint(_mainVideoStream.rectTransform,
@@ -242,9 +249,9 @@ public class MediaManager : Singleton<MediaManager>
                     Vector2 localPoint;
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(_mainVideoStream.rectTransform,
                         Mouse.current.position.ReadValue(), Camera.main, out localPoint);
-    
+
                     HandlePosInput(localPoint);
-    
+
                 }
                 else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
                 {
@@ -274,7 +281,7 @@ public class MediaManager : Singleton<MediaManager>
             }
         }
     }
-    
+
     private void HandlePosInput(Vector2 location)
     {
         Rect rect = _mainVideoStream.rectTransform.rect;
