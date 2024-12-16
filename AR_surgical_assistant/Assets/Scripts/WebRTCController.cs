@@ -88,22 +88,38 @@ public class WebRTCController : Singleton<WebRTCController>
             remoteDataChannel.OnMessage = onDataChannelMessage;
         };
         onDataChannelMessage = bytes => {
-            Debug.Log("-- recieved bytes1");
-            float x = BitConverter.ToSingle(bytes, 0);
-            float y = BitConverter.ToSingle(bytes, 4);
-            float z = BitConverter.ToSingle(bytes, 8);
-            Debug.Log("-- Converted to float");
-            Vector3[] annotation_points = new[] { new Vector3(0f, 0f, 0f), new Vector3(x, y, z) };
-            Debug.Log("-- Before Spawning Annotations");
-            _annotationHandler.SpawnAnnotation(annotation_points);
-            Debug.Log("-- Spawned Annotations");
+            var id = bytes[0];
+            Debug.Log("-- GOT MESSAGE!!!!!");
+            if (id == 0x01)
+            {
+                // Annotation
+                Debug.Log("-- recieved bytes1");
+                var num_points = (bytes.Length - 1) / 12;
+                Vector3[] annotation_points = new Vector3[num_points];
+                for (int i = 0; i < num_points; i++)
+                {
+                    float x = BitConverter.ToSingle(bytes, i * 12 + 1);
+                    float y = BitConverter.ToSingle(bytes, i * 12 + 5);
+                    float z = BitConverter.ToSingle(bytes, i * 12 + 9);
+                    Debug.Log("-- Converted to float");
+                    annotation_points[i] = new Vector3(x, y, z);
+                }
+                Debug.Log("-- Before Spawning Annotations");
+                _annotationHandler.SpawnAnnotation(annotation_points);
+                Debug.Log("-- Spawned Annotations");
 
-            //OBJstring = System.Text.Encoding.UTF8.GetString(bytes);
-            //Debug.Log("recieved bytes2");
-            //_obj3DManager.load3DModel(OBJstring);
-            //Debug.Log("recieved bytes3");
+            }
+            else
+            {
+                // Obj
+                var received_string = System.Text.Encoding.UTF8.GetString(bytes);
+                OBJstring = received_string.Substring(6);
+                Debug.Log("recieved bytes2");
+                _obj3DManager.load3DModel(OBJstring);
+                Debug.Log("recieved bytes3");
 
-            //Debug.Log(OBJstring);
+                Debug.Log($"recieved {OBJstring}");
+            }
         };
     }
 

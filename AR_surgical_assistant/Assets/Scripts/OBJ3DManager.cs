@@ -12,7 +12,9 @@ public class OBJ3DManager : MonoBehaviour
     private string _currentOBJString = "";
     public Mesh manipMesh;
     public GameObject OBJModel;
-    
+    public GameObject refModel;
+    public Material newMat;
+
     public void load3DModel(string objString)
     {
         _currentOBJString = objString;
@@ -35,15 +37,21 @@ public class OBJ3DManager : MonoBehaviour
         loadModel.transform.localPosition = new Vector3(0, 0, 2);
         
 
-        Material newMat = Resources.Load("DefaultMeshMaterial", typeof(Material)) as Material;
-        OBJModel.GetComponent<MeshRenderer>().material = newMat;
+        //Material newMat = Resources.Load("DefaultMeshMaterial", typeof(Material)) as Material;
+        //OBJModel.GetComponent<MeshRenderer>().material = newMat;
 
-        var meshfilter = loadModel.AddComponent<MeshFilter>();
-        meshfilter.mesh = OBJModel.GetComponent<MeshFilter>().mesh;
+        //var meshfilter = loadModel.AddComponent<MeshFilter>();
+        //meshfilter.mesh = OBJModel.GetComponent<MeshFilter>().mesh;
         OBJModel.GetComponent<MeshRenderer>().enabled = false;
-        loadModel.AddComponent<MeshRenderer>();
-        loadModel.AddComponent<MeshCollider>();
-        loadModel.AddComponent<ObjectManipulator>();
+        //loadModel.AddComponent<MeshRenderer>();
+        //loadModel.AddComponent<MeshCollider>();
+        //var obj_manip = loadModel.AddComponent<ObjectManipulator>();
+        //loadModel.GetComponent<MeshRenderer>().material = newMat;
 
+        //var mf = refModel.AddComponent<MeshFilter>();
+        Mesh mesh = OBJModel.GetComponent<MeshFilter>().mesh;
+        refModel.GetComponent<MeshFilter>().mesh = mesh;
+        refModel.GetComponent<MeshRenderer>().material = newMat;
+        refModel.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 }
