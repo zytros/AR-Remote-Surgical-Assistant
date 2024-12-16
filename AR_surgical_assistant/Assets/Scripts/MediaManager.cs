@@ -103,7 +103,8 @@ public class MediaManager : Singleton<MediaManager>
 
     public void ToggleMuteAudio()
     {
-        _receiveAudio.mute = !_receiveAudio.mute;
+        //_receiveAudio.mute = !_receiveAudio.mute;
+        _microphoneManager.SourceAudio.mute = !_microphoneManager.SourceAudio.mute;
     }
 
     public void ChangeIncomingAudioVolume(float volume)

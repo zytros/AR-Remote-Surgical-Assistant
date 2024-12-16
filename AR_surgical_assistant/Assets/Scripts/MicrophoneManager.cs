@@ -84,7 +84,7 @@ public class MicrophoneManager : MonoBehaviour
 
         _sourceAudio.clip = micClip;
         _sourceAudio.loop = true;
-        //_sourceAudio.Play();
+        _sourceAudio.Play();
 
         _isMicrophoneConfiguredAndReady = true;
         Debug.Log($"Microphone {_microphoneName} Ready");
