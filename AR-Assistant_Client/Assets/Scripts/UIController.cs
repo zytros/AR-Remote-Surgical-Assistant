@@ -68,6 +68,11 @@ public class UIController : Singleton<UIController>
         }
     }
 
+    public void SetPauseButtonText(string text)
+    {
+        _pauseButton.GetComponentInChildren<TMP_Text>().text = text;
+    }
+
     private void BackMediaButtonPressed()
     {
         OnBackMediaButtonPressed?.Invoke();

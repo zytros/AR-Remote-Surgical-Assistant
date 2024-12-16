@@ -51,7 +51,7 @@ public class DepthImageClient : Singleton<DepthImageClient>
         
     }
 
-    static double[][] ConvertByteArrayToDoubleArray(byte[] byteArray)
+    public double[][] ConvertByteArrayToDoubleArray(byte[] byteArray)
     {
         if (byteArray.Length % 4 != 0)
         {
@@ -66,12 +66,15 @@ public class DepthImageClient : Singleton<DepthImageClient>
             float floatValue = BitConverter.ToSingle(byteArray, i * 4);
             doubleArray[i] = (double)floatValue;
         }
+        Debug.Log($"Double Array Length: {doubleArray.Length}");
         double[][] array2d = new double[480][];
         for (int i = 0; i < 480; i++)
         {
             array2d[i] = doubleArray[(i * 544)..((i + 1) * 544)];
             //array2d[i, j] = doubleArray[i * 544 + j];
         }
+
+
 
         return array2d;
     }
@@ -136,7 +139,7 @@ public class DepthImageClient : Singleton<DepthImageClient>
         return p;
     }
 
-    static MetaData getMetaData(byte[] byteArray)
+    public MetaData getMetaData(byte[] byteArray)
     {
         MetaData metaData = new MetaData();
         var offset = 1044480;
@@ -155,11 +158,18 @@ public class DepthImageClient : Singleton<DepthImageClient>
 
         //int u_depth = (int)math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
         // int u_depth = (int)math.round(50 + Convert.ToDouble(u) / 1440 * 441);
-        int u_depth = (int)math.round(107 + Convert.ToDouble(u) / 1440 * 441); //higher is higher
+        // int weirdoffset_u = -72; //higher is right //nice for video
+        int weirdoffset_u = -60; //higher is right
+
+        int u_depth = (int)math.round(107 + Convert.ToDouble(u) / 1440 * 441) +weirdoffset_u; //higher is higher
 
         //int v_depth = (int)math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
         // int v_depth = (int)math.round(65 + Convert.ToDouble(v) / 1080 * 336);
-        int v_depth = (int)math.round(47 + Convert.ToDouble(v) / 1080 * 336); //higher -> right
+        // int weirdoffset_v = 30; //higher is up //nice for video
+        int weirdoffset_v = 36; //higher is up
+
+
+        int v_depth = (int)math.round(47 + Convert.ToDouble(v) / 1080 * 336) + weirdoffset_v; //higher -> right (up???)
 
 
         Debug.Log($"-- u: {u_depth} & v: {v_depth}");
@@ -167,21 +177,43 @@ public class DepthImageClient : Singleton<DepthImageClient>
         return new Vector2(u_depth, v_depth);
     }
 
-    public Vector3 transform_2d_point(int u, int v, byte[] deptharray)
+    public Vector3 transform_2d_point(int u, int v, double[][] depth, MetaData meta)
     {
-        double[][] depth = ConvertByteArrayToDoubleArray(deptharray);
+        // double[][] depth = ConvertByteArrayToDoubleArray(deptharray);
         var vec = convert_to_depth(u, v, depth);
-        double d = depth[(int)vec.y][(int)vec.x];
+        // double d = depth[(int)vec.y][(int)vec.x];
+
+
         int u_depth =(int) vec.x;
         int v_depth =(int) vec.y;
+
+        double d = depth[v_depth][u_depth];
+
+        double d_smooth = 0f;
+        int smoothing = 4;
+        int cnt = 0;
+
+
+        for (int i = -smoothing; i <= smoothing; i++)
+        {
+            for (int j = -smoothing; j <= smoothing; j++)
+            {
+                d_smooth += depth[v_depth + i][u_depth + j];
+                cnt += 1;
+            }
+        }
+
+        d_smooth /= cnt;
+        Debug.Log($"d is {d} and d_smooth is {d_smooth}");
+        d = d_smooth * 1.07;
+        // d = d_smooth * 0.95;
+
         double fov_horizontal = 1.22173;
         double fov_vertical = 1.309;
         double new_x = TransformOneDim(fov_horizontal, 544, u_depth, d);
         double new_y = TransformOneDim(fov_vertical, 480, v_depth, d);
 
         Vector3 ret = new Vector3((float)new_x,(float)new_y, (float) d);
-
-        MetaData meta = getMetaData(deptharray);
 
         return meta.rotation * ret + meta.position;
     }

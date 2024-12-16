@@ -120,6 +120,8 @@ public class MediaManager : Singleton<MediaManager>
         // annotations = new List<Tuple<int, int>>();
         if (!isPaused)
         {
+            UIController.Instance.SetPauseButtonText("Send");
+
             depthArray = DepthImageClient.Instance.LatestDepthArray;
             _smallVideoStream.texture = _mainVideoStream.texture;
             Texture texture = _mainVideoStream.texture;
@@ -162,6 +164,8 @@ public class MediaManager : Singleton<MediaManager>
         }
         else
         {
+            UIController.Instance.SetPauseButtonText("Pause");
+
             _mainVideoStream.texture = _smallVideoStream.texture;
             _smallVideoStream.texture = _pausedFrameTexture;
             SendAnnotation();
@@ -194,36 +198,55 @@ public class MediaManager : Singleton<MediaManager>
 
     private void SendAnnotation()
     {
+        double[][] depth = DepthImageClient.Instance.ConvertByteArrayToDoubleArray(depthArray);
+        DepthImageClient.MetaData meta = DepthImageClient.Instance.getMetaData(depthArray);
+
+
         Debug.Log(annotations.Count);
         List<Vector3> points3D = new List<Vector3>();
         for (int i = 0; i < annotations.Count; i++)
         {
-            Debug.Log("Loop");
-            Vector3 point3D = DepthImageClient.Instance.transform_2d_point(annotations[i].Item1, annotations[i].Item2, depthArray);
-            Debug.Log($"-- x: {point3D.x}, y: {point3D.y}, z: {point3D.z}");
+            // Debug.Log($"DepthArray Length: {depthArray.Length}");
+            Vector3 point3D = DepthImageClient.Instance.transform_2d_point(annotations[i].Item1, annotations[i].Item2, depth, meta);
+            // Debug.Log($"-- x: {point3D.x}, y: {point3D.y}, z: {point3D.z}");
             // points3D.Append(point3D);
             points3D.Add(point3D);
             // Vector3 point3D = DepthImageClient.Instance.Get3DPoints(annotations[i].Item1, annotations[i].Item2, depthArray);
 
         }
 
-        // Do reproduction stuff
-        // String annotationString = string.Join(", ", points3D.Select(t => $"({t.x}, {t.y}, {t.z})"));
-        byte[] annotationString = new byte[12];
-        Array.Copy(convertDoubleToBytes(points3D[0].x), 0, annotationString, 0,4);
-        Array.Copy(convertDoubleToBytes(points3D[0].y), 0, annotationString, 4,4);
-        Array.Copy(convertDoubleToBytes(points3D[0].z), 0, annotationString, 8,4);
+        // if (points3D.Count != 0)
+        // {
+        //     byte[] annotationString = new byte[12];
+        //     Array.Copy(convertDoubleToBytes(points3D[0].x), 0, annotationString, 0,4);
+        //     Array.Copy(convertDoubleToBytes(points3D[0].y), 0, annotationString, 4,4);
+        //     Array.Copy(convertDoubleToBytes(points3D[0].z), 0, annotationString, 8,4);
+        //     // annotationString = "ANN#" + annotationString;
+        //     WebRTCController.Instance.AddAnnotationToDataStream(annotationString);
+        // }
 
+        byte identifier = 0x01; // 0x01 for 3D annotations
+        byte[] allPointBytes = new byte[1 + 12 * points3D.Count];
+        allPointBytes[0] = identifier;
+        byte[] pointBytes = new byte[12];
+        for (int i = 0; i < points3D.Count; i++)
+        {
+            Array.Copy(convertDoubleToBytes(points3D[i].x), 0, pointBytes, 0,4);
+            Array.Copy(convertDoubleToBytes(points3D[i].y), 0, pointBytes, 4,4);
+            Array.Copy(convertDoubleToBytes(points3D[i].z), 0, pointBytes, 8,4);
+            Array.Copy(pointBytes, 0, allPointBytes, 1 + 12 * i, 12);
+        }
 
-        // annotationString = "ANN#" + annotationString;
+        Debug.Log($"Sending {allPointBytes.Length} bytes");
 
-        WebRTCController.Instance.AddAnnotationToDataStream(annotationString);
+        WebRTCController.Instance.AddAnnotationToDataStream(allPointBytes);
+
     }
 
     static byte[] convertDoubleToBytes(double value)
     {
         byte[] bytes = BitConverter.GetBytes((float)value);
-        Debug.Log($"__ bytes: {bytes.Length}");
+        // Debug.Log($"__ bytes: {bytes.Length}");
         // Assert.AreEqual(4, bytes.Length);
         return bytes;
     }
@@ -396,7 +419,7 @@ public class MediaManager : Singleton<MediaManager>
     {
         int clampedX = Mathf.Clamp(x, 0, _pausedFrameTexture.width - 1);
         int clampedY = Mathf.Clamp(y, 0, _pausedFrameTexture.height - 1);
-        Debug.Log($"width: {_pausedFrameTexture.width}, height: {_pausedFrameTexture.height}");
+        // Debug.Log($"width: {_pausedFrameTexture.width}, height: {_pausedFrameTexture.height}");
         annotations.Add(new Tuple<int, int>(clampedX, clampedY));
 
     }

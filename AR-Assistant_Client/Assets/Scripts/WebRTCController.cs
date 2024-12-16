@@ -134,6 +134,7 @@ public class WebRTCController : Singleton<WebRTCController>
             // Debug.Log("recieved bytes7");
             depth_data4 = bytes;
             // Debug.Log($"recieved bytes8 : {bytes.Length}");
+            // Debug.Log($"DepthImageClient: {DepthImageClient}");
             DepthImageClient.CombineDepthArrays(depth_data, depth_data2, depth_data3, depth_data4);
             // Debug.Log("Combined Arrays");
         };
@@ -262,7 +263,7 @@ public class WebRTCController : Singleton<WebRTCController>
     {
         while (_waitingForAnswer && !_waitingForAnswerGetRequest)
         {
-            Debug.Log("Polling server for SDP answer...");
+            // Debug.Log("Polling server for SDP answer...");
             _waitingForAnswerGetRequest = true;
             _serverCommunication.CheckAnswers();
             yield return new WaitForSeconds(PERIODICITY_CHECK_ANSWERS);
@@ -770,8 +771,9 @@ public class WebRTCController : Singleton<WebRTCController>
     {
         //RTCDataChannelInit conf = new RTCDataChannelInit();
         //dataChannel = _peerConnection.CreateDataChannel("data", conf);
-        Debug.Log("Sending Data Stream");
+        Debug.Log($"Sending Data Stream: {FileShareManager.Instance.loadedObjString.Length}");
         dataChannel.Send(FileShareManager.Instance.loadedObjString);
+        Debug.Log("Sent Data Stream 3D Object");
     }
 
     public void AddAnnotationToDataStream(byte[] annotation)

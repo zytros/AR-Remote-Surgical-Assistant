@@ -39,7 +39,7 @@ public class MediaManager : Singleton<MediaManager>
     public RawImage RemoteVideoRenderer => _remoteVideoRenderer;
     public RawImage RemoteSharedImageRenderer => _remoteImageShareRenderer;
 
-    public RenderTexture CameraTexture => _targetCameraDeviceManager.CameraTexture;
+    public RenderTexture CamerafTexture => _targetCameraDeviceManager.CameraTexture;
 
     public AudioSource SourceAudio => _microphoneManager.SourceAudio;
 
