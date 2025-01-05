@@ -158,18 +158,18 @@ public class DepthImageClient : Singleton<DepthImageClient>
 
         //int u_depth = (int)math.round(cx_d + fx_d * ((u / fx_rgb) - cx_rgb / fx_rgb));
         // int u_depth = (int)math.round(50 + Convert.ToDouble(u) / 1440 * 441);
-        // int weirdoffset_u = -72; //higher is right //nice for video
-        int weirdoffset_u = -60; //higher is right
+        // int offset_u = -72; //higher is right 
+        int offset_u = -60; //higher is right
 
-        int u_depth = (int)math.round(107 + Convert.ToDouble(u) / 1440 * 441) +weirdoffset_u; //higher is higher
+        int u_depth = (int)math.round(107 + Convert.ToDouble(u) / 1440 * 441) +offset_u; //higher is higher
 
         //int v_depth = (int)math.round(cy_d + fy_d * ((v / fy_rgb) - cy_rgb / fy_rgb));
         // int v_depth = (int)math.round(65 + Convert.ToDouble(v) / 1080 * 336);
-        // int weirdoffset_v = 30; //higher is up //nice for video
-        int weirdoffset_v = 36; //higher is up
+        // int offset_v = 30; //higher is up 
+        int offset_v = 36; //higher is up
 
 
-        int v_depth = (int)math.round(47 + Convert.ToDouble(v) / 1080 * 336) + weirdoffset_v; //higher -> right (up???)
+        int v_depth = (int)math.round(47 + Convert.ToDouble(v) / 1080 * 336) + offset_v; //higher -> right (up???)
 
 
         Debug.Log($"-- u: {u_depth} & v: {v_depth}");
