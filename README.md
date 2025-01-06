@@ -21,3 +21,7 @@ The code for the assistant can be found in the folder "AR-Assistant_Client"
 Note that for the assistant FMOD for unity has to be installed. The installation can be found under "https://www.fmod.com/download#fmodforunity"
 
 The python server can be found at "AR-Remote-Surgical-Assistant/AR_surgical_assistant/Server/server.py". We used python version 3.9 to run the server.
+
+## The Report
+
+The project report can be found [here](https://github.com/zytros/AR-Remote-Surgical-Assistant/blob/main/Mixed_Reality___Report___Team_36.pdf)
